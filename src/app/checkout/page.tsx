@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
@@ -16,11 +17,14 @@ export default function CheckoutPage() {
   const { cartItems, cartTotal, cartCount, clearCart } = useCart();
   const router = useRouter();
 
+  useEffect(() => {
+    if (cartCount === 0) {
+      router.push('/cart');
+    }
+  }, [cartCount, router]);
+
   if (cartCount === 0) {
-     if (typeof window !== 'undefined') {
-        router.push('/cart');
-     }
-     return null;
+    return null; // or a loading spinner
   }
 
   const shippingThreshold = 799;

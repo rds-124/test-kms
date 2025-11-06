@@ -30,7 +30,7 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold font-headline text-2xl">TulunaduStore</span>
+            <span className="font-bold font-headline text-2xl">KaravaliStore</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navLinks}
@@ -73,7 +73,7 @@ export default function Header() {
         {/* Mobile Logo */}
         <div className="flex justify-center flex-1 md:hidden">
             <Link href="/" className="flex items-center space-x-2">
-                <span className="font-bold font-headline text-xl">TulunaduStore</span>
+                <span className="font-bold font-headline text-xl">KaravaliStore</span>
             </Link>
         </div>
 
