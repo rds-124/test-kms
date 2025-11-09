@@ -87,6 +87,12 @@ export default function ProductPage() {
     }
   };
 
+  const handleLocalQuantityChange = (newQuantity: number) => {
+    if (newQuantity > 0 && newQuantity <= product.stock_qty) {
+        setQuantity(newQuantity);
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -152,39 +158,30 @@ export default function ProductPage() {
             {isOutOfStock ? (
               <Button size="lg" className="w-full" disabled>Out of Stock</Button>
             ) : cartItem ? (
-              <div className="flex items-center gap-4">
-                <p className='font-semibold'>Quantity:</p>
-                <div className="flex items-center border rounded-md">
-                  <Button variant="ghost" size="icon" onClick={() => handleQuantityUpdate(cartItem.quantity - 1)} aria-label="Decrease quantity">
-                    <Minus className="h-4 w-4" />
-                  </Button>
-                  <span className="w-12 text-center font-bold">{cartItem.quantity}</span>
-                  <Button variant="ghost" size="icon" onClick={() => handleQuantityUpdate(cartItem.quantity + 1)} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
-                    <Plus className="h-4 w-4" />
-                  </Button>
+                <div className="flex items-center gap-4">
+                    <p className='font-semibold'>In Cart:</p>
+                    <div className="flex items-center border rounded-md">
+                    <Button variant="ghost" size="icon" onClick={() => handleQuantityUpdate(cartItem.quantity - 1)} aria-label="Decrease quantity">
+                        <Minus className="h-4 w-4" />
+                    </Button>
+                    <span className="w-12 text-center font-bold tabular-nums">{cartItem.quantity}</span>
+                    <Button variant="ghost" size="icon" onClick={() => handleQuantityUpdate(cartItem.quantity + 1)} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                        <Plus className="h-4 w-4" />
+                    </Button>
+                    </div>
                 </div>
-              </div>
             ) : (
               <div className="flex items-center gap-4">
                 <div className="flex items-center border rounded-md">
-                  <Button variant="ghost" size="icon" onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity">
+                  <Button variant="ghost" size="icon" onClick={() => handleLocalQuantityChange(quantity - 1)} aria-label="Decrease quantity">
                     <Minus className="h-4 w-4" />
                   </Button>
-                  <input 
-                    type="number" 
-                    value={quantity}
-                    onChange={(e) => setQuantity(Math.min(Math.max(1, parseInt(e.target.value) || 1), product.stock_qty))}
-                    className="w-12 text-center font-bold bg-transparent border-none focus:ring-0"
-                    aria-label="Quantity"
-                    min="1"
-                    max={product.stock_qty}
-                  />
-                  <Button variant="ghost" size="icon" onClick={() => setQuantity(Math.min(quantity + 1, product.stock_qty))} aria-label="Increase quantity">
+                  <span className="w-12 text-center font-bold tabular-nums">{quantity}</span>
+                  <Button variant="ghost" size="icon" onClick={() => handleLocalQuantityChange(quantity + 1)} aria-label="Increase quantity">
                     <Plus className="h-4 w-4" />
                   </Button>
                 </div>
-                <Button size="lg" className="flex-1" onClick={handleAddToCart}>
-                  <ShoppingCart className="mr-2 h-5 w-5" />
+                <Button size="lg" className="flex-1 bg-green-600 hover:bg-green-700 text-white rounded-full" onClick={handleAddToCart}>
                   Add to Cart
                 </Button>
               </div>

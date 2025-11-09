@@ -10,7 +10,7 @@ import { useCart } from "@/hooks/use-cart";
 import { useToast } from "@/hooks/use-toast";
 import type { Product } from "@/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ShoppingCart, Plus, Minus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 type ProductCardProps = {
   product: Product;
@@ -51,23 +51,32 @@ export default function ProductCard({ product }: ProductCardProps) {
     });
   };
 
-  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value, 10);
-    if (value > 0 && value <= product.stock_qty) {
-      setQuantity(value);
-    }
-  };
-
   const incrementQuantity = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setQuantity(prev => Math.min(prev + 1, product.stock_qty));
+    const newQuantity = cartItem ? cartItem.quantity + 1 : quantity + 1;
+    if (newQuantity <= product.stock_qty) {
+      if (cartItem) {
+        updateQuantity(product.sku, newQuantity);
+      } else {
+        setQuantity(newQuantity);
+      }
+    }
   };
   
   const decrementQuantity = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setQuantity(prev => Math.max(1, prev - 1));
+    const newQuantity = cartItem ? cartItem.quantity - 1 : quantity - 1;
+    if (newQuantity > 0) {
+      if (cartItem) {
+        updateQuantity(product.sku, newQuantity);
+      } else {
+        setQuantity(newQuantity);
+      }
+    } else if(cartItem) {
+        updateQuantity(product.sku, 0); // remove from cart
+    }
   };
 
   const formatPrice = (price: number) => {
@@ -121,32 +130,37 @@ export default function ProductCard({ product }: ProductCardProps) {
       </Link>
       <div className="px-4 pb-4 mt-auto">
         {isOutOfStock ? (
-           <Button 
-              className="w-full"
-              disabled
-              variant="outline"
-            >
+           <Button className="w-full" disabled variant="outline">
               Out of Stock
           </Button>
         ) : cartItem ? (
-          <div className="flex items-center justify-between">
-            <Button variant="outline" size="icon" className="h-9 w-9" onClick={(e) => updateQuantity(product.sku, cartItem.quantity - 1)} aria-label="Decrease quantity">
+          <div className="flex items-center justify-center">
+            <Button variant="outline" size="icon" className="h-9 w-9" onClick={decrementQuantity} aria-label="Decrease quantity">
               <Minus className="h-4 w-4" />
             </Button>
-            <span className="font-bold text-lg w-10 text-center">{cartItem.quantity}</span>
-             <Button variant="outline" size="icon" className="h-9 w-9" onClick={(e) => updateQuantity(product.sku, cartItem.quantity + 1)} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+            <span className="font-bold text-lg w-12 text-center tabular-nums">{cartItem.quantity}</span>
+             <Button variant="outline" size="icon" className="h-9 w-9" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
               <Plus className="h-4 w-4" />
             </Button>
           </div>
         ) : (
-          <Button 
-            className="w-full"
-            onClick={handleAddToCart}
-            variant="outline"
-          >
-            <ShoppingCart className="mr-2 h-4 w-4" />
-            Add to Cart
-          </Button>
+            <div className="flex items-center gap-2">
+                <div className="flex items-center border rounded-md">
+                    <Button variant="ghost" size="icon" className="h-9 w-9" onClick={decrementQuantity} aria-label="Decrease quantity">
+                        <Minus className="h-4 w-4" />
+                    </Button>
+                    <span className="font-bold text-base w-8 text-center tabular-nums">{quantity}</span>
+                    <Button variant="ghost" size="icon" className="h-9 w-9" onClick={incrementQuantity} aria-label="Increase quantity" disabled={quantity >= product.stock_qty}>
+                        <Plus className="h-4 w-4" />
+                    </Button>
+                </div>
+                <Button 
+                    className="w-full flex-1 bg-green-600 hover:bg-green-700 text-white rounded-full"
+                    onClick={handleAddToCart}
+                >
+                    Add
+                </Button>
+            </div>
         )}
       </div>
     </Card>
