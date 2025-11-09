@@ -23,6 +23,13 @@ export type Category = {
   slug: string;
   imageId: string;
 };
+export type SubCategory = {
+  id: string;
+  name: string;
+  slug: string;
+  imageId: string;
+};
+
 
 export type CartItem = {
   product: Product;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useState, useMemo } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
 import { products as allProducts } from '@/lib/products';
 import { categories } from '@/lib/categories';
 import ProductCard from '@/components/ProductCard';
@@ -17,10 +17,14 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import type { Product } from '@/types';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 export default function CategoryPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const slug = params.slug as string;
+  const subCategoryQuery = searchParams.get('sub_category');
 
   const [sortOption, setSortOption] = useState('featured');
   const [inStockOnly, setInStockOnly] = useState(false);
@@ -28,8 +32,17 @@ export default function CategoryPage() {
 
   const category = categories.find(c => c.slug === slug) || { name: 'All Products', slug: 'all' };
 
+  const subCategories = useMemo(() => {
+    if (slug === 'all') return [];
+    const productSubCategories = allProducts
+      .filter(p => p.category === slug && p.sub_category)
+      .map(p => p.sub_category!);
+    return [...new Set(productSubCategories)];
+  }, [slug]);
+
   const filteredProducts = allProducts
     .filter(p => slug === 'all' || p.category === slug)
+    .filter(p => !subCategoryQuery || p.sub_category === subCategoryQuery)
     .filter(p => !inStockOnly || p.stock_status === 'instock')
     .filter(p => {
       const price = p.sale_price ?? p.price;
@@ -56,7 +69,7 @@ export default function CategoryPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-headline font-bold">{category.name}</h1>
+        <h1 className="text-4xl font-headline font-bold">{subCategoryQuery ? allProducts.find(p=>p.sub_category === subCategoryQuery)?.sub_category?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : category.name}</h1>
       </div>
       <div className="grid md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
@@ -81,6 +94,26 @@ export default function CategoryPage() {
                   </SelectContent>
                 </Select>
               </div>
+
+              {subCategories.length > 0 && (
+                <div className="space-y-2">
+                  <Label>Sub-categories</Label>
+                  <div className="flex flex-wrap gap-2">
+                    {subCategories.map(sc => (
+                      <Link key={sc} href={`/category/${slug}?sub_category=${sc}`}>
+                        <Badge
+                          variant={subCategoryQuery === sc ? 'default' : 'secondary'}
+                          className="cursor-pointer"
+                        >
+                          {sc.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                        </Badge>
+                      </Link>
+                    ))}
+                     {subCategoryQuery && <Link href={`/category/${slug}`}><Badge variant="outline" className="cursor-pointer">Clear</Badge></Link>}
+                  </div>
+                </div>
+              )}
+
 
               <div className="flex items-center space-x-2">
                 <Checkbox id="in-stock" checked={inStockOnly} onCheckedChange={(checked) => setInStockOnly(Boolean(checked))} />

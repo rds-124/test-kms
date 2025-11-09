@@ -7,16 +7,10 @@
       "imageHint": "landscape nature"
     },
     {
-      "id": "category-spices",
-      "description": "A variety of colorful Indian spices.",
-      "imageUrl": "https://images.unsplash.com/photo-1658375605267-4c7ddb4915b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzcGljZXMlMjBtYXJrZXR8ZW58MHx8fHwxNzYyNDA3OTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "spices market"
-    },
-    {
-      "id": "category-pickles",
-      "description": "Jars of homemade pickles.",
-      "imageUrl": "https://images.unsplash.com/photo-1621378580694-07ed748ce085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGlja2xlcyUyMGphcnN8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "pickles jars"
+      "id": "category-instant",
+      "description": "Instant food mixes.",
+      "imageUrl": "https://images.unsplash.com/photo-1582482046868-f9c5f4557a87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbnN0YW50JTIwZm9vZHxlbnwwfHx8fDE3NjI2ODA2NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "instant food"
     },
     {
       "id": "category-snacks",
@@ -25,10 +19,40 @@
       "imageHint": "indian snacks"
     },
     {
-      "id": "category-handicrafts",
-      "description": "Handmade crafts.",
-      "imageUrl": "https://images.unsplash.com/photo-1626207170012-718f97da4480?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoYW5kbWFkZSUyMGNyYWZ0c3xlbnwwfHx8fDE3NjIzMzI2MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "handmade crafts"
+      "id": "category-sweets",
+      "description": "Assortment of Indian sweets.",
+      "imageUrl": "https://images.unsplash.com/photo-1699708263762-00ca477760bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBzd2VldHN8ZW58MHx8fHwxNzYyNjEwOTcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "indian sweets"
+    },
+    {
+      "id": "category-grocery",
+      "description": "A variety of colorful Indian spices.",
+      "imageUrl": "https://images.unsplash.com/photo-1658375605267-4c7ddb4915b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzcGljZXMlMjBtYXJrZXR8ZW58MHx8fHwxNzYyNDA3OTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "spices market"
+    },
+    {
+      "id": "category-ayurvedic",
+      "description": "Ayurvedic herbs and powders.",
+      "imageUrl": "https://images.unsplash.com/photo-1738907692230-ed72b94e83f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxheXVydmVkaWMlMjBoZXJic3xlbnwwfHx8fDE3NjI2ODA2NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ayurvedic herbs"
+    },
+    {
+      "id": "category-ready-to-eat",
+      "description": "Ready to eat meal packs.",
+      "imageUrl": "https://images.unsplash.com/photo-1666819691716-827f78d892f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZWFsJTIwcHJlcHxlbnwwfHx8fDE3NjI2MDkxOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "meal prep"
+    },
+    {
+      "id": "category-vegetables",
+      "description": "Fresh vegetables.",
+      "imageUrl": "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmcmVzaCUyMHZlZ2V0YWJsZXN8ZW58MHx8fHwxNzYyNjQzNDkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fresh vegetables"
+    },
+    {
+      "id": "category-household",
+      "description": "Household cleaning items.",
+      "imageUrl": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbmluZyUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MjYwNDM2NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cleaning supplies"
     },
     {
       "id": "product-1-1",
@@ -45,80 +69,116 @@
     {
       "id": "product-2-1",
       "description": "Kundapur Masala Powder",
-      "imageUrl": "https://images.unsplash.com/photo-1704650312022-ed1a76dbed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXNhbGElMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1704650312022-ed1a76dbed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXNhbGElMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "masala powder"
     },
     {
       "id": "product-3-1",
       "description": "Mango Pickle",
-      "imageUrl": "https://images.unsplash.com/photo-1664791461482-79f5deee490f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW5nbyUyMHBpY2tsZXxlbnwwfHx8fDE3NjIzMjYzODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1664791461482-79f5deee490f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW5nbyUyMHBpY2tsZXxlbnwwfHx8fDE3NjIzMjYzODF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "mango pickle"
     },
     {
       "id": "product-4-1",
       "description": "Jackfruit Chips",
-      "imageUrl": "https://images.unsplash.com/photo-1730311822775-6586cea46514?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmcnVpdCUyMGNoaXBzfGVufDB8fHx8MTc2MjQwNzk5MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1730311822775-6586cea46514?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmcnVpdCUyMGNoaXBzfGVufDB8fHx8MTc2MjQwNzk5MHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "fruit chips"
     },
     {
       "id": "product-5-1",
       "description": "Red Rice",
-      "imageUrl": "https://images.unsplash.com/photo-1675150303909-1bb94e33132f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyZWQlMjByaWNlfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1675150303909-1bb94e33132f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyZWQlMjByaWNlfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "red rice"
     },
     {
       "id": "product-6-1",
       "description": "Banana Chips",
-      "imageUrl": "https://images.unsplash.com/photo-1619028005538-db42565dd583?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYW5hbmElMjBjaGlwc3xlbnwwfHx8fDE3NjI0MDc5OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1619028005538-db42565dd583?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYW5hbmElMjBjaGlwc3xlbnwwfHx8fDE3NjI0MDc5OTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "banana chips"
     },
     {
       "id": "product-7-1",
       "description": "Cashew Nuts",
-      "imageUrl": "https://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXNoZXclMjBudXRzfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXNoZXclMjBudXRzfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cashew nuts"
     },
     {
       "id": "product-8-1",
       "description": "Jaggery",
-      "imageUrl": "https://images.unsplash.com/photo-1755288271423-462a0808deb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxqYWdnZXJ5JTIwYmxvY2t8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1755288271423-462a0808deb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxqYWdnZXJ5JTIwYmxvY2t8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "jaggery block"
     },
     {
       "id": "product-9-1",
       "description": "Coconut Oil",
-      "imageUrl": "https://images.unsplash.com/photo-1588413333412-82148535db53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2NvbnV0JTIwb2lsfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588413333412-82148535db53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2NvbnV0JTIwb2lsfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "coconut oil"
     },
     {
       "id": "product-10-1",
       "description": "Appe Midi Pickle",
-      "imageUrl": "https://images.unsplash.com/photo-1663136618135-d11b4dbd22c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW5nbyUyMHBpY2tsZXxlbnwwfHx8fDE3NjIzMjYzODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1663136618135-d11b4dbd22c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW5nbyUyMHBpY2tsZXxlbnwwfHx8fDE3NjIzMjYzODF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "mango pickle"
     },
     {
       "id": "product-11-1",
       "description": "Sandalwood Idol",
-      "imageUrl": "https://images.unsplash.com/photo-1598581415509-af28687de862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b29kJTIwY2FydmluZ3xlbnwwfHx8fDE3NjIzNTQwMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598581415509-af28687de862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b29kJTIwY2FydmluZ3xlbnwwfHx8fDE3NjIzNTQwMzJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "wood carving"
     },
     {
       "id": "product-12-1",
       "description": "Terracotta Pot",
-      "imageUrl": "https://images.unsplash.com/photo-1644329143625-102b6cb510b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZXJyYWNvdHRhJTIwcG90fGVufDB8fHx8MTc2MjM3OTIzNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1644329143625-102b6cb510b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZXJyYWNvdHRhJTIwcG90fGVufDB8fHx8MTc2MjM3OTIzNXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "terracotta pot"
     },
     {
       "id": "contact-map",
       "description": "Map of Mangalore",
-      "imageUrl": "https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MjM3MDg3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MjM3MDg3OHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
     },
     {
       "id": "about-us",
       "description": "About Karavali Store",
-      "imageUrl": "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMG1hcmtldHxlbnwwfHx8fDE3NjIzMzA2NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMG1hcmtldHxlbnwwfHx8fDE3NjIzMzA2NTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "local market"
+    },
+    {
+      "id": "ayurvedic-1",
+      "description": "Triphala Churna",
+      "imageUrl": "https://images.unsplash.com/photo-1495461199391-8c39ab674295?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZXJiYWwlMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNjc0ODQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "herbal powder"
+    },
+    {
+      "id": "ayurvedic-2",
+      "description": "Ashwagandha Capsules",
+      "imageUrl": "https://images.unsplash.com/photo-1734607402832-6d36e4170d22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoZXJiYWwlMjBjYXBzdWxlc3xlbnwwfHx8fDE3NjI2NzYyMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "herbal capsules"
+    },
+    {
+      "id": "ready-to-eat-1",
+      "description": "Rice Shavige",
+      "imageUrl": "https://images.unsplash.com/photo-1757658920115-62b19f7b6e79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyaWNlJTIwbm9vZGxlc3xlbnwwfHx8fDE3NjI2ODA2NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rice noodles"
+    },
+    {
+      "id": "ready-to-eat-2",
+      "description": "Patrode",
+      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "leaf rolls"
+    },
+    {
+      "id": "ready-to-eat-3",
+      "description": "Kotte Idli",
+      "imageUrl": "https://images.unsplash.com/photo-1603284845744-9ffce8a7c8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdGVhbWVkJTIwY2FrZXN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "steamed cakes"
+    },
+    {
+      "id": "ready-to-eat-4",
+      "description": "Neer Dosa",
+      "imageUrl": "https://images.unsplash.com/photo-1686820740687-426a7b9b2043?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyaWNlJTIwY3JlcGV8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rice crepe"
     }
   ]
 }

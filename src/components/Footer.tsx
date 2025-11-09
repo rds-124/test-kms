@@ -6,10 +6,12 @@ export default function Footer() {
     {
       title: 'Shop',
       links: [
-        { name: 'Spices & Masalas', href: '/category/spices-masalas' },
-        { name: 'Pickles & Condiments', href: '/category/pickles-condiments' },
-        { name: 'Snacks & Savouries', href: '/category/snacks-savouries' },
-        { name: 'Handicrafts', href: '/category/handicrafts' },
+        { name: 'Instant', href: '/category/instant' },
+        { name: 'Snacks', href: '/category/snacks' },
+        { name: 'Sweets', href: '/category/sweets' },
+        { name: 'Grocery', href: '/category/grocery' },
+        { name: 'Ayurvedic', href: '/category/ayurvedic' },
+        { name: 'Ready to Eat', href: '/category/ready-to-eat' },
       ],
     },
     {
