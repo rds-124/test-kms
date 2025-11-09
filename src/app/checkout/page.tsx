@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
@@ -16,15 +16,24 @@ import { useRouter } from "next/navigation";
 export default function CheckoutPage() {
   const { cartItems, cartTotal, cartCount, clearCart } = useCart();
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    if (cartCount === 0) {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && cartCount === 0) {
       router.push('/cart');
     }
-  }, [cartCount, router]);
+  }, [cartCount, router, isClient]);
 
-  if (cartCount === 0) {
-    return null; // or a loading spinner
+  if (!isClient || cartCount === 0) {
+    return (
+        <div className="container mx-auto px-4 py-8 text-center">
+            <p>Loading...</p>
+        </div>
+    );
   }
 
   const shippingThreshold = 799;
