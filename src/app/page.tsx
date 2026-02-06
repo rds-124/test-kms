@@ -116,54 +116,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Us Teaser Section */}
-      <section className="container mx-auto px-4 py-12 md:py-20">
-        <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 shadow-sm overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-headline font-bold">
-                From Our Family to Your Home
-              </h2>
-              <p className="mt-4 text-muted-foreground max-w-xl mx-auto md:mx-0">
-                Since 2007, our family has been proudly running a small shop in Bangalore, dedicated to bringing you the authentic flavors of coastal Karnataka. What started with our dad's passion for genuine Karavali products has grown into a trusted local favorite, known for its quality and freshness.
-              </p>
-              <Button asChild size="lg" className="mt-8">
-                <Link href="/about">Read Our Story</Link>
-              </Button>
+      {/* This new parent section provides a continuous background for the two sections below. */}
+      {/* A light secondary color gives a soft, premium feel. */}
+      <section className="bg-secondary/30">
+        <div className="container mx-auto px-4 py-12 md:py-20 space-y-12 md:space-y-20">
+
+          {/* About Us Teaser Section */}
+          {/* This card now sits on top of the new background. We use `bg-background` to make it pop, and a larger shadow. */}
+          <div className="bg-background rounded-3xl p-8 md:p-12 shadow-lg overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Text Content */}
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-headline font-bold">
+                  From Our Family to Your Home
+                </h2>
+                <p className="mt-4 text-muted-foreground max-w-xl mx-auto md:mx-0">
+                  Since 2007, our family has been proudly running a small shop in Bangalore, dedicated to bringing you the authentic flavors of coastal Karnataka. What started with our dad's passion for genuine Karavali products has grown into a trusted local favorite, known for its quality and freshness.
+                </p>
+                <Button asChild size="lg" className="mt-8">
+                  <Link href="/about">Read Our Story</Link>
+                </Button>
+              </div>
+              {/* Image Content */}
+              {aboutShopImage && (
+                  <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden">
+                  <Image
+                      src={aboutShopImage.imageUrl}
+                      alt={aboutShopImage.description}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={aboutShopImage.imageHint}
+                  />
+                  </div>
+              )}
             </div>
-            {/* Image Content */}
-            {aboutShopImage && (
-                <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden">
-                <Image
-                    src={aboutShopImage.imageUrl}
-                    alt={aboutShopImage.description}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={aboutShopImage.imageHint}
-                />
-                </div>
-            )}
           </div>
-        </div>
-      </section>
 
-
-      {/* Why Choose Us Section */}
-      <section className="container mx-auto px-4 pb-12 md:pb-20">
-        <h2 className="text-3xl font-headline font-bold text-center mb-10">Why Choose Karavali Store?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {whyChooseUsBadges.map((badge, index) => (
-            <Card key={index} className="bg-card text-center p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
-                <div className="bg-primary/10 p-3 rounded-full">
-                    <badge.icon className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-bold text-lg">{badge.title}</h3>
-                <p className="text-sm text-muted-foreground">{badge.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {/* Why Choose Us Section */}
+          {/* This section now sits within the same container, sharing the background. */}
+          <div>
+            <h2 className="text-3xl font-headline font-bold text-center mb-10">Why Choose Karavali Store?</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {whyChooseUsBadges.map((badge, index) => (
+                // These cards have their own background and a stronger shadow to stand out from the new background.
+                <Card key={index} className="bg-card text-center p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
+                  <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
+                    <div className="bg-primary/10 p-3 rounded-full">
+                        <badge.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-lg">{badge.title}</h3>
+                    <p className="text-sm text-muted-foreground">{badge.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </div>
