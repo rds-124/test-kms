@@ -27,7 +27,7 @@
     {
       "id": "category-grocery",
       "description": "A variety of colorful Indian spices.",
-      "imageUrl": "https://images.unsplash.com/photo-1658375605267-4c7ddb4915b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzcGljZXMlMjBtYXJrZXR8ZW58MHx8fHwxNzYyNDA3OTkxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1658375605267-4c7ddb4915b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzcGljZXMlMjBtYXJrZXR8ZW58MHx8fHwxNzYyNDA3OTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "spices market"
     },
     {
@@ -39,7 +39,7 @@
     {
       "id": "category-ready-to-eat",
       "description": "Ready to eat meal packs.",
-      "imageUrl": "https://images.unsplash.com/photo-1666819691716-827f78d892f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZWFsJTIwcHJlcHxlbnwwfHx8fDE3NjI2MDkxOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1666819691716-827f78d892f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZWFsJTIwcHJlcHxlbnwwfHx8fDE3NjI2MDkxOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "meal prep"
     },
     {
@@ -51,13 +51,13 @@
     {
       "id": "category-household",
       "description": "Household cleaning items.",
-      "imageUrl": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbmluZyUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MjYwNDM2NHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbmluZyUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MjYwNDM2NHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cleaning supplies"
     },
     {
       "id": "product-1-1",
       "description": "Ghee Roast Masala",
-      "imageUrl": "https://images.unsplash.com/photo-1710857389305-5cba9211033f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYXNhbGElMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1710857389305-5cba9211033f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYXNhbGElMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "masala powder"
     },
     {
@@ -81,25 +81,25 @@
     {
       "id": "product-4-1",
       "description": "Jackfruit Chips",
-      "imageUrl": "https://images.unsplash.com/photo-1730311822775-6586cea46514?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmcnVpdCUyMGNoaXBzfGVufDB8fHx8MTc2MjQwNzk5MHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1730311822775-6586cea46514?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmcnVpdCUyMGNoaXBzfGVufDB8fHx8MTc2MjQwNzk5MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fruit chips"
     },
     {
       "id": "product-5-1",
       "description": "Red Rice",
-      "imageUrl": "https://images.unsplash.com/photo-1675150303909-1bb94e33132f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyZWQlMjByaWNlfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1675150303909-1bb94e33132f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyZWQlMjByaWNlfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "red rice"
     },
     {
       "id": "product-6-1",
       "description": "Banana Chips",
-      "imageUrl": "https://images.unsplash.com/photo-1619028005538-db42565dd583?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYW5hbmElMjBjaGlwc3xlbnwwfHx8fDE3NjI0MDc5OTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1619028005538-db42565dd583?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYW5hbmElMjBjaGlwc3xlbnwwfHx8fDE3NjI0MDc5OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "banana chips"
     },
     {
       "id": "product-7-1",
       "description": "Cashew Nuts",
-      "imageUrl": "https://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXNoZXclMjBudXRzfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXNoZXclMjBudXRzfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cashew nuts"
     },
     {
@@ -111,7 +111,7 @@
     {
       "id": "product-9-1",
       "description": "Coconut Oil",
-      "imageUrl": "https://images.unsplash.com/photo-1588413333412-82148535db53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2NvbnV0JTIwb2lsfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588413333412-82148535db53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2NvbnV0JTIwb2lsfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "coconut oil"
     },
     {
@@ -123,7 +123,7 @@
     {
       "id": "product-11-1",
       "description": "Sandalwood Idol",
-      "imageUrl": "https://images.unsplash.com/photo-1598581415509-af28687de862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b29kJTIwY2FydmluZ3xlbnwwfHx8fDE3NjIzNTQwMzJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598581415509-af28687de862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b29kJTIwY2FydmluZ3xlbnwwfHx8fDE3NjIzNTQwMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "wood carving"
     },
     {
@@ -135,13 +135,13 @@
     {
       "id": "contact-map",
       "description": "Map of Mangalore",
-      "imageUrl": "https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MjM3MDg3OHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MjM3MDg3OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
     },
     {
       "id": "about-us",
       "description": "About Karavali Store",
-      "imageUrl": "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMG1hcmtldHxlbnwwfHx8fDE3NjIzMzA2NTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMG1hcmtldHxlbnwwfHx8fDE3NjIzMzA2NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "local market"
     },
     {
@@ -165,25 +165,25 @@
     {
       "id": "ready-to-eat-1",
       "description": "Rice Shavige",
-      "imageUrl": "https://images.unsplash.com/photo-1757658920115-62b19f7b6e79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyaWNlJTIwbm9vZGxlc3xlbnwwfHx8fDE3NjI2ODA2NjB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1757658920115-62b19f7b6e79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyaWNlJTIwbm9vZGxlc3xlbnwwfHx8fDE3NjI2ODA2NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "rice noodles"
     },
     {
       "id": "ready-to-eat-2",
       "description": "Patrode",
-      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "leaf rolls"
     },
     {
       "id": "ready-to-eat-3",
       "description": "Kotte Idli",
-      "imageUrl": "https://images.unsplash.com/photo-1603284845744-9ffce8a7c8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdGVhbWVkJTIwY2FrZXN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1603284845744-9ffce8a7c8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdGVhbWVkJTIwY2FrZXN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "steamed cakes"
     },
     {
       "id": "ready-to-eat-4",
       "description": "Neer Dosa",
-      "imageUrl": "https://images.unsplash.com/photo-1686820740687-426a7b9b2043?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyaWNlJTIwY3JlcGV8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1686820740687-426a7b9b2043?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyaWNlJTIwY3JlcGV8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "rice crepe"
     },
     {
@@ -191,6 +191,30 @@
       "description": "A serene coastal view, reflecting the Karavali region.",
       "imageUrl": "https://images.unsplash.com/photo-1496023328036-6792ef27a543?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNXx8Y29hc3R8ZW58MHx8fHwxNzcwMzY1Mjc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "coastline sea"
+    },
+    {
+      "id": "customer-1",
+      "description": "Portrait of a smiling woman.",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc3MDQ1NzU1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait woman"
+    },
+    {
+      "id": "customer-2",
+      "description": "Portrait of a smiling man.",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NzA0NTc1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait man"
+    },
+    {
+      "id": "customer-3",
+      "description": "Portrait of a person.",
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc3MDQ1NzU1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait person"
+    },
+    {
+      "id": "customer-4",
+      "description": "Portrait of another man.",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NzA0NTc1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait man"
     }
   ]
 }

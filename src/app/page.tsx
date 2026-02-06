@@ -7,6 +7,7 @@ import { products } from "@/lib/products";
 import { categories } from "@/lib/categories";
 import ProductCard from "@/components/ProductCard";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import ReviewCarousel from "@/components/ReviewCarousel";
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
 
@@ -181,6 +182,13 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* Customer Reviews Section */}
+          <div>
+            <h2 className="text-3xl font-headline font-bold text-center mb-10">What Our Customers Say</h2>
+            <ReviewCarousel />
+          </div>
+
         </div>
       </section>
     </div>
