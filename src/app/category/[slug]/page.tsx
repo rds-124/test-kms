@@ -309,7 +309,7 @@ export default function CategoryPage() {
   }, [category, subCategoryQuery]);
 
   const MobileSubCategoryNav = () => (
-    <aside className="w-1/4 h-screen overflow-y-auto sticky top-0 bg-secondary/30 border-r py-4">
+    <aside className="w-24 h-screen overflow-y-auto sticky top-0 bg-secondary/30 border-r py-4">
         <nav className="flex flex-col items-center gap-2">
             <Link href={`/category/${slug}`} scroll={false}
                 className={cn(
@@ -432,7 +432,7 @@ export default function CategoryPage() {
         ) : (
           <div className="flex">
             <MobileSubCategoryNav />
-            <main className="w-3/4 flex-1 p-4">
+            <main className="flex-1 p-4">
               <ProductFilterBar {...{ sortOption, setSortOption, inStockOnly, setInStockOnly, priceRange, setPriceRange, selectedCategories, toggleCategory, clearCategoryFilter, isAllCategoryPage, subCategoryQuery, currentCategorySlug: slug, subCategories }} />
               <div className="mt-4">
                 {sortedProducts.length > 0 ? (
