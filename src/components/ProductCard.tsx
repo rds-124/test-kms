@@ -57,8 +57,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Card className="w-full overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col h-full text-center">
-      <Link href={`/product/${product.sku}`} className="flex flex-col flex-grow">
+    <Card className="relative w-full transition-all duration-300 hover:shadow-lg flex flex-col h-full text-center group">
+      <Link href={`/product/${product.sku}`} className="flex flex-col flex-grow pb-14">
         <div className="relative">
           {productImage && (
             <Image
@@ -77,7 +77,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         <div className="p-4 flex flex-col flex-grow justify-between">
             <div className="space-y-1">
-                <h3 className="font-semibold text-base">{product.title}</h3>
+                <h3 className="font-semibold text-lg text-center">{product.title}</h3>
                 {product.brand && <p className="text-muted-foreground text-sm">({product.brand})</p>}
                 <p className="text-muted-foreground text-xs pt-1">{product.weight}</p>
             </div>
@@ -94,29 +94,31 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
       
-      <div className="px-4 pb-4">
+      <div className="absolute bottom-0 left-0 right-0 h-20 w-full overflow-hidden">
         {isOutOfStock ? (
-          <Button className="w-full h-11" disabled variant="outline">
-              Out of Stock
-          </Button>
+            <div className="absolute bottom-0 left-0 right-0 h-14 bg-muted/50 rounded-t-[2.5rem] flex items-center justify-center transition-all duration-300">
+                <span className="font-bold text-muted-foreground">Out of Stock</span>
+            </div>
         ) : cartItem && cartItem.quantity > 0 ? (
-          <div className="flex items-center justify-between border rounded-full h-11 w-full">
-            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full" onClick={decrementQuantity} aria-label="Decrease quantity">
-              <Minus className="h-5 w-5" />
-            </Button>
-            <span className="font-bold text-base w-8 text-center tabular-nums">{cartItem.quantity}</span>
-            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
-              <Plus className="h-5 w-5" />
-            </Button>
-          </div>
+            <div className="absolute bottom-0 left-0 right-0 h-14 bg-green-600 rounded-t-[2.5rem] flex items-center justify-evenly text-white transition-all duration-300">
+                <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full text-white hover:bg-green-700 hover:text-white" onClick={decrementQuantity} aria-label="Decrease quantity">
+                    <Minus className="h-5 w-5" />
+                </Button>
+                <span className="font-bold text-lg w-8 text-center tabular-nums">{cartItem.quantity}</span>
+                <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full text-white hover:bg-green-700 hover:text-white" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                    <Plus className="h-5 w-5" />
+                </Button>
+            </div>
         ) : (
-          <Button 
-            className="w-full h-11 text-2xl font-light"
-            variant="secondary"
-            onClick={handleInitialAdd}
-          >
-            <Plus className="h-6 w-6"/>
-          </Button>
+            <div className="absolute bottom-0 left-0 right-0 h-14 bg-secondary rounded-t-[2.5rem] flex items-center justify-center transition-all duration-300 group-hover:bg-green-100">
+                <Button 
+                    className="w-full h-full text-2xl font-light bg-transparent hover:bg-transparent text-green-700"
+                    onClick={handleInitialAdd}
+                    aria-label="Add to cart"
+                >
+                    <Plus className="h-6 w-6"/>
+                </Button>
+            </div>
         )}
       </div>
     </Card>
