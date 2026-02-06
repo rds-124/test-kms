@@ -35,6 +35,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const productImage = PlaceHolderImages && PlaceHolderImages.find(p => p.id === product.images[0]);
   const isOutOfStock = product.stock_status === 'outofstock';
 
+  const discount = product.sale_price ? Math.round(((product.price - product.sale_price) / product.price) * 100) : 0;
+
   /**
    * Handles the initial addition of a product to the cart.
    * If the user is not signed in, it initiates an anonymous sign-in process first.
@@ -100,8 +102,11 @@ export default function ProductCard({ product }: ProductCardProps) {
               data-ai-hint={productImage.imageHint}
             />
           )}
+          {discount > 0 && !isOutOfStock && (
+            <Badge variant="destructive" className="absolute top-2 left-2 z-10">{discount}% OFF</Badge>
+          )}
           {isOutOfStock && (
-            <Badge variant="secondary" className="absolute top-2 right-2">Out of Stock</Badge>
+            <Badge variant="secondary" className="absolute top-2 right-2 z-10">Out of Stock</Badge>
           )}
         </div>
         
