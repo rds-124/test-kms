@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, useMemo } from 'react';
@@ -26,6 +25,7 @@ import { ChevronDown, SlidersHorizontal } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuCheckboxItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import type { Category } from '@/types';
+import { cn } from '@/lib/utils';
 
 
 interface ProductFilterBarProps {
@@ -128,7 +128,7 @@ function ProductFilterBar({
     );
 
     return (
-        <div className="sticky top-0 md:top-20 bg-background/95 backdrop-blur-sm z-30 py-3 border-b mb-8">
+        <div className="sticky top-0 bg-background/95 backdrop-blur-sm z-30 py-3 border-b mb-8 md:mb-4">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 md:gap-4">
@@ -251,7 +251,7 @@ export default function CategoryPage() {
   const clearCategoryFilter = () => setSelectedCategories([]);
   
   const category = useMemo(() => {
-    if (isAllCategoryPage) return { name: 'All Products', slug: 'all' };
+    if (isAllCategoryPage) return { name: 'All Products', slug: 'all', id: 'all', imageId: '' };
     return categories.find(c => c.slug === slug)
   }, [slug, isAllCategoryPage]);
 
@@ -308,9 +308,152 @@ export default function CategoryPage() {
     return 'Products'
   }, [category, subCategoryQuery]);
 
-  return (
-    <div className="container mx-auto px-4 py-8">
+  const MobileSubCategoryNav = () => (
+    <aside className="w-1/4 h-screen overflow-y-auto sticky top-0 bg-secondary/30 border-r py-4">
+        <nav className="flex flex-col items-center gap-2">
+            <Link href={`/category/${slug}`} scroll={false}
+                className={cn(
+                    "flex flex-col items-center gap-1 p-2 rounded-lg text-center w-full",
+                    !subCategoryQuery ? "bg-primary/10" : ""
+                )}
+            >
+                <div className={cn(
+                    "relative w-14 h-14 rounded-full overflow-hidden border-2",
+                    !subCategoryQuery ? "border-primary" : "border-transparent"
+                )}>
+                    {category && PlaceHolderImages.find(p => p.id === category.imageId) ? (
+                        <Image
+                            src={PlaceHolderImages.find(p => p.id === category.imageId)!.imageUrl}
+                            alt={category.name}
+                            fill
+                            className="object-cover"
+                        />
+                    ) : (
+                         <div className="w-full h-full bg-secondary flex items-center justify-center">
+                            <span className="text-muted-foreground text-xs p-1">All</span>
+                        </div>
+                    )}
+                </div>
+                 <span className={cn("text-xs font-medium leading-tight", !subCategoryQuery ? "text-primary" : "text-foreground")}>
+                    All
+                </span>
+            </Link>
 
+            {subCategories.map((subCategorySlug) => {
+                const firstProduct = allProducts.find(p => p.category === slug && p.sub_category === subCategorySlug);
+                const image = PlaceHolderImages.find(p => p.id === firstProduct?.images[0]);
+                const isActive = subCategoryQuery === subCategorySlug;
+                return (
+                    <Link href={`/category/${slug}?sub_category=${subCategorySlug}`} key={subCategorySlug} scroll={false}
+                        className={cn(
+                            "flex flex-col items-center gap-1 p-2 rounded-lg text-center w-full",
+                            isActive ? "bg-primary/10" : ""
+                        )}
+                    >
+                        <div className={cn(
+                            "relative w-14 h-14 rounded-full overflow-hidden border-2",
+                            isActive ? "border-primary" : "border-transparent"
+                        )}>
+                            {image ? (
+                                <Image
+                                    src={image.imageUrl}
+                                    alt={formatSlug(subCategorySlug)}
+                                    fill
+                                    className="object-cover"
+                                    data-ai-hint={image.imageHint}
+                                />
+                            ) : (
+                                <div className="w-full h-full bg-secondary flex items-center justify-center">
+                                    <span className="text-muted-foreground text-xs p-1">No Image</span>
+                                </div>
+                            )}
+                        </div>
+                        <span className={cn("text-xs font-medium leading-tight", isActive ? "text-primary" : "text-foreground")}>
+                            {formatSlug(subCategorySlug)}
+                        </span>
+                    </Link>
+                );
+            })}
+        </nav>
+    </aside>
+  );
+
+  return (
+    <div className="bg-background">
+
+      {/* Mobile Layout */}
+      <div className="md:hidden">
+        {isAllCategoryPage ? (
+          <div className="container mx-auto px-4 py-8">
+            <section className="mb-12">
+              <h2 className="text-3xl font-headline font-bold text-center mb-8">Shop by Category</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {categories.map((category) => {
+                  const categoryImage = PlaceHolderImages.find(p => p.id === category.imageId);
+                  return (
+                      <Link href={`/category/${category.slug}`} key={category.id} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
+                          <div className="relative w-full aspect-square">
+                              {categoryImage && (
+                              <Image
+                                  src={categoryImage.imageUrl}
+                                  alt={category.name}
+                                  fill
+                                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                  data-ai-hint={categoryImage.imageHint}
+                              />
+                              )}
+                          </div>
+                          <div className="p-3 flex-grow flex items-center justify-center">
+                              <h3 className="font-semibold text-base">{category.name}</h3>
+                          </div>
+                      </Link>
+                  )
+              })}
+              </div>
+            </section>
+            <div className="text-center mb-8">
+              <h1 className="text-4xl font-headline font-bold">{pageTitle}</h1>
+            </div>
+            <ProductFilterBar {...{ sortOption, setSortOption, inStockOnly, setInStockOnly, priceRange, setPriceRange, selectedCategories, toggleCategory, clearCategoryFilter, isAllCategoryPage, subCategoryQuery, currentCategorySlug: slug, subCategories }} />
+            <main>
+              {sortedProducts.length > 0 ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
+                  {sortedProducts.map((product) => (
+                    <ProductCard key={product.sku} product={product} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-20">
+                  <p className="text-lg text-muted-foreground">No products found matching your criteria.</p>
+                </div>
+              )}
+            </main>
+          </div>
+        ) : (
+          <div className="flex">
+            <MobileSubCategoryNav />
+            <main className="w-3/4 flex-1 p-4">
+              <ProductFilterBar {...{ sortOption, setSortOption, inStockOnly, setInStockOnly, priceRange, setPriceRange, selectedCategories, toggleCategory, clearCategoryFilter, isAllCategoryPage, subCategoryQuery, currentCategorySlug: slug, subCategories }} />
+              <div className="mt-4">
+                {sortedProducts.length > 0 ? (
+                    <div className="grid grid-cols-2 gap-4">
+                        {sortedProducts.map((product) => (
+                            <ProductCard key={product.sku} product={product} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-20">
+                        <p className="text-lg text-muted-foreground">No products found.</p>
+                    </div>
+                )}
+              </div>
+            </main>
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="hidden md:block container mx-auto px-4 py-8">
         {isAllCategoryPage && (
             <section className="mb-12">
                 <h2 className="text-3xl font-headline font-bold text-center mb-8">Shop by Category</h2>
@@ -340,60 +483,46 @@ export default function CategoryPage() {
             </section>
         )}
       
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-headline font-bold">{pageTitle}</h1>
-      </div>
-      
-      {!isAllCategoryPage && subCategories.length > 0 && !subCategoryQuery && (
-          <section className="mb-12">
-              <h2 className="text-3xl font-headline font-bold text-center mb-8">Shop by Sub-category</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                  {subCategories.map((subCategorySlug) => {
-                      const firstProduct = allProducts.find(p => p.category === slug && p.sub_category === subCategorySlug);
-                      const image = PlaceHolderImages.find(p => p.id === firstProduct?.images[0]);
-                      
-                      return (
-                          <Link href={`/category/${slug}?sub_category=${subCategorySlug}`} key={subCategorySlug} scroll={false} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
-                              <div className="relative w-full aspect-square">
-                                  {image ? (
-                                      <Image
-                                          src={image.imageUrl}
-                                          alt={formatSlug(subCategorySlug)}
-                                          fill
-                                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                          data-ai-hint={image.imageHint}
-                                      />
-                                  ) : (
-                                    <div className="w-full h-full bg-secondary flex items-center justify-center">
-                                      <span className="text-muted-foreground text-sm p-2">No Image</span>
-                                    </div>
-                                  )}
-                              </div>
-                              <div className="p-3 flex-grow flex items-center justify-center">
-                                  <h3 className="font-semibold text-base">{formatSlug(subCategorySlug)}</h3>
-                              </div>
-                          </Link>
-                      );
-                  })}
-              </div>
-          </section>
-      )}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-headline font-bold">{pageTitle}</h1>
+        </div>
+        
+        {!isAllCategoryPage && subCategories.length > 0 && !subCategoryQuery && (
+            <section className="mb-12">
+                <h2 className="text-3xl font-headline font-bold text-center mb-8">Shop by Sub-category</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    {subCategories.map((subCategorySlug) => {
+                        const firstProduct = allProducts.find(p => p.category === slug && p.sub_category === subCategorySlug);
+                        const image = PlaceHolderImages.find(p => p.id === firstProduct?.images[0]);
+                        
+                        return (
+                            <Link href={`/category/${slug}?sub_category=${subCategorySlug}`} key={subCategorySlug} scroll={false} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
+                                <div className="relative w-full aspect-square">
+                                    {image ? (
+                                        <Image
+                                            src={image.imageUrl}
+                                            alt={formatSlug(subCategorySlug)}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                            data-ai-hint={image.imageHint}
+                                        />
+                                    ) : (
+                                      <div className="w-full h-full bg-secondary flex items-center justify-center">
+                                        <span className="text-muted-foreground text-sm p-2">No Image</span>
+                                      </div>
+                                    )}
+                                </div>
+                                <div className="p-3 flex-grow flex items-center justify-center">
+                                    <h3 className="font-semibold text-base">{formatSlug(subCategorySlug)}</h3>
+                                </div>
+                            </Link>
+                        );
+                    })}
+                </div>
+            </section>
+        )}
 
-       <ProductFilterBar
-            sortOption={sortOption}
-            setSortOption={setSortOption}
-            inStockOnly={inStockOnly}
-            setInStockOnly={setInStockOnly}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            selectedCategories={selectedCategories}
-            toggleCategory={toggleCategory}
-            clearCategoryFilter={clearCategoryFilter}
-            isAllCategoryPage={isAllCategoryPage}
-            subCategoryQuery={subCategoryQuery}
-            currentCategorySlug={slug}
-            subCategories={subCategories}
-        />
+       <ProductFilterBar {...{ sortOption, setSortOption, inStockOnly, setInStockOnly, priceRange, setPriceRange, selectedCategories, toggleCategory, clearCategoryFilter, isAllCategoryPage, subCategoryQuery, currentCategorySlug: slug, subCategories }} />
 
         <main>
           {sortedProducts.length > 0 ? (
@@ -409,5 +538,6 @@ export default function CategoryPage() {
           )}
         </main>
       </div>
+    </div>
   );
 }
