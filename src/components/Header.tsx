@@ -1,8 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Search, ShoppingCart, User, Menu } from "lucide-react";
+import { Search, ShoppingCart, User, Menu, ChevronDown, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { categories } from "@/lib/categories";
 import { useFirestoreCart } from "@/hooks/use-firestore-cart";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -27,37 +34,17 @@ export default function Header() {
     }
   };
 
-
-  const navLinks = categories.map(category => (
-    <Link
-      key={category.id}
-      href={`/category/${category.slug}`}
-      className="text-sm font-medium transition-colors hover:text-primary"
-    >
-      {category.name}
-    </Link>
-  ));
-
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-sm">
-      <div className="bg-accent text-accent-foreground text-center text-sm font-medium p-2">
-        Free shipping on all orders above ₹799
-      </div>
-      <div className="container hidden h-16 items-center md:flex">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold font-headline text-2xl">Karavali Store</span>
-          </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {navLinks}
-          </nav>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className="md:hidden">
-           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+    // This header is hidden on mobile screens (below md breakpoint) and visible on desktop.
+    <header className="sticky top-0 z-40 hidden w-full p-2 md:block">
+      <div className="container mx-auto flex h-16 items-center justify-between gap-6 rounded-full bg-accent px-4 text-accent-foreground">
+        
+        {/* Left Section: Menu and Brand */}
+        <div className="flex items-center gap-2">
+          {/* The Sheet component provides an off-canvas menu, primarily for mobile, but linked here for consistency. */}
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-primary/20 focus-visible:bg-primary/20">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -84,37 +71,58 @@ export default function Header() {
                 </div>
             </SheetContent>
           </Sheet>
-        </div>
-
-        {/* Mobile Logo */}
-        <div className="flex justify-center flex-1 md:hidden">
-            <Link href="/" className="flex items-center space-x-2">
-                <span className="font-bold font-headline text-xl">Karavali Store</span>
-            </Link>
-        </div>
-
-
-        <div className="flex flex-1 items-center justify-end space-x-2 md:space-x-4">
-          <Button variant="ghost" size="icon" className="hidden md:inline-flex">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
-          <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={handleAuthClick} aria-label="Account">
-            <User className="h-5 w-5" />
-            <span className="sr-only">Account</span>
-          </Button>
-          <Link href="/cart" passHref>
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Cart</span>
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="font-bold font-headline text-2xl">Karavali Store</span>
           </Link>
+        </div>
+
+        {/* Center Section: Search Bar */}
+        <div className="relative flex-grow max-w-xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Input 
+                type="search"
+                placeholder="Search for spices, snacks, and more..."
+                className="w-full rounded-full border-none bg-background text-foreground pl-12 pr-4 h-10 shadow-inner"
+            />
+        </div>
+
+        {/* Right Section: Actions */}
+        <div className="flex items-center gap-1">
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="hover:bg-primary/20 focus-visible:bg-primary/20">
+                        <LayoutGrid className="mr-2 h-5 w-5" />
+                        Categories
+                        <ChevronDown className="ml-1 h-5 w-5" />
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                    {categories.map(category => (
+                        <DropdownMenuItem key={category.id} asChild>
+                             <Link href={`/category/${category.slug}`}>{category.name}</Link>
+                        </DropdownMenuItem>
+                    ))}
+                </DropdownMenuContent>
+            </DropdownMenu>
+
+            <ThemeToggle />
+
+            <Button variant="ghost" size="icon" className="hover:bg-primary/20 focus-visible:bg-primary/20" onClick={handleAuthClick} aria-label="Account">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Account</span>
+            </Button>
+
+            <Link href="/cart" passHref>
+                <Button variant="ghost" size="icon" className="relative hover:bg-primary/20 focus-visible:bg-primary/20">
+                    <ShoppingCart className="h-5 w-5" />
+                    <span className="sr-only">Cart</span>
+                    {cartCount > 0 && (
+                        <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+                        {cartCount}
+                        </span>
+                    )}
+                </Button>
+            </Link>
         </div>
       </div>
     </header>
