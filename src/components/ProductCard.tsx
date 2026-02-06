@@ -139,11 +139,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         ) : cartItem && cartItem.quantity > 0 ? (
             // Active state: Quantity selector with a green background.
             <div className="h-14 bg-green-600 flex items-center justify-evenly text-white transition-all duration-300">
-                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full text-white hover:bg-green-700 hover:text-white" onClick={decrementQuantity} aria-label="Decrease quantity">
+                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full text-white ring-1 ring-white/50 hover:bg-white/10" onClick={decrementQuantity} aria-label="Decrease quantity">
                     <Minus className="h-5 w-5" />
                 </Button>
                 <span className="font-bold text-lg w-8 text-center tabular-nums">{cartItem.quantity}</span>
-                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full text-white hover:bg-green-700 hover:text-white" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full text-white ring-1 ring-white/50 hover:bg-white/10" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
                     <Plus className="h-5 w-5" />
                 </Button>
             </div>
