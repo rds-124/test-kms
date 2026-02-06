@@ -1,88 +1,87 @@
-
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, LayoutGrid, Search, ShoppingCart, Store } from 'lucide-react';
+import { Home, LayoutGrid, Search, ShoppingCart } from 'lucide-react';
 import { useFirestoreCart } from '@/hooks/use-firestore-cart';
 import { cn } from '@/lib/utils';
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
   const { cartCount } = useFirestoreCart();
-  
-  // Navigation items for the bottom bar. 'type' determines if it's a link or a button.
+
+  // The main navigation items that will appear inside the pill.
   const navItems = [
-    { type: 'link', href: '/', icon: Home, label: 'Home' },
-    { type: 'link', href: '/category/all', icon: LayoutGrid, label: 'Categories' },
-    { type: 'link', href: '/cart', icon: ShoppingCart, label: 'Cart' },
-    { type: 'link', href: '/category/all', icon: Search, label: 'Search' }, // Pointing Search to categories page for now
-    { type: 'link', href: '/', icon: Store, label: 'Store' },
+    { href: '/', icon: Home, label: 'Home' },
+    { href: '/category/all', icon: LayoutGrid, label: 'Categories' },
+    { href: '/cart', icon: ShoppingCart, label: 'Cart' },
+    { href: '/category/all', icon: Search, label: 'Search' },
   ];
 
-  // The bottom nav should not appear on admin pages
+  // The bottom nav should not appear on admin pages.
   if (pathname.startsWith('/admin')) {
-      return null;
+    return null;
   }
 
   return (
     /**
-     * Mobile-only Bottom Navigation Bar
-     * - Fixed to the bottom, visible only on screens smaller than 768px (`md:hidden`).
-     * - Features a "pill" shaped, floating design with a background blur and shadow.
-     * - Contains 5 items for primary navigation: Home, Categories, Cart, Search, and Account.
+     * A container fixed to the bottom of the screen on mobile devices.
+     * It uses a relative positioning context for the overlapping logo.
      */
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-2 md:hidden">
-        <div className="w-full h-16 bg-background/80 backdrop-blur-sm rounded-full shadow-[0_-2px_16px_rgba(0,0,0,0.08)]">
-            <nav className="flex h-full items-center justify-around">
-                {navItems.map((item) => {
-                    // Determine if the link is active. Search is excluded from being active to avoid conflict with Categories.
-                    const isActive = item.type === 'link' && (
-                        (item.href === '/' && pathname === '/' && item.label === 'Home') || // Only Home is active on homepage
-                        (item.href !== '/' && item.label !== 'Search' && pathname.startsWith(item.href))
-                    );
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:hidden">
+      <div className="relative mx-auto flex h-16 max-w-sm items-center">
+        
+        {/* Main Navigation Pill */}
+        {/* It has a large padding on the right to make space for the logo. */}
+        <nav className="flex h-full flex-grow items-center justify-around rounded-full bg-background pr-16 shadow-[0_4px_24px_rgba(0,0,0,0.1)]">
+          {navItems.map((item) => {
+            // Determine if the current item is active.
+            const isActive =
+              (item.href === '/' && pathname === '/') ||
+              (item.href !== '/' &&
+                item.label !== 'Search' && // Search icon doesn't get an active state.
+                pathname.startsWith(item.href));
 
-                    // Render a Next.js Link for navigation items
-                    if (item.type === 'link') {
-                        return (
-                            <Link
-                                href={item.href!}
-                                key={item.label}
-                                className={cn(
-                                'flex h-full w-full flex-col items-center justify-center gap-1 rounded-full text-xs transition-colors',
-                                isActive ? 'text-primary font-medium' : 'text-muted-foreground hover:text-primary'
-                                )}
-                            >
-                                <div className="relative">
-                                    <item.icon className="h-5 w-5" />
-                                    {item.label === 'Cart' && cartCount > 0 && (
-                                        <span className="absolute -top-1.5 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-[10px] font-bold">
-                                            {cartCount}
-                                        </span>
-                                    )}
-                                </div>
-                                <span className="text-[11px]">{item.label}</span>
-                            </Link>
-                        );
-                    }
-                    
-                    // Render a button for action items like 'Account'
-                    if (item.type === 'button') {
-                        return (
-                            <button
-                                key={item.label}
-                                className="flex h-full w-full flex-col items-center justify-center gap-1 rounded-full text-xs text-muted-foreground transition-colors hover:text-primary"
-                            >
-                                <item.icon className="h-5 w-5" />
-                                <span className="text-[11px]">{item.label}</span>
-                            </button>
-                        );
-                    }
-
-                    return null;
-                })}
-            </nav>
+            return (
+              <Link
+                href={item.href}
+                key={item.label}
+                className={cn(
+                  'flex h-full w-full flex-col items-center justify-center gap-1 rounded-full text-xs transition-colors',
+                  isActive
+                    ? 'text-primary font-bold'
+                    : 'text-muted-foreground hover:text-primary'
+                )}
+              >
+                <div className="relative">
+                  {/* The icon's fill changes on active state, mimicking the reference image. */}
+                  <item.icon
+                    className={cn('h-6 w-6', isActive && 'fill-current')}
+                  />
+                  {/* Badge for cart item count. */}
+                  {item.label === 'Cart' && cartCount > 0 && (
+                    <span className="absolute -top-1.5 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-[10px] font-bold">
+                      {cartCount}
+                    </span>
+                  )}
+                </div>
+                <span className="text-[10px]">{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+        
+        {/* Overlapping Store Logo Button */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2">
+          <Link
+            href="/"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg ring-4 ring-background"
+          >
+            <span className="font-headline text-3xl font-bold">K</span>
+          </Link>
         </div>
+
+      </div>
     </div>
   );
 }
