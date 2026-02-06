@@ -19,7 +19,7 @@ type ProductCardProps = {
 
 /**
  * ProductCard component displays a single product with an interactive add-to-cart functionality.
- * It features a modern, curvy design inspired by grocery apps, where the action button
+ * It features a modern, curvy design where the action button
  * is seamlessly integrated into the card's rounded base.
  */
 export default function ProductCard({ product }: ProductCardProps) {
@@ -113,7 +113,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Product Details Section: uses flex-grow to push price to the bottom of this section. Padding is added here instead of the Link. */}
         <div className="flex flex-col flex-grow mt-2 p-4">
             <h3 className="font-semibold text-lg line-clamp-2">{product.title}</h3>
-            {/* Weight has been removed as requested. */}
             
             {/* Price section pushed to the bottom. Prices are now on the same line. */}
             <div className="mt-auto pt-2 flex items-baseline justify-center gap-2">
@@ -137,24 +136,24 @@ export default function ProductCard({ product }: ProductCardProps) {
                 Out of Stock
             </div>
         ) : cartItem && cartItem.quantity > 0 ? (
-            // Active state: Quantity selector with a green background.
-            <div className="h-14 bg-green-600 flex items-center justify-evenly text-white transition-all duration-300">
-                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full text-white ring-1 ring-white/50 hover:bg-white/10" onClick={decrementQuantity} aria-label="Decrease quantity">
-                    <Minus className="h-5 w-5" />
+            // Active state: Quantity selector with a light green background.
+            <div className="h-14 bg-lime-300 flex items-center justify-evenly text-lime-900 transition-all duration-300">
+                <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full text-lime-900 ring-1 ring-lime-900 hover:bg-lime-900/10" onClick={decrementQuantity} aria-label="Decrease quantity">
+                    <Minus className="h-4 w-4" />
                 </Button>
-                <span className="font-bold text-lg w-8 text-center tabular-nums">{cartItem.quantity}</span>
-                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full text-white ring-1 ring-white/50 hover:bg-white/10" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
-                    <Plus className="h-5 w-5" />
+                <span className="font-bold text-xl w-8 text-center tabular-nums">{cartItem.quantity}</span>
+                <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full text-lime-900 ring-1 ring-lime-900 hover:bg-lime-900/10" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                    <Plus className="h-4 w-4" />
                 </Button>
             </div>
         ) : (
             // Default state: A full-width button to add the item.
             <button 
-                className="w-full h-14 bg-secondary transition-colors group-hover:bg-green-100 text-green-600 flex items-center justify-center"
+                className="w-full h-14 bg-lime-100 transition-colors group-hover:bg-lime-200 text-lime-800 flex items-center justify-center"
                 onClick={handleInitialAdd}
                 aria-label="Add to cart"
             >
-                <Plus className="h-7 w-7"/>
+                <Plus className="h-6 w-6"/>
             </button>
         )}
       </div>
