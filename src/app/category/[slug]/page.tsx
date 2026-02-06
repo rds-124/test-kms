@@ -268,11 +268,16 @@ export default function CategoryPage() {
     return allProducts
       .filter(p => {
         if (isAllCategoryPage) {
-          if (subCategoryQuery) return p.sub_category === subCategoryQuery;
-          return selectedCategories.length > 0 ? selectedCategories.includes(p.category) : true;
+          // Logic for /category/all page
+          if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) {
+            return false;
+          }
+        } else {
+          // Logic for specific category pages like /category/grocery
+          if (p.category !== slug) return false;
+          if (subCategoryQuery && p.sub_category !== subCategoryQuery) return false;
         }
-        if (subCategoryQuery) return p.sub_category === subCategoryQuery;
-        return p.category === slug;
+        return true;
       })
       .filter(p => !inStockOnly || p.stock_status === 'instock')
       .filter(p => {
@@ -295,8 +300,10 @@ export default function CategoryPage() {
     });
   }, [filteredProducts, sortOption]);
   
+  const formatSlug = (s: string) => s.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  
   const pageTitle = useMemo(() => {
-    if (subCategoryQuery) return allProducts.find(p=>p.sub_category === subCategoryQuery)?.sub_category?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+    if (subCategoryQuery) return formatSlug(subCategoryQuery);
     if (category) return category.name;
     return 'Products'
   }, [category, subCategoryQuery]);
@@ -333,10 +340,45 @@ export default function CategoryPage() {
             </section>
         )}
       
-      <div className="text-center mb-4">
+      <div className="text-center mb-8">
         <h1 className="text-4xl font-headline font-bold">{pageTitle}</h1>
       </div>
       
+      {!isAllCategoryPage && subCategories.length > 0 && !subCategoryQuery && (
+          <section className="mb-12">
+              <h2 className="text-3xl font-headline font-bold text-center mb-8">Shop by Sub-category</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                  {subCategories.map((subCategorySlug) => {
+                      const firstProduct = allProducts.find(p => p.category === slug && p.sub_category === subCategorySlug);
+                      const image = PlaceHolderImages.find(p => p.id === firstProduct?.images[0]);
+                      
+                      return (
+                          <Link href={`/category/${slug}?sub_category=${subCategorySlug}`} key={subCategorySlug} scroll={false} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
+                              <div className="relative w-full aspect-square">
+                                  {image ? (
+                                      <Image
+                                          src={image.imageUrl}
+                                          alt={formatSlug(subCategorySlug)}
+                                          fill
+                                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                          data-ai-hint={image.imageHint}
+                                      />
+                                  ) : (
+                                    <div className="w-full h-full bg-secondary flex items-center justify-center">
+                                      <span className="text-muted-foreground text-sm p-2">No Image</span>
+                                    </div>
+                                  )}
+                              </div>
+                              <div className="p-3 flex-grow flex items-center justify-center">
+                                  <h3 className="font-semibold text-base">{formatSlug(subCategorySlug)}</h3>
+                              </div>
+                          </Link>
+                      );
+                  })}
+              </div>
+          </section>
+      )}
+
        <ProductFilterBar
             sortOption={sortOption}
             setSortOption={setSortOption}
@@ -369,5 +411,3 @@ export default function CategoryPage() {
       </div>
   );
 }
-
-  
