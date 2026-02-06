@@ -179,87 +179,117 @@ export default function Home() {
           </div>
 
           {/* Why Choose Us Section */}
-          {/* This section now sits within the same container, sharing the background. */}
-          <div>
-            <h2 className="text-3xl font-headline font-bold text-center mb-10">Why Choose Karavali Store?</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              {whyChooseUsBadges.map((badge, index) => (
-                // These cards have their own background and a stronger shadow to stand out from the new background.
-                <Card key={index} className="bg-card text-center p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
-                  <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
-                    <div className="bg-primary/10 p-3 rounded-full">
-                        <badge.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="font-bold text-lg">{badge.title}</h3>
-                    <p className="text-sm text-muted-foreground">{badge.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+          <div className="bg-lime-50 dark:bg-lime-950/20 rounded-3xl p-8 md:p-12 shadow-lg overflow-hidden relative">
+             {aboutUsFarmBgImage && (
+                <Image
+                    src={aboutUsFarmBgImage.imageUrl}
+                    alt={aboutUsFarmBgImage.description}
+                    fill
+                    className="object-cover opacity-10 dark:opacity-20"
+                    data-ai-hint={aboutUsFarmBgImage.imageHint}
+                />
+            )}
+            <div className="relative z-10">
+                <h2 className="text-3xl font-headline font-bold text-center mb-10">Why Choose Karavali Store?</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                {whyChooseUsBadges.map((badge, index) => (
+                    // These cards have their own background and a stronger shadow to stand out from the new background.
+                    <Card key={index} className="bg-card text-center p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
+                    <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
+                        <div className="bg-primary/10 p-3 rounded-full">
+                            <badge.icon className="w-8 h-8 text-primary" />
+                        </div>
+                        <h3 className="font-bold text-lg">{badge.title}</h3>
+                        <p className="text-sm text-muted-foreground">{badge.description}</p>
+                    </CardContent>
+                    </Card>
+                ))}
+                </div>
             </div>
           </div>
 
           {/* Customer Reviews Section */}
-          <div>
-            <h2 className="text-3xl font-headline font-bold text-center mb-10">What Our Customers Say</h2>
-            <ReviewCarousel />
+          <div className="bg-lime-50 dark:bg-lime-950/20 rounded-3xl p-8 md:p-12 shadow-lg overflow-hidden relative">
+             {aboutUsFarmBgImage && (
+                <Image
+                    src={aboutUsFarmBgImage.imageUrl}
+                    alt={aboutUsFarmBgImage.description}
+                    fill
+                    className="object-cover opacity-10 dark:opacity-20"
+                    data-ai-hint={aboutUsFarmBgImage.imageHint}
+                />
+            )}
+            <div className="relative z-10">
+                <h2 className="text-3xl font-headline font-bold text-center mb-10">What Our Customers Say</h2>
+                <ReviewCarousel />
+            </div>
+          </div>
+
+          {/* Final CTA Section */}
+          <div className="bg-lime-50 dark:bg-lime-950/20 rounded-3xl shadow-lg overflow-hidden relative">
+              {aboutUsFarmBgImage && (
+                <Image
+                    src={aboutUsFarmBgImage.imageUrl}
+                    alt={aboutUsFarmBgImage.description}
+                    fill
+                    className="object-cover opacity-10 dark:opacity-20"
+                    data-ai-hint={aboutUsFarmBgImage.imageHint}
+                />
+              )}
+              <div className="relative z-10">
+                <div className="p-8 md:p-10">
+                    <div className="flex justify-center items-center gap-4 mb-8">
+                        <Truck className="w-12 h-12 text-green-800 dark:text-green-300" strokeWidth={1.5} />
+                        <h2 className="text-3xl font-bold text-green-800 dark:text-green-300">Fast & Reliable Delivery</h2>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-muted-foreground">
+                        <div className="flex flex-col items-center gap-2">
+                            <MapPin className="w-8 h-8 text-amber-900 dark:text-amber-300" />
+                            <p className="font-semibold">Delivering in Bangalore<br />& Across Karnataka</p>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 sm:border-x sm:border-dashed sm:border-amber-300/70 dark:sm:border-amber-700/50 px-4">
+                            <Clock className="w-8 h-8 text-amber-900 dark:text-amber-300" />
+                            <p className="font-semibold">Orders Dispatched<br />in 24 Hours</p>
+                        </div>
+                        <div className="flex flex-col items-center gap-2">
+                            <PhoneCall className="w-8 h-8 text-amber-900 dark:text-amber-300" />
+                            <p className="font-semibold">24/7 Customer Support</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="border-t-2 border-dashed border-amber-300/70 dark:border-amber-700/50"></div>
+
+                <div className="grid md:grid-cols-2 items-center">
+                    <div className="relative w-full h-64 md:h-full min-h-[300px] order-last md:order-first">
+                        {ctaSnacksImage && (
+                            <Image src={ctaSnacksImage.imageUrl} alt={ctaSnacksImage.description} fill className="object-cover" data-ai-hint={ctaSnacksImage.imageHint} />
+                        )}
+                    </div>
+                    <div className="p-8 text-center space-y-5">
+                        <h3 className="font-headline text-4xl text-red-800 dark:text-red-400">Experience the Authentic Taste of the Coast!</h3>
+                        <p className="text-xl font-semibold">Order Now & Bring Home the Flavors of Karavali!</p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Button asChild size="lg" className="bg-red-700 hover:bg-red-800 text-white rounded-lg text-lg px-8 py-6">
+                                <Link href="/category/all">Shop Now</Link>
+                            </Button>
+                            <Button asChild size="lg" className="bg-green-700 hover:bg-green-800 text-white rounded-lg text-lg px-8 py-6">
+                                <Link href={whatsappUrl} target="_blank">
+                                    <WhatsAppIcon /> Order on WhatsApp
+                                </Link>
+                            </Button>
+                        </div>
+                        <div className="flex items-center justify-center gap-2 text-yellow-700 dark:text-yellow-400 font-bold pt-4">
+                            <CheckCircle className="w-5 h-5"/>
+                            <span>100% Satisfaction Guaranteed!</span>
+                        </div>
+                    </div>
+                </div>
+              </div>
           </div>
 
         </div>
       </section>
-
-      {/* Final CTA Section */}
-      <section className="container mx-auto px-4 pb-12 md:pb-20">
-        <div className="bg-amber-50/50 dark:bg-amber-900/20 rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-8 md:p-10">
-                <div className="flex justify-center items-center gap-4 mb-8">
-                    <Truck className="w-12 h-12 text-green-800 dark:text-green-300" strokeWidth={1.5} />
-                    <h2 className="text-3xl font-bold text-green-800 dark:text-green-300">Fast & Reliable Delivery</h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-muted-foreground">
-                    <div className="flex flex-col items-center gap-2">
-                        <MapPin className="w-8 h-8 text-amber-900 dark:text-amber-300" />
-                        <p className="font-semibold">Delivering in Bangalore<br />& Across Karnataka</p>
-                    </div>
-                    <div className="flex flex-col items-center gap-2 sm:border-x sm:border-dashed sm:border-amber-300/70 dark:sm:border-amber-700/50 px-4">
-                        <Clock className="w-8 h-8 text-amber-900 dark:text-amber-300" />
-                        <p className="font-semibold">Orders Dispatched<br />in 24 Hours</p>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                        <PhoneCall className="w-8 h-8 text-amber-900 dark:text-amber-300" />
-                        <p className="font-semibold">24/7 Customer Support</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="border-t-2 border-dashed border-amber-300/70 dark:border-amber-700/50"></div>
-
-            <div className="grid md:grid-cols-2 items-center">
-                <div className="relative w-full h-64 md:h-full min-h-[300px] order-last md:order-first">
-                    {ctaSnacksImage && (
-                        <Image src={ctaSnacksImage.imageUrl} alt={ctaSnacksImage.description} fill className="object-cover" data-ai-hint={ctaSnacksImage.imageHint} />
-                    )}
-                </div>
-                <div className="p-8 text-center space-y-5">
-                    <h3 className="font-headline text-4xl text-red-800 dark:text-red-400">Experience the Authentic Taste of the Coast!</h3>
-                    <p className="text-xl font-semibold">Order Now & Bring Home the Flavors of Karavali!</p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild size="lg" className="bg-red-700 hover:bg-red-800 text-white rounded-lg text-lg px-8 py-6">
-                            <Link href="/category/all">Shop Now</Link>
-                        </Button>
-                        <Button asChild size="lg" className="bg-green-700 hover:bg-green-800 text-white rounded-lg text-lg px-8 py-6">
-                            <Link href={whatsappUrl} target="_blank">
-                                <WhatsAppIcon /> Order on WhatsApp
-                            </Link>
-                        </Button>
-                    </div>
-                    <div className="flex items-center justify-center gap-2 text-yellow-700 dark:text-yellow-400 font-bold pt-4">
-                        <CheckCircle className="w-5 h-5"/>
-                        <span>100% Satisfaction Guaranteed!</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     </div>
   );
 }
