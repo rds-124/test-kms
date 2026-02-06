@@ -69,13 +69,13 @@
     {
       "id": "product-2-1",
       "description": "Kundapur Masala Powder",
-      "imageUrl": "https://images.unsplash.com/photo-1704650312022-ed1a76dbed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXNhbGElMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1704650312022-ed1a76dbed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXNhbGElMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "masala powder"
     },
     {
       "id": "product-3-1",
       "description": "Mango Pickle",
-      "imageUrl": "https://images.unsplash.com/photo-1664791461482-79f5deee490f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW5nbyUyMHBpY2tsZXxlbnwwfHx8fDE3NjIzMjYzODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1664791461482-79f5deee490f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW5nbyUyMHBpY2tsZXxlbnwwfHx8fDE3NjIzMjYzODF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "mango pickle"
     },
     {
@@ -99,13 +99,13 @@
     {
       "id": "product-7-1",
       "description": "Cashew Nuts",
-      "imageUrl": "https://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXNoZXclMjBudXRzfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXNoZXclMjBudXRzfGVufDB8fHx8MTc2MjQwNzk5MXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cashew nuts"
     },
     {
       "id": "product-8-1",
       "description": "Jaggery",
-      "imageUrl": "https://images.unsplash.com/photo-1755288271423-462a0808deb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxqYWdnZXJ5JTIwYmxvY2t8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1755288271423-462a0808deb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxqYWdnZXJ5JTIwYmxvY2t8ZW58MHx8fHwxNzYyNDA3OTkwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "jaggery block"
     },
     {
@@ -123,7 +123,7 @@
     {
       "id": "product-11-1",
       "description": "Sandalwood Idol",
-      "imageUrl": "https://images.unsplash.com/photo-1598581415509-af28687de862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b29kJTIwY2FydmluZ3xlbnwwfHx8fDE3NjIzNTQwMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598581415509-af28687de862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b29kJTIwY2FydmluZ3xlbnwwfHx8fDE3NjIzNTQwMzJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "wood carving"
     },
     {
@@ -135,13 +135,13 @@
     {
       "id": "contact-map",
       "description": "Map of Mangalore",
-      "imageUrl": "https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MjM3MDg3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MjM3MDg3OHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
     },
     {
       "id": "about-us",
       "description": "About Karavali Store",
-      "imageUrl": "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMG1hcmtldHxlbnwwfHx8fDE3NjIzMzA2NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMG1hcmtldHxlbnwwfHx8fDE3NjIzMzA2NTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "local market"
     },
     {
@@ -153,7 +153,7 @@
     {
       "id": "ayurvedic-1",
       "description": "Triphala Churna",
-      "imageUrl": "https://images.unsplash.com/photo-1495461199391-8c39ab674295?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZXJiYWwlMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNjc0ODQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1495461199391-8c39ab674295?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZXJiYWwlMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNjc0ODQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "herbal powder"
     },
     {
@@ -171,7 +171,7 @@
     {
       "id": "ready-to-eat-2",
       "description": "Patrode",
-      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "leaf rolls"
     },
     {
@@ -191,30 +191,6 @@
       "description": "A serene coastal view, reflecting the Karavali region.",
       "imageUrl": "https://images.unsplash.com/photo-1496023328036-6792ef27a543?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNXx8Y29hc3R8ZW58MHx8fHwxNzcwMzY1Mjc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "coastline sea"
-    },
-    {
-      "id": "customer-1",
-      "description": "Portrait of a smiling woman.",
-      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc3MDQ1NzU1NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "portrait woman"
-    },
-    {
-      "id": "customer-2",
-      "description": "Portrait of a smiling man.",
-      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NzA0NTc1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "portrait man"
-    },
-    {
-      "id": "customer-3",
-      "description": "Portrait of a person.",
-      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc3MDQ1NzU1NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "portrait person"
-    },
-    {
-      "id": "customer-4",
-      "description": "Portrait of another man.",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NzA0NTc1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "portrait man"
     }
   ]
 }
