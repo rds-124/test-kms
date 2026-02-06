@@ -54,10 +54,10 @@ export default function Header() {
       {/* Mobile-only Account Icon */}
       <div className={cn(
         "fixed top-4 right-4 z-50 md:hidden transition-opacity duration-300",
-        isAtTop ? "opacity-100" : "opacity-0 pointer-events-none"
+        isAtTop ? "opacity-90" : "opacity-0 pointer-events-none"
       )}>
-        <Button variant="ghost" size="icon" className="bg-background/80 backdrop-blur-sm rounded-full shadow-md" onClick={handleAuthClick} aria-label="Account">
-            <User className="h-5 w-5 text-foreground" />
+        <Button variant="ghost" size="icon" className="h-9 w-9 bg-background/80 backdrop-blur-sm rounded-full shadow-md" onClick={handleAuthClick} aria-label="Account">
+            <User className="h-4 w-4 text-foreground" />
         </Button>
       </div>
 
