@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShieldCheck, Truck, Package, CreditCard } from "lucide-react";
+import { Smile, Leaf, Users, ShieldCheck, Truck, Package, CreditCard } from "lucide-react";
 import { products } from "@/lib/products";
 import { categories } from "@/lib/categories";
 import ProductCard from "@/components/ProductCard";
@@ -19,6 +19,16 @@ export default function Home() {
     { icon: Package, text: "Secure Packaging", description: "Ensuring your items arrive safely" },
     { icon: CreditCard, text: "Safe Payments", description: "Secure and encrypted transactions" },
   ];
+
+  const whyChooseUsBadges = [
+    { icon: Smile, title: "Authentic Coastal Flavors", description: "Crafted from traditional recipes to deliver the original, beloved taste of home." },
+    { icon: Leaf, title: "Fresh & High Quality", description: "We handpick the finest ingredients to ensure every product meets our high standards of freshness." },
+    { icon: Users, title: "Loved by Locals", description: "For over a decade, we've been the trusted choice for our community's daily needs." },
+    { icon: ShieldCheck, title: "Satisfaction Guaranteed", description: "We stand by our quality. If you're not happy, we'll make it right." },
+  ];
+
+  const aboutShopImage = PlaceHolderImages.find(p => p.id === 'about-shop');
+
 
   return (
     <div className="space-y-12 md:space-y-20">
@@ -103,6 +113,57 @@ export default function Home() {
           <Button asChild variant="outline" size="lg">
             <Link href="/category/all">View All Products</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* About Us Teaser Section */}
+      <section className="container mx-auto px-4 py-12 md:py-20">
+        <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 shadow-sm overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-headline font-bold">
+                From Our Family to Your Home
+              </h2>
+              <p className="mt-4 text-muted-foreground max-w-xl mx-auto md:mx-0">
+                Since 2007, our family has been proudly running a small shop in Bangalore, dedicated to bringing you the authentic flavors of coastal Karnataka. What started with our dad's passion for genuine Karavali products has grown into a trusted local favorite, known for its quality and freshness.
+              </p>
+              <Button asChild size="lg" className="mt-8">
+                <Link href="/about">Read Our Story</Link>
+              </Button>
+            </div>
+            {/* Image Content */}
+            {aboutShopImage && (
+                <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden">
+                <Image
+                    src={aboutShopImage.imageUrl}
+                    alt={aboutShopImage.description}
+                    fill
+                    className="object-cover"
+                    data-ai-hint={aboutShopImage.imageHint}
+                />
+                </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Why Choose Us Section */}
+      <section className="container mx-auto px-4 pb-12 md:pb-20">
+        <h2 className="text-3xl font-headline font-bold text-center mb-10">Why Choose Karavali Store?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {whyChooseUsBadges.map((badge, index) => (
+            <Card key={index} className="bg-card text-center p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+              <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
+                <div className="bg-primary/10 p-3 rounded-full">
+                    <badge.icon className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-bold text-lg">{badge.title}</h3>
+                <p className="text-sm text-muted-foreground">{badge.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
     </div>

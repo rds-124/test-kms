@@ -39,7 +39,7 @@
     {
       "id": "category-ready-to-eat",
       "description": "Ready to eat meal packs.",
-      "imageUrl": "https://images.unsplash.com/photo-1666819691716-827f78d892f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZWFsJTIwcHJlcHxlbnwwfHx8fDE3NjI2MDkxOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1666819691716-827f78d892f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZWFsJTIwcHJlcHxlbnwwfHx8fDE3NjI2MDkxOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "meal prep"
     },
     {
@@ -51,7 +51,7 @@
     {
       "id": "category-household",
       "description": "Household cleaning items.",
-      "imageUrl": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbmluZyUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MjYwNDM2NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbmluZyUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MjYwNDM2NHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cleaning supplies"
     },
     {
@@ -63,7 +63,7 @@
     {
       "id": "product-1-2",
       "description": "Ghee Roast Masala package",
-      "imageUrl": "https://images.unsplash.com/photo-1757845082207-91cbc4d25f1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzcGljZSUyMHBhY2thZ2luZ3xlbnwwfHx8fDE3NjI0MDc5OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1757845082207-91cbc4d25f1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzcGljZSUyMHBhY2thZ2luZ3xlbnwwfHx8fDE3NjI0MDc5OTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "spice packaging"
     },
     {
@@ -145,6 +145,12 @@
       "imageHint": "local market"
     },
     {
+      "id": "about-shop",
+      "description": "Friendly shop owner in a local grocery store.",
+      "imageUrl": "https://images.unsplash.com/photo-1599950796333-d3405f53b469?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2NhbCUyMGdyb2NlcnklMjBzdG9yZXxlbnwwfHx8fDE3NjI4MTg3OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "local store"
+    },
+    {
       "id": "ayurvedic-1",
       "description": "Triphala Churna",
       "imageUrl": "https://images.unsplash.com/photo-1495461199391-8c39ab674295?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZXJiYWwlMjBwb3dkZXJ8ZW58MHx8fHwxNzYyNjc0ODQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -153,7 +159,7 @@
     {
       "id": "ayurvedic-2",
       "description": "Ashwagandha Capsules",
-      "imageUrl": "https://images.unsplash.com/photo-1734607402832-6d36e4170d22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoZXJiYWwlMjBjYXBzdWxlc3xlbnwwfHx8fDE3NjI2NzYyMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1734607402832-6d36e4170d22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoZXJiYWwlMjBjYXBzdWxlc3xlbnwwfHx8fDE3NjI2NzYyMzd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "herbal capsules"
     },
     {
@@ -165,19 +171,19 @@
     {
       "id": "ready-to-eat-2",
       "description": "Patrode",
-      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1671036437036-0b1f11c80941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFmJTIwcm9sbHN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "leaf rolls"
     },
     {
       "id": "ready-to-eat-3",
       "description": "Kotte Idli",
-      "imageUrl": "https://images.unsplash.com/photo-1603284845744-9ffce8a7c8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdGVhbWVkJTIwY2FrZXN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1603284845744-9ffce8a7c8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdGVhbWVkJTIwY2FrZXN8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "steamed cakes"
     },
     {
       "id": "ready-to-eat-4",
       "description": "Neer Dosa",
-      "imageUrl": "https://images.unsplash.com/photo-1686820740687-426a7b9b2043?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyaWNlJTIwY3JlcGV8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1686820740687-426a7b9b2043?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyaWNlJTIwY3JlcGV8ZW58MHx8fHwxNzYyNjgwNjYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "rice crepe"
     }
   ]
