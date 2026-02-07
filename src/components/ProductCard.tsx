@@ -131,20 +131,20 @@ export default function ProductCard({ product }: ProductCardProps) {
                     Out of Stock
                 </div>
             ) : cartItem && cartItem.quantity > 0 ? (
-                <div className="flex items-center h-7 rounded-md bg-green-500/10 dark:bg-green-400/10 overflow-hidden">
-                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-green-700 dark:text-green-300 hover:bg-green-500/20" onClick={decrementQuantity} aria-label="Decrease quantity">
+                <div className="flex items-center h-7 rounded-md bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-primary hover:bg-zinc-200 dark:hover:bg-zinc-700" onClick={decrementQuantity} aria-label="Decrease quantity">
                         <Minus className="h-3 w-3" />
                     </Button>
-                    <span className="flex items-center justify-center px-1 h-7 text-green-800 dark:text-green-200 font-bold text-xs tabular-nums min-w-[1rem]">{cartItem.quantity}</span>
-                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-green-700 dark:text-green-300 hover:bg-green-500/20" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                    <span className="flex items-center justify-center px-1 h-7 text-primary-foreground font-bold text-xs tabular-nums min-w-[1rem]">{cartItem.quantity}</span>
+                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-primary hover:bg-zinc-200 dark:hover:bg-zinc-700" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
                         <Plus className="h-3 w-3" />
                     </Button>
                 </div>
             ) : (
                 <Button 
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
-                    className="h-9 px-4 rounded-md bg-zinc-100 dark:bg-zinc-800 text-green-800 dark:text-green-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 font-bold"
+                    className="h-9 px-4 rounded-md border-accent text-accent bg-accent/10 hover:bg-accent/20 hover:text-accent font-bold"
                     onClick={handleInitialAdd}
                     aria-label="Add to cart"
                 >
