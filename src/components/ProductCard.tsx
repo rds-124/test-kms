@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -114,7 +115,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-3 pt-0 mt-auto flex justify-between items-center gap-1">
           {/* Price */}
           <div className="flex flex-col items-start">
-              <p className={cn("font-bold price", "text-sm")}>
+              <p className={cn("font-bold price", "text-sm md:text-base")}>
                   ₹{product.sale_price ?? product.price}
               </p>
               {product.sale_price && (
@@ -132,11 +133,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </div>
             ) : cartItem && cartItem.quantity > 0 ? (
                 <div className="flex items-center h-7 rounded-md bg-green-500/10 dark:bg-green-400/10 overflow-hidden">
-                    <Button variant="ghost" size="icon" className="w-7 h-7 rounded-none text-green-700 dark:text-green-300 hover:bg-green-500/20" onClick={decrementQuantity} aria-label="Decrease quantity">
+                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-green-700 dark:text-green-300 hover:bg-green-500/20" onClick={decrementQuantity} aria-label="Decrease quantity">
                         <Minus className="h-3 w-3" />
                     </Button>
-                    <span className="flex items-center justify-center px-1 h-7 text-green-800 dark:text-green-200 font-bold text-xs tabular-nums">{cartItem.quantity}</span>
-                    <Button variant="ghost" size="icon" className="w-7 h-7 rounded-none text-green-700 dark:text-green-300 hover:bg-green-500/20" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                    <span className="flex items-center justify-center px-1 h-7 text-green-800 dark:text-green-200 font-bold text-xs tabular-nums min-w-[1rem]">{cartItem.quantity}</span>
+                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-green-700 dark:text-green-300 hover:bg-green-500/20" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
                         <Plus className="h-3 w-3" />
                     </Button>
                 </div>
@@ -144,7 +145,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <Button 
                     variant="ghost"
                     size="icon"
-                    className="h-7 w-7 rounded-md bg-zinc-100 dark:bg-zinc-800 text-green-800 dark:text-green-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                    className="h-8 w-8 rounded-md bg-zinc-100 dark:bg-zinc-800 text-green-800 dark:text-green-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                     onClick={handleInitialAdd}
                     aria-label="Add to cart"
                 >
