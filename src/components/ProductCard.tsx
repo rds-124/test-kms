@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -144,12 +143,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             ) : (
                 <Button 
                     variant="ghost"
-                    size="icon"
-                    className="h-8 w-8 rounded-md bg-zinc-100 dark:bg-zinc-800 text-green-800 dark:text-green-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                    size="sm"
+                    className="h-9 px-4 rounded-md bg-zinc-100 dark:bg-zinc-800 text-green-800 dark:text-green-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 font-bold"
                     onClick={handleInitialAdd}
                     aria-label="Add to cart"
                 >
-                    <Plus className="h-4 w-4"/>
+                    ADD
                 </Button>
             )}
           </div>
