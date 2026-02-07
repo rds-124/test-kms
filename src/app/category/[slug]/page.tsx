@@ -433,7 +433,7 @@ export default function CategoryPage() {
         ) : (
           <div className="flex">
             <MobileSubCategoryNav />
-            <main className="flex-1 p-4">
+            <main className="flex-1 p-2">
               <ProductFilterBar {...{ sortOption, setSortOption, inStockOnly, setInStockOnly, priceRange, setPriceRange, selectedCategories, toggleCategory, clearCategoryFilter, isAllCategoryPage, subCategoryQuery, currentCategorySlug: slug, subCategories }} />
               <div className="mt-4">
                 {sortedProducts.length > 0 ? (
