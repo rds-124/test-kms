@@ -93,7 +93,7 @@ export default function Home() {
       {/* Category Showcase */}
       <section className="container mx-auto px-4">
         <h2 className="text-3xl font-headline font-bold text-center mb-8">Shop by Category</h2>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
           {categories.slice(0, 5).map((category) => {
             const categoryImage = PlaceHolderImages.find(p => p.id === category.imageId);
             return (
