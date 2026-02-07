@@ -495,24 +495,21 @@ export default function CategoryPage() {
                         const image = PlaceHolderImages.find(p => p.id === firstProduct?.images[0]);
                         
                         return (
-                            <Link href={`/category/${slug}?sub_category=${subCategorySlug}`} key={subCategorySlug} scroll={false} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
-                                <div className="relative w-full aspect-square">
-                                    {image ? (
-                                        <Image
-                                            src={image.imageUrl}
-                                            alt={formatSlug(subCategorySlug)}
-                                            fill
-                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                            data-ai-hint={image.imageHint}
-                                        />
-                                    ) : (
-                                      <div className="w-full h-full bg-secondary flex items-center justify-center">
-                                        <span className="text-muted-foreground text-sm p-2">No Image</span>
-                                      </div>
-                                    )}
-                                </div>
-                                <div className="p-3 flex-grow flex items-center justify-center">
-                                    <h3 className="font-semibold text-base">{formatSlug(subCategorySlug)}</h3>
+                            <Link href={`/category/${slug}?sub_category=${subCategorySlug}`} key={subCategorySlug} scroll={false} className="group relative block bg-card rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 aspect-[1/1] overflow-hidden">
+                                {image ? (
+                                    <Image
+                                        src={image.imageUrl}
+                                        alt={formatSlug(subCategorySlug)}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                        data-ai-hint={image.imageHint}
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-secondary" />
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
+                                <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
+                                    <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{formatSlug(subCategorySlug)}</h3>
                                 </div>
                             </Link>
                         );
