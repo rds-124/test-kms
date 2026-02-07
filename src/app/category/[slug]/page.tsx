@@ -392,20 +392,19 @@ export default function CategoryPage() {
               {categories.map((category) => {
                   const categoryImage = PlaceHolderImages.find(p => p.id === category.imageId);
                   return (
-                      <Link href={`/category/${category.slug}`} key={category.id} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
-                          <div className="relative w-full aspect-square">
-                              {categoryImage && (
-                              <Image
-                                  src={categoryImage.imageUrl}
-                                  alt={category.name}
-                                  fill
-                                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                  data-ai-hint={categoryImage.imageHint}
-                              />
-                              )}
-                          </div>
-                          <div className="p-3 flex-grow flex items-center justify-center">
-                              <h3 className="font-semibold text-base">{category.name}</h3>
+                      <Link href={`/category/${category.slug}`} key={category.id} className="group relative block bg-card rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 aspect-[1/1] overflow-hidden">
+                          {categoryImage && (
+                          <Image
+                              src={categoryImage.imageUrl}
+                              alt={category.name}
+                              fill
+                              className="object-cover transition-transform duration-300 group-hover:scale-110"
+                              data-ai-hint={categoryImage.imageHint}
+                          />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
+                          <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
+                              <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{category.name}</h3>
                           </div>
                       </Link>
                   )
@@ -462,20 +461,19 @@ export default function CategoryPage() {
                 {categories.map((category) => {
                     const categoryImage = PlaceHolderImages.find(p => p.id === category.imageId);
                     return (
-                        <Link href={`/category/${category.slug}`} key={category.id} className="group flex flex-col bg-card rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl text-center">
-                            <div className="relative w-full aspect-square">
-                                {categoryImage && (
-                                <Image
-                                    src={categoryImage.imageUrl}
-                                    alt={category.name}
-                                    fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    data-ai-hint={categoryImage.imageHint}
-                                />
-                                )}
-                            </div>
-                            <div className="p-3 flex-grow flex items-center justify-center">
-                                <h3 className="font-semibold text-base">{category.name}</h3>
+                        <Link href={`/category/${category.slug}`} key={category.id} className="group relative block bg-card rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 aspect-[1/1] overflow-hidden">
+                            {categoryImage && (
+                            <Image
+                                src={categoryImage.imageUrl}
+                                alt={category.name}
+                                fill
+                                className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                data-ai-hint={categoryImage.imageHint}
+                            />
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
+                            <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
+                                <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{category.name}</h3>
                             </div>
                         </Link>
                     )
@@ -542,3 +540,5 @@ export default function CategoryPage() {
     </div>
   );
 }
+
+    
