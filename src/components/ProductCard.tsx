@@ -114,7 +114,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-3 pt-0 mt-auto flex justify-between items-center gap-1">
           {/* Price */}
           <div className="flex flex-col items-start">
-              <p className={cn("font-bold price text-primary", "text-sm md:text-base")}>
+              <p className={cn("font-bold price text-foreground", "text-sm md:text-base")}>
                   ₹{product.sale_price ?? product.price}
               </p>
               {product.sale_price && (

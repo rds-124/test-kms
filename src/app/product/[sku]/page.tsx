@@ -141,7 +141,7 @@ export default function ProductPage() {
           </div>
 
           <div className="flex items-baseline gap-2">
-            <p className="text-3xl font-bold text-primary inline-flex items-baseline price">
+            <p className="text-3xl font-bold text-foreground inline-flex items-baseline price">
               {formatPrice(product.sale_price ?? product.price)}
             </p>
             {product.sale_price && (
