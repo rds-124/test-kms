@@ -19,8 +19,7 @@ type ProductCardProps = {
 
 /**
  * ProductCard component displays a single product with an interactive add-to-cart functionality.
- * It features a modern, curvy design where the action button
- * is seamlessly integrated into the card's rounded base.
+ * This version is designed to be more compact, especially for mobile grids.
  */
 export default function ProductCard({ product }: ProductCardProps) {
   // Firebase and cart hooks to manage state and actions.
@@ -28,7 +27,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { user } = useUser();
   const { getCartItem, addToCart, updateCartItemQuantity } = useFirestoreCart();
   
-  // Memoize getting the specific cart item to avoid re-renders.
   const cartItem = getCartItem(product.sku);
 
   // Find the corresponding placeholder image for the product.
@@ -82,15 +80,10 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    // Main card container: uses flex-col, rounded-3xl, and overflow-hidden to achieve the integrated button look.
-    <Card className="group w-full flex flex-col h-full bg-background rounded-3xl shadow-md overflow-hidden transition-all duration-300 text-center hover:shadow-xl">
-      
-      {/* The linkable area containing the product image and details. It grows to fill available space. */}
-      <Link href={`/product/${product.sku}`} className="flex flex-col flex-grow">
-        
+    // Using a more standard card layout. `rounded-xl` for a softer modern look.
+    <Card className="group w-full h-full bg-card rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+      <Link href={`/product/${product.sku}`} className="flex-grow flex flex-col">
         {/* Product Image Section */}
-        {/* The image is set to cover its container, ensuring a uniform and larger look. */}
-        {/* The card's `overflow-hidden` and `rounded-3xl` will give the image its curvy look. */}
         <div className="relative w-full">
           {productImage && (
             <Image
@@ -98,7 +91,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               alt={product.title}
               width={400}
               height={400}
-              className="aspect-square w-full object-cover" // Changed from object-contain
+              className="aspect-square w-full object-cover"
               data-ai-hint={productImage.imageHint}
             />
           )}
@@ -106,56 +99,60 @@ export default function ProductCard({ product }: ProductCardProps) {
             <Badge variant="destructive" className="absolute top-2 left-2 z-10">{discount}% OFF</Badge>
           )}
           {isOutOfStock && (
-            <Badge variant="secondary" className="absolute top-2 right-2 z-10">Out of Stock</Badge>
+            <Badge variant="secondary" className="absolute top-2 right-2 z-10 text-xs">Out of Stock</Badge>
           )}
         </div>
         
-        {/* Product Details Section: uses flex-grow to push price to the bottom of this section. Padding is added here instead of the Link. */}
-        <div className="flex flex-col flex-grow mt-2 p-4">
-            <h3 className="font-semibold text-lg line-clamp-2">{product.title}</h3>
-            
-            {/* Price section pushed to the bottom. Prices are now on the same line. */}
-            <div className="mt-auto pt-2 flex items-baseline justify-center gap-2">
-                <p className={`font-bold text-lg price`}>
-                    ₹{product.sale_price ?? product.price}
-                </p>
-                {product.sale_price && (
-                    <p className="text-xs text-muted-foreground mrp">
-                        ₹{product.price}
-                    </p>
-                )}
-            </div>
+        {/* Product Details Section */}
+        <div className="p-3 flex-grow flex flex-col">
+            <h3 className="font-semibold text-sm line-clamp-2 text-left flex-grow">{product.title}</h3>
         </div>
       </Link>
       
-      {/* Bottom Action Area: Sits at the bottom of the flex container. The parent's overflow-hidden clips its bottom corners. */}
-      <div className="mt-auto">
-        {isOutOfStock ? (
-            // Disabled state for out-of-stock items.
-            <div className="h-14 flex items-center justify-center bg-muted font-bold text-muted-foreground">
-                Out of Stock
-            </div>
-        ) : cartItem && cartItem.quantity > 0 ? (
-            // Active state: Quantity selector with a light green background.
-            <div className="h-14 bg-lime-300 flex items-center justify-evenly text-lime-900 transition-all duration-300">
-                <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full text-lime-900 ring-1 ring-lime-900 hover:bg-lime-900/10" onClick={decrementQuantity} aria-label="Decrease quantity">
-                    <Minus className="h-4 w-4" />
+      {/* Bottom Action Area: Sits at the bottom. Contains price and button. */}
+      <div className="p-3 pt-0 mt-auto flex justify-between items-center">
+          {/* Price */}
+          <div className="flex flex-col items-start">
+              <p className={`font-bold text-base price`}>
+                  ₹{product.sale_price ?? product.price}
+              </p>
+              {product.sale_price && (
+                  <p className="text-xs text-muted-foreground mrp">
+                      ₹{product.price}
+                  </p>
+              )}
+          </div>
+
+          {/* Action Button/Quantity Selector */}
+          <div className="flex items-center">
+            {isOutOfStock ? (
+                <div className="text-xs font-bold text-destructive px-2">
+                    Out of Stock
+                </div>
+            ) : cartItem && cartItem.quantity > 0 ? (
+                // Compact quantity selector
+                <div className="flex items-center justify-evenly h-9 rounded-lg border border-accent">
+                    <Button variant="ghost" size="icon" className="w-8 h-8 text-accent hover:bg-accent/10" onClick={decrementQuantity} aria-label="Decrease quantity">
+                        <Minus className="h-4 w-4" />
+                    </Button>
+                    <span className="font-bold text-sm w-5 text-center tabular-nums text-accent">{cartItem.quantity}</span>
+                    <Button variant="ghost" size="icon" className="w-8 h-8 text-accent hover:bg-accent/10" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
+                        <Plus className="h-4 w-4" />
+                    </Button>
+                </div>
+            ) : (
+                // Compact add button with a plus icon.
+                <Button 
+                    variant="outline"
+                    size="icon"
+                    className="h-9 w-9 border-accent text-accent hover:bg-accent/10 hover:text-accent"
+                    onClick={handleInitialAdd}
+                    aria-label="Add to cart"
+                >
+                    <Plus className="h-5 w-5"/>
                 </Button>
-                <span className="font-bold text-xl w-8 text-center tabular-nums">{cartItem.quantity}</span>
-                <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full text-lime-900 ring-1 ring-lime-900 hover:bg-lime-900/10" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
-                    <Plus className="h-4 w-4" />
-                </Button>
-            </div>
-        ) : (
-            // Default state: A full-width button to add the item.
-            <button 
-                className="w-full h-14 bg-lime-100 transition-colors group-hover:bg-lime-200 text-lime-800 flex items-center justify-center"
-                onClick={handleInitialAdd}
-                aria-label="Add to cart"
-            >
-                <Plus className="h-6 w-6"/>
-            </button>
-        )}
+            )}
+          </div>
       </div>
     </Card>
   );
