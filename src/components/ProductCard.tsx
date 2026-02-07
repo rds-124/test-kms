@@ -106,7 +106,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         {/* Product Details Section */}
         <div className="p-3 flex-grow flex flex-col">
-            <h3 className="font-semibold text-xs line-clamp-2 text-left flex-grow">{product.title}</h3>
+            <h3 className="font-semibold text-xs md:text-sm line-clamp-2 text-left flex-grow">{product.title}</h3>
         </div>
       </Link>
       
@@ -131,13 +131,28 @@ export default function ProductCard({ product }: ProductCardProps) {
                     Out of Stock
                 </div>
             ) : cartItem && cartItem.quantity > 0 ? (
-                <div className="flex items-center h-7 rounded-md bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-primary hover:bg-zinc-200 dark:hover:bg-zinc-700" onClick={decrementQuantity} aria-label="Decrease quantity">
-                        <Minus className="h-3 w-3" />
+                <div className="flex items-center h-9 rounded-full bg-accent/10 dark:bg-accent/20 p-1 gap-1">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="w-7 h-7 rounded-full border border-accent text-accent hover:bg-accent/20"
+                        onClick={decrementQuantity}
+                        aria-label="Decrease quantity"
+                    >
+                        <Minus className="h-4 w-4" />
                     </Button>
-                    <span className="flex items-center justify-center px-1 h-7 text-primary-foreground font-bold text-xs tabular-nums min-w-[1rem]">{cartItem.quantity}</span>
-                    <Button variant="ghost" size="icon" className="w-6 h-7 rounded-none text-primary hover:bg-zinc-200 dark:hover:bg-zinc-700" onClick={incrementQuantity} aria-label="Increase quantity" disabled={cartItem.quantity >= product.stock_qty}>
-                        <Plus className="h-3 w-3" />
+                    <span className="text-center text-accent font-bold text-sm tabular-nums px-1 min-w-[1rem]">
+                        {cartItem.quantity}
+                    </span>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="w-7 h-7 rounded-full border border-accent text-accent hover:bg-accent/20"
+                        onClick={incrementQuantity}
+                        aria-label="Increase quantity"
+                        disabled={cartItem.quantity >= product.stock_qty}
+                    >
+                        <Plus className="h-4 w-4" />
                     </Button>
                 </div>
             ) : (
