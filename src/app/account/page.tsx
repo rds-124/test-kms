@@ -25,6 +25,15 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useState } from 'react';
+import Image from 'next/image';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Star, X } from 'lucide-react';
+import { products as allProducts } from '@/lib/products';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { cn } from '@/lib/utils';
+import { Product } from '@/types';
+
 
 const mockOrders = [
     {
@@ -68,6 +77,9 @@ const mockOrders = [
     },
 ];
 
+type Order = typeof mockOrders[number];
+
+
 const statusConfig: { [key: string]: { Icon: React.ElementType; className: string; text: string } } = {
     Delivered: {
         Icon: CheckCircle,
@@ -94,7 +106,103 @@ const quickActions = [
     { icon: Wallet, label: 'Payment Modes', href: '#' },
 ];
 
+function RatingDialog({ order, isOpen, onOpenChange }: { order: Order | null, isOpen: boolean, onOpenChange: (open: boolean) => void }) {
+  const [ratings, setRatings] = useState<{ [key: string]: number }>({});
+
+  if (!order) return null;
+
+  const handleRating = (itemName: string, rating: number) => {
+    setRatings(prev => ({
+      ...prev,
+      [itemName]: rating === ratings[itemName] ? 0 : rating, // Allow un-rating by clicking the same star
+    }));
+  };
+
+  const getProductFromOrderItem = (itemName: string): Product | undefined => {
+    return allProducts.find(p => p.title === itemName);
+  }
+
+  const allOrderItems = [
+      ...order.items,
+      // NOTE: `moreItems` is just a number, so we cannot render the actual items.
+      // In a real application, the full item list should be fetched.
+  ];
+
+  const handleSubmit = () => {
+    console.log("Submitting ratings:", ratings);
+    onOpenChange(false);
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-md w-full bg-background p-0 flex flex-col h-screen sm:h-auto sm:max-h-[90vh] gap-0 rounded-t-2xl sm:rounded-lg">
+        <DialogHeader className="p-4 border-b flex-shrink-0">
+            <div className="flex items-center justify-between">
+                <div>
+                    <DialogTitle className="text-lg font-bold">Rate your order</DialogTitle>
+                    <p className="text-sm text-muted-foreground">{order.items.length + order.moreItems} Items • {order.total}</p>
+                </div>
+                 <button onClick={() => onOpenChange(false)} className="p-1 rounded-full absolute top-3.5 right-3.5 opacity-70 hover:opacity-100">
+                    <X className="h-5 w-5" />
+                </button>
+            </div>
+        </DialogHeader>
+
+        <div className="flex-grow overflow-y-auto p-4 space-y-4">
+            <h3 className="font-semibold text-md">Rate the items in your order</h3>
+            <div className="divide-y">
+            {allOrderItems.map((item, index) => {
+                const product = getProductFromOrderItem(item.name);
+                const productImage = product ? PlaceHolderImages.find(img => img.id === product.images[0]) : null;
+
+                return (
+                    <div key={index} className="flex gap-4 py-4 first:pt-0">
+                        {productImage && (
+                            <Image
+                                src={productImage.imageUrl}
+                                alt={item.name}
+                                width={56}
+                                height={56}
+                                className="rounded-lg object-cover aspect-square border"
+                                data-ai-hint={productImage.imageHint}
+                            />
+                        )}
+                        {!productImage && (
+                            <div className="w-14 h-14 bg-muted rounded-lg flex-shrink-0 border"/>
+                        )}
+                        <div className="flex-1">
+                            <p className="font-medium text-sm leading-tight">{item.name}</p>
+                            {product && (
+                                <p className="text-xs text-muted-foreground mt-1">₹{product.sale_price ?? product.price} • {product.weight}</p>
+                            )}
+                            <div className="flex gap-1 mt-2">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star
+                                        key={i}
+                                        className={cn("h-7 w-7 cursor-pointer transition-colors", (ratings[item.name] || 0) > i ? "text-yellow-400 fill-yellow-400" : "text-gray-300")}
+                                        onClick={() => handleRating(item.name, i + 1)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )
+            })}
+            </div>
+        </div>
+
+        <DialogFooter className="p-4 border-t bg-background flex-shrink-0 sticky bottom-0">
+          <Button size="lg" className="w-full" onClick={handleSubmit}>Submit rating</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+
 export default function AccountPage() {
+  const [ratingOrder, setRatingOrder] = useState<Order | null>(null);
+
   return (
     <div className="bg-muted/20 min-h-screen">
         {/* Profile Header */}
@@ -219,10 +327,10 @@ export default function AccountPage() {
                                         {order.isRated ? (
                                             <div>
                                                 <p className="text-xs text-muted-foreground mb-1.5">You've already rated this order</p>
-                                                <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Edit Rating</Button>
+                                                <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Edit Rating</Button>
                                             </div>
                                         ) : (
-                                            <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Rate Order</Button>
+                                            <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Rate Order</Button>
                                         )}
                                     </div>
                                 )}
@@ -237,6 +345,13 @@ export default function AccountPage() {
                 })}
             </div>
         </main>
+        <RatingDialog 
+            order={ratingOrder}
+            isOpen={!!ratingOrder}
+            onOpenChange={(open) => {
+                if (!open) setRatingOrder(null);
+            }}
+        />
     </div>
   );
 }
