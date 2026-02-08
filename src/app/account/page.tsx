@@ -12,6 +12,8 @@ import {
   Package,
   Headset,
   Wallet,
+  User,
+  Ticket,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -87,6 +89,20 @@ export default function AccountPage() {
             <Card className="overflow-hidden shadow-sm">
                  <CardContent className="p-0">
                     <div className="divide-y">
+                        <div className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/50">
+                            <div className="flex items-center gap-4">
+                                <User className="h-5 w-5 text-primary" />
+                                <span className="font-medium">Profile</span>
+                            </div>
+                            <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                        </div>
+                        <div className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/50">
+                            <div className="flex items-center gap-4">
+                                <Ticket className="h-5 w-5 text-primary" />
+                                <span className="font-medium">Coupons</span>
+                            </div>
+                            <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                        </div>
                         <div className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/50">
                             <div className="flex items-center gap-4">
                                 <Headset className="h-5 w-5 text-primary" />
