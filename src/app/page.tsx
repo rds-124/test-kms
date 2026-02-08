@@ -250,7 +250,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-muted-foreground">
                         <div className="flex flex-col items-center gap-2">
                             <MapPin className="w-8 h-8 text-accent" />
-                            <p className="font-semibold">Delivering in Bangalore<br />& Across India</p>
+                            <p className="font-semibold">Delivering in Bengaluru<br />& Across India</p>
                         </div>
                         <div className="flex flex-col items-center gap-2 sm:border-x sm:border-dashed sm:border-accent/50 px-4">
                             <Clock className="w-8 h-8 text-accent" />
