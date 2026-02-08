@@ -70,7 +70,7 @@ export default function Home() {
             Discover authentic spices, traditional crafts, and unique delicacies from the coastal heart of Karnataka.
           </p>
           <Button asChild size="lg" className="mt-8">
-            <Link href="/category/all">Shop now</Link>
+            <Link href="/category/all">Shop Now</Link>
           </Button>
         </div>
       </section>
