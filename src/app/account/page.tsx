@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -11,8 +10,7 @@ import {
   MapPin,
   MoreVertical,
   Package,
-  Bell,
-  Trash2,
+  Headset,
   Wallet,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,9 +18,7 @@ import {
   Card,
   CardContent,
 } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const mockOrders = [
@@ -36,12 +32,6 @@ const quickActions = [
     { icon: MapPin, label: 'Addresses', href: '#' },
     { icon: Heart, label: 'Wishlist', href: '#' },
     { icon: Wallet, label: 'Payments', href: '#' },
-];
-
-const menuItems = [
-    { icon: Bell, label: 'Notifications' },
-    { icon: LogOut, label: 'Logout' },
-    { icon: Trash2, label: 'Delete Account', isDestructive: true },
 ];
 
 export default function AccountPage() {
@@ -97,18 +87,19 @@ export default function AccountPage() {
             <Card className="overflow-hidden shadow-sm">
                  <CardContent className="p-0">
                     <div className="divide-y">
-                    {menuItems.map(item => (
-                        <div
-                            key={item.label}
-                            className={`flex items-center justify-between p-4 ${item.isDestructive ? 'text-destructive' : 'text-foreground'} ${item.label === 'Logout' ? 'cursor-pointer hover:bg-muted/50' : ''}`}
-                        >
+                        <div className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/50">
                             <div className="flex items-center gap-4">
-                                <item.icon className="h-5 w-5" />
-                                <span className="font-medium">{item.label}</span>
+                                <Headset className="h-5 w-5 text-primary" />
+                                <span className="font-medium">Support via WhatsApp</span>
                             </div>
-                            {item.label === 'Notifications' ? <Switch /> : <ChevronRight className="h-5 w-5 text-muted-foreground" />}
+                            <ChevronRight className="h-5 w-5 text-muted-foreground" />
                         </div>
-                    ))}
+                        <div className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/50 text-destructive">
+                            <div className="flex items-center gap-4">
+                                <LogOut className="h-5 w-5" />
+                                <span className="font-medium">Logout</span>
+                            </div>
+                        </div>
                     </div>
                 </CardContent>
             </Card>
