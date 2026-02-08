@@ -46,10 +46,8 @@ export default function Header() {
   const handleAuthClick = () => {
     if (!user) {
       initiateAnonymousSignIn(auth);
-    } else {
-      // Future: Open user account menu
-      console.log("User is already signed in:", user.uid);
     }
+    // If user exists, the link will handle navigation
   };
 
   const isHomePage = pathname === '/';
@@ -63,18 +61,6 @@ export default function Header() {
           isAtTop ? "opacity-90" : "opacity-0 pointer-events-none"
         )}>
           <MobileThemeToggle />
-        </div>
-      )}
-
-      {/* Mobile-only Account Icon */}
-      {isHomePage && (
-        <div className={cn(
-          "fixed top-4 right-4 z-50 md:hidden transition-opacity duration-300",
-          isAtTop ? "opacity-90" : "opacity-0 pointer-events-none"
-        )}>
-          <Button variant="ghost" size="icon" className="h-9 w-9 bg-background/80 backdrop-blur-sm rounded-full shadow-md" onClick={handleAuthClick} aria-label="Account">
-              <User className="h-4 w-4 text-foreground" />
-          </Button>
         </div>
       )}
 
@@ -150,12 +136,20 @@ export default function Header() {
 
               <ThemeToggle />
 
-              {isHomePage && (
-                <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 focus-visible:bg-primary-foreground/10" onClick={handleAuthClick} aria-label="Account">
+              {user ? (
+                <Link href="/account" passHref>
+                  <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 focus-visible:bg-primary-foreground/10" aria-label="Account">
                     <User className="h-5 w-5" />
                     <span className="sr-only">Account</span>
+                  </Button>
+                </Link>
+              ) : (
+                <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10 focus-visible:bg-primary-foreground/10" onClick={handleAuthClick} aria-label="Account">
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">Account</span>
                 </Button>
               )}
+
 
               <Link href="/cart" passHref>
                   <Button variant="ghost" size="icon" className="relative hover:bg-primary-foreground/10 focus-visible:bg-primary-foreground/10">

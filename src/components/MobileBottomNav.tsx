@@ -2,26 +2,38 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, LayoutGrid, Search, ShoppingCart } from 'lucide-react';
+import { Home, LayoutGrid, ShoppingCart, User } from 'lucide-react';
 import { useFirestoreCart } from '@/hooks/use-firestore-cart';
 import { cn } from '@/lib/utils';
+import { useUser, useAuth } from '@/firebase';
+import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
+import React from 'react';
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
   const { cartCount } = useFirestoreCart();
+  const { user } = useUser();
+  const auth = useAuth();
 
   // The main navigation items that will appear inside the pill.
   const navItems = [
     { href: '/', icon: Home, label: 'Home' },
     { href: '/category/all', icon: LayoutGrid, label: 'Categories' },
     { href: '/cart', icon: ShoppingCart, label: 'Cart' },
-    { href: '/category/all', icon: Search, label: 'Search' },
+    { href: user ? '/account' : '#', icon: User, label: 'Account' },
   ];
 
   // The bottom nav should not appear on admin pages.
   if (pathname.startsWith('/admin')) {
     return null;
   }
+  
+  const handleAccountClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
+    if (item.label === 'Account' && !user) {
+        e.preventDefault();
+        initiateAnonymousSignIn(auth);
+    }
+  };
 
   return (
     /**
@@ -38,13 +50,14 @@ export default function MobileBottomNav() {
             const isActive =
               (item.href === '/' && pathname === '/') ||
               (item.href !== '/' &&
-                item.label !== 'Search' && // Search icon doesn't get an active state.
+                item.href !== '#' && // Don't activate account tab when not logged in
                 pathname.startsWith(item.href));
 
             return (
               <Link
                 href={item.href}
                 key={item.label}
+                onClick={(e) => handleAccountClick(e, item)}
                 className={cn(
                   'flex h-full w-full flex-col items-center justify-center gap-1 rounded-full text-xs transition-colors',
                   isActive
