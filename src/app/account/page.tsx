@@ -219,7 +219,7 @@ export default function AccountPage() {
                                         {order.isRated ? (
                                             <div>
                                                 <p className="text-xs text-muted-foreground mb-1.5">You've already rated this order</p>
-                                                <Button variant="outline" size="sm" className="font-semibold text-primary border-primary hover:bg-primary/10 hover:text-primary rounded-lg">Edit Rating</Button>
+                                                <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Edit Rating</Button>
                                             </div>
                                         ) : (
                                             <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Rate Order</Button>
