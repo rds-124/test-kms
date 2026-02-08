@@ -86,7 +86,7 @@ export default function AccountPage() {
             </div>
 
             {/* Menu List */}
-            <Card className="overflow-hidden shadow-sm">
+            <Card className="overflow-hidden shadow-sm rounded-2xl">
                  <CardContent className="p-0">
                     <div className="divide-y">
                         <div className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/50">
@@ -124,7 +124,7 @@ export default function AccountPage() {
             <div className="space-y-4">
                 <h2 className="font-bold text-lg px-2">PAST ORDERS</h2>
                 {mockOrders.map((order) => (
-                    <Card key={order.id} className="overflow-hidden shadow-sm">
+                    <Card key={order.id} className="overflow-hidden shadow-sm rounded-2xl">
                         <CardContent className="p-4">
                             <div className="flex justify-between items-start">
                                 <div>
