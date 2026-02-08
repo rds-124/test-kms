@@ -100,9 +100,9 @@ export default function Header() {
           
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center">
-              <div className="flex flex-col items-center">
-                  <span className="font-bold font-headline text-3xl leading-none">Karavali</span>
-                  <span className="font-medium text-xs tracking-widest uppercase">
+              <div className="bg-primary-foreground text-primary rounded-full px-4 py-1 shadow-sm flex flex-col items-center">
+                  <span className="font-bold font-headline text-2xl leading-none">Karavali</span>
+                  <span className="font-medium text-[0.6rem] tracking-[0.2em] uppercase">
                       Mangalore Store
                   </span>
               </div>
