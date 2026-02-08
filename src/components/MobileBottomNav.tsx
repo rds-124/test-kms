@@ -32,8 +32,7 @@ export default function MobileBottomNav() {
       <div className="relative mx-auto flex h-16 max-w-sm items-center">
         
         {/* Main Navigation Pill */}
-        {/* It has a large padding on the right to make space for the logo. */}
-        <nav className="flex h-full flex-grow items-center justify-around rounded-full bg-background pr-16 shadow-[0_4px_24px_rgba(0,0,0,0.1)]">
+        <nav className="flex h-full flex-grow items-center justify-around rounded-full bg-background pr-16 shadow-[0_4px_24px_rgba(0,0,0,0.1)] border border-border/50">
           {navItems.map((item) => {
             // Determine if the current item is active.
             const isActive =
@@ -75,7 +74,7 @@ export default function MobileBottomNav() {
         <div className="absolute right-0 top-1/2 -translate-y-1/2">
           <Link
             href="/"
-            className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg ring-4 ring-background"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg ring-2 ring-background"
           >
             <span className="font-headline text-3xl font-bold">K</span>
           </Link>
