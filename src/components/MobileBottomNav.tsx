@@ -32,7 +32,7 @@ export default function MobileBottomNav() {
       <div className="relative mx-auto flex h-16 max-w-sm items-center">
         
         {/* Main Navigation Pill */}
-        <nav className="flex h-full flex-grow items-center justify-around rounded-full bg-background pr-16 shadow-[0_4px_24px_rgba(0,0,0,0.1)] border border-border/50">
+        <nav className="flex h-full flex-grow items-center justify-around rounded-full bg-background pr-16 shadow-[0_4px_24px_rgba(0,0,0,0.1)] border border-primary">
           {navItems.map((item) => {
             // Determine if the current item is active.
             const isActive =
