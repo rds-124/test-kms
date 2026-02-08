@@ -15,6 +15,8 @@ import {
   User,
   Ticket,
   CheckCircle,
+  XCircle,
+  Truck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -38,6 +40,15 @@ const mockOrders = [
       isRated: false,
     },
     {
+        id: 'ORD004',
+        date: '19 Jul 2025, 11:00 AM',
+        status: 'In Transit',
+        total: '₹90.00',
+        items: [{ quantity: 1, name: 'Boiled Red Rice (Kaje Akki)' }],
+        moreItems: 0,
+        isRated: false,
+    },
+    {
       id: 'ORD002',
       date: '05 Dec 2024, 10:30 AM',
       status: 'Delivered',
@@ -56,6 +67,24 @@ const mockOrders = [
       isRated: false,
     },
 ];
+
+const statusConfig: { [key: string]: { Icon: React.ElementType; className: string; text: string } } = {
+    Delivered: {
+        Icon: CheckCircle,
+        className: 'text-green-600',
+        text: 'Delivered',
+    },
+    'In Transit': {
+        Icon: Truck,
+        className: 'text-blue-600',
+        text: 'In Transit',
+    },
+    Cancelled: {
+        Icon: XCircle,
+        className: 'text-red-600',
+        text: 'Cancelled',
+    },
+};
 
 
 const quickActions = [
@@ -152,67 +181,60 @@ export default function AccountPage() {
             {/* Past Orders */}
             <div className="space-y-4">
                 <h2 className="font-bold text-lg px-2">PAST ORDERS</h2>
-                {mockOrders.map((order) => (
-                    <Card key={order.id} className="overflow-hidden shadow-sm rounded-2xl">
-                        <CardContent className="p-4">
-                            <div className="flex justify-between items-center">
-                                <div>
-                                    <p className="font-bold text-lg">{order.id}</p>
-                                </div>
-                                {order.status === 'Delivered' ? (
-                                    <Badge
-                                      variant="secondary"
-                                      className="font-semibold bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-300 hover:bg-green-100"
-                                    >
-                                      <CheckCircle className="h-4 w-4 mr-1" />
-                                      Delivered
-                                    </Badge>
-                                ) : (
-                                    <Badge
-                                        variant={order.status === 'In Transit' ? 'secondary' : 'destructive'}
-                                        className={
-                                            order.status === 'In Transit' ? 'bg-yellow-100 text-yellow-800' : ''
-                                        }
-                                    >
-                                        {order.status}
-                                    </Badge>
-                                )}
-                            </div>
-
-                            <div className="border-b pt-3 pb-4 my-3">
-                                <div className="text-sm text-muted-foreground space-y-2">
-                                    {order.items.map((item, index) => (
-                                        <div key={index} className="flex items-center gap-3">
-                                            <span className="text-xs font-medium bg-muted px-2 py-1 rounded-md border">{item.quantity}x</span>
-                                            <span className="flex-1 truncate">{item.name}</span>
-                                        </div>
-                                    ))}
-                                    {order.moreItems > 0 && (
-                                        <Link href="#" className="text-primary text-sm font-medium hover:underline ml-12">& {order.moreItems} more</Link>
-                                    )}
-                                </div>
-                            </div>
-                            
-                            {order.status === 'Delivered' && (
-                                <div className="text-center mb-4">
-                                    {order.isRated ? (
-                                        <div>
-                                            <p className="text-xs text-muted-foreground mb-1.5">You've already rated this order</p>
-                                            <Button variant="outline" size="sm" className="font-semibold text-primary border-primary hover:bg-primary/10 hover:text-primary">Edit Rating</Button>
+                {mockOrders.map((order) => {
+                    const StatusInfo = statusConfig[order.status];
+                    return (
+                        <Card key={order.id} className="overflow-hidden shadow-sm rounded-2xl">
+                            <CardContent className="p-4">
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <p className="font-bold text-lg">{order.id}</p>
+                                    </div>
+                                    {StatusInfo ? (
+                                        <div className={`flex items-center font-semibold ${StatusInfo.className}`}>
+                                            <span>{StatusInfo.text}</span>
+                                            <StatusInfo.Icon className="h-5 w-5 ml-1" />
                                         </div>
                                     ) : (
-                                        <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10">Rate Order</Button>
+                                        <Badge variant="secondary">{order.status}</Badge>
                                     )}
                                 </div>
-                            )}
-                            
-                            <div className="flex justify-between text-xs text-muted-foreground">
-                                <span>Ordered: {order.date}</span>
-                                <span className="font-semibold text-foreground">Bill Total: {order.total}</span>
-                            </div>
-                        </CardContent>
-                    </Card>
-                ))}
+
+                                <div className="border-b pt-3 pb-4 my-3">
+                                    <div className="text-sm text-muted-foreground space-y-2">
+                                        {order.items.map((item, index) => (
+                                            <div key={index} className="flex items-center gap-3">
+                                                <span className="text-xs font-medium bg-muted px-2 py-1 rounded-md border">{item.quantity}x</span>
+                                                <span className="flex-1 truncate">{item.name}</span>
+                                            </div>
+                                        ))}
+                                        {order.moreItems > 0 && (
+                                            <Link href="#" className="text-primary text-sm font-medium hover:underline ml-12">& {order.moreItems} more</Link>
+                                        )}
+                                    </div>
+                                </div>
+                                
+                                {order.status === 'Delivered' && (
+                                    <div className="text-center mb-4">
+                                        {order.isRated ? (
+                                            <div>
+                                                <p className="text-xs text-muted-foreground mb-1.5">You've already rated this order</p>
+                                                <Button variant="outline" size="sm" className="font-semibold text-primary border-primary hover:bg-primary/10 hover:text-primary">Edit Rating</Button>
+                                            </div>
+                                        ) : (
+                                            <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10">Rate Order</Button>
+                                        )}
+                                    </div>
+                                )}
+                                
+                                <div className="flex justify-between text-xs text-muted-foreground">
+                                    <span>Ordered: {order.date}</span>
+                                    <span className="font-semibold text-foreground">Bill Total: {order.total}</span>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    );
+                })}
             </div>
         </main>
     </div>
