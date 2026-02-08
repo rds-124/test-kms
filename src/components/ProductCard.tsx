@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState, MouseEvent } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useFirestoreCart } from "@/hooks/use-firestore-cart";
 import type { Product } from "@/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Heart } from "lucide-react";
 import { useUser, useAuth } from "@/firebase";
 import { initiateAnonymousSignIn } from "@/firebase/non-blocking-login";
 import { cn } from "@/lib/utils";
@@ -30,6 +30,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   
   const cartItem = getCartItem(product.sku);
 
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
   // Find the corresponding placeholder image for the product.
   const productImage = PlaceHolderImages && PlaceHolderImages.find(p => p.id === product.images[0]);
   const isOutOfStock = product.stock_status === 'outofstock';
@@ -41,7 +43,7 @@ export default function ProductCard({ product }: ProductCardProps) {
    * If the user is not signed in, it initiates an anonymous sign-in process first.
    * @param e - The mouse event, to prevent navigation.
    */
-  const handleInitialAdd = (e: React.MouseEvent) => {
+  const handleInitialAdd = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
@@ -54,7 +56,7 @@ export default function ProductCard({ product }: ProductCardProps) {
    * Increases the quantity of an item already in the cart.
    * @param e - The mouse event, to prevent navigation.
    */
-  const incrementQuantity = (e: React.MouseEvent) => {
+  const incrementQuantity = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (cartItem) {
@@ -71,13 +73,24 @@ export default function ProductCard({ product }: ProductCardProps) {
    * If the quantity becomes 0, the item is removed.
    * @param e - The mouse event, to prevent navigation.
    */
-  const decrementQuantity = (e: React.MouseEvent) => {
+  const decrementQuantity = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (cartItem) {
         const newQuantity = cartItem.quantity - 1;
         updateCartItemQuantity(cartItem.id, newQuantity);
     }
+  };
+
+  /**
+   * Toggles the wishlisted state of the product.
+   * @param e - The mouse event, to prevent navigation.
+   */
+  const toggleWishlist = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsWishlisted(!isWishlisted);
+    // In a real app, this would also call a function to update the user's wishlist in Firestore.
   };
 
   return (
@@ -96,11 +109,26 @@ export default function ProductCard({ product }: ProductCardProps) {
               data-ai-hint={productImage.imageHint}
             />
           )}
+
+          {/* Wishlist Heart Button */}
+          <Button
+            size="icon"
+            variant="ghost"
+            className="absolute top-2 right-2 z-20 h-8 w-8 rounded-full bg-background/50 backdrop-blur-sm hover:bg-background/75"
+            onClick={toggleWishlist}
+          >
+            <Heart className={cn(
+                "h-5 w-5 text-destructive transition-all",
+                isWishlisted ? "fill-destructive" : "fill-transparent"
+            )} />
+            <span className="sr-only">Add to wishlist</span>
+          </Button>
+          
           {discount > 0 && !isOutOfStock && (
             <Badge variant="destructive" className="absolute top-2 left-2 z-10">{discount}% OFF</Badge>
           )}
           {isOutOfStock && (
-            <Badge variant="secondary" className="absolute top-2 right-2 z-10 text-xs">Out of Stock</Badge>
+            <Badge variant="secondary" className="absolute top-2 left-2 z-10 text-xs">Out of Stock</Badge>
           )}
         </div>
         
