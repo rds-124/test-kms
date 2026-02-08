@@ -24,16 +24,17 @@ import {
   Card,
   CardContent,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Star, X } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { products as allProducts } from '@/lib/products';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { Product } from '@/types';
+import { Separator } from '@/components/ui/separator';
+import { format, parse } from 'date-fns';
 
 
 const mockOrders = [
@@ -290,56 +291,74 @@ export default function AccountPage() {
             <div className="space-y-4">
                 <h2 className="font-bold text-lg px-2">PAST ORDERS</h2>
                 {mockOrders.map((order) => {
+                    const orderDate = parse(order.date, 'dd MMM yyyy, hh:mm a', new Date());
+                    const headerDate = format(orderDate, 'dd MMM yyyy');
                     const StatusInfo = statusConfig[order.status];
+
                     return (
                         <Card key={order.id} className="overflow-hidden shadow-sm rounded-2xl">
                             <CardContent className="p-4">
-                                <div className="flex justify-between items-center">
+                                {/* Header */}
+                                <div className="flex justify-between items-start">
                                     <div>
-                                        <p className="font-bold text-lg">{order.id}</p>
-                                    </div>
-                                    {StatusInfo ? (
-                                        <div className={`flex items-center font-semibold ${StatusInfo.className}`}>
-                                            <span>{StatusInfo.text}</span>
-                                            <StatusInfo.Icon className="h-5 w-5 ml-1" />
+                                        <h3 className="font-bold text-lg">Order from {headerDate}</h3>
+                                        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                                            <MapPin className="h-4 w-4 text-primary" />
+                                            <span>Karavali Mangalore Store</span>
                                         </div>
-                                    ) : (
-                                        <Badge variant="secondary">{order.status}</Badge>
+                                    </div>
+                                    {StatusInfo && (
+                                        <div className={`flex items-center gap-1 font-semibold ${StatusInfo.className}`}>
+                                            <span>{StatusInfo.text}</span>
+                                            <StatusInfo.Icon className="h-5 w-5" />
+                                        </div>
                                     )}
                                 </div>
 
-                                <div className="border-b pt-3 pb-4 my-3">
-                                    <div className="text-sm text-muted-foreground space-y-2">
-                                        {order.items.map((item, index) => (
-                                            <div key={index} className="flex items-center gap-3">
-                                                <span className="text-xs font-medium bg-muted px-2 py-1 rounded-md border">{item.quantity}x</span>
-                                                <span className="flex-1 truncate">{item.name}</span>
-                                            </div>
-                                        ))}
-                                        {order.moreItems > 0 && (
-                                            <Link href="#" className="text-primary text-sm font-medium hover:underline ml-12">& {order.moreItems} more</Link>
-                                        )}
-                                    </div>
+                                <Separator className="my-4"/>
+
+                                {/* Items */}
+                                <div className="space-y-3">
+                                    {order.items.map((item, index) => (
+                                        <div key={index} className="flex items-center gap-3 text-sm">
+                                            <span className="flex-shrink-0 text-xs font-medium bg-muted h-6 w-6 flex items-center justify-center rounded-full border">
+                                                {item.quantity}x
+                                            </span>
+                                            <span className="text-foreground flex-1 truncate">{item.name}</span>
+                                        </div>
+                                    ))}
+                                    {order.moreItems > 0 && (
+                                        <Link href="#" className="text-primary text-sm font-medium hover:underline ml-9">& {order.moreItems} more items</Link>
+                                    )}
                                 </div>
-                                
+
+                                {/* Rating */}
                                 {order.status === 'Delivered' && (
-                                    <div className="text-center mb-4">
-                                        {order.isRated ? (
-                                            <div>
-                                                <div className="flex items-center justify-center gap-1.5 mb-2">
-                                                    <div className="w-4 h-4 bg-green-600 rounded-full flex items-center justify-center">
-                                                        <Check className="h-3 w-3 text-white" />
+                                    <>
+                                        <Separator className="my-4"/>
+                                        <div className="text-center">
+                                            {order.isRated ? (
+                                                <div className="space-y-3">
+                                                    <div className="flex items-center justify-center gap-2 text-green-600 font-medium text-sm">
+                                                        <CheckCircle className="h-5 w-5 fill-current" />
+                                                        <span>You've already rated this order</span>
                                                     </div>
-                                                    <p className="text-sm font-medium text-muted-foreground">You've already rated this order</p>
+                                                    <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-[60%] font-semibold text-primary rounded-xl h-11 text-base bg-muted/80 hover:bg-muted">
+                                                        Edit Rating
+                                                    </Button>
                                                 </div>
-                                                <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Edit Rating</Button>
-                                            </div>
-                                        ) : (
-                                            <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10 rounded-lg">Rate Order</Button>
-                                        )}
-                                    </div>
+                                            ) : (
+                                                <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-[60%] font-semibold text-primary rounded-xl h-11 text-base bg-muted/80 hover:bg-muted">
+                                                    Rate Order
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </>
                                 )}
-                                
+
+                                <Separator className="my-4"/>
+
+                                {/* Footer */}
                                 <div className="flex justify-between text-xs text-muted-foreground">
                                     <span>Ordered: {order.date}</span>
                                     <span className="font-semibold text-foreground">Bill Total: {order.total}</span>
