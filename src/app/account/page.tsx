@@ -84,7 +84,11 @@ type Order = typeof mockOrders[number];
 
 const statusConfig: { [key: string]: { Icon: React.ElementType; className: string; text: string } } = {
     Delivered: {
-        Icon: CheckCircle,
+        Icon: () => (
+            <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center">
+                <Check className="h-3 w-3 text-green-600" strokeWidth={3}/>
+            </div>
+        ),
         className: 'text-green-600',
         text: 'Delivered',
     },
@@ -94,7 +98,11 @@ const statusConfig: { [key: string]: { Icon: React.ElementType; className: strin
         text: 'In Transit',
     },
     Cancelled: {
-        Icon: XCircle,
+        Icon: () => (
+             <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center">
+                <XCircle className="h-5 w-5 text-red-600 fill-current bg-white rounded-full"/>
+            </div>
+        ),
         className: 'text-red-600',
         text: 'Cancelled',
     },
@@ -301,7 +309,7 @@ export default function AccountPage() {
                                 {/* Header */}
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <h3 className="font-bold text-lg">Order from {headerDate}</h3>
+                                        <h3 className="font-bold text-base">Order from {headerDate}</h3>
                                         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                                             <MapPin className="h-4 w-4 text-primary" />
                                             <span>Karavali Mangalore Store</span>
@@ -340,15 +348,15 @@ export default function AccountPage() {
                                             {order.isRated ? (
                                                 <div className="space-y-3">
                                                     <div className="flex items-center justify-center gap-2 text-green-600 font-medium text-sm">
-                                                        <CheckCircle className="h-5 w-5 fill-current" />
-                                                        <span>You've already rated this order</span>
+                                                        <CheckCircle className="h-5 w-5 fill-green-100 text-green-600" />
+                                                        <span className="text-muted-foreground">You've already rated this order</span>
                                                     </div>
-                                                    <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-[60%] font-semibold text-primary rounded-xl h-11 text-base bg-muted/80 hover:bg-muted">
+                                                    <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-[60%] font-semibold text-primary rounded-lg h-11 text-base bg-muted/80 hover:bg-muted">
                                                         Edit Rating
                                                     </Button>
                                                 </div>
                                             ) : (
-                                                <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-[60%] font-semibold text-primary rounded-xl h-11 text-base bg-muted/80 hover:bg-muted">
+                                                <Button onClick={() => setRatingOrder(order)} variant="secondary" className="w-full sm:w-[60%] font-semibold text-primary rounded-lg h-11 text-base bg-muted/80 hover:bg-muted">
                                                     Rate Order
                                                 </Button>
                                             )}
