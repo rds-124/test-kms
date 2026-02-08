@@ -14,6 +14,7 @@ import {
   Wallet,
   User,
   Ticket,
+  CheckCircle,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -24,10 +25,38 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const mockOrders = [
-  { id: 'ORD001', date: 'Nov 23, 2023', status: 'Delivered', total: '₹1250.00', items: 'Authentic Ghee Roast Masala & 2 more' },
-  { id: 'ORD002', date: 'Dec 05, 2023', status: 'In Transit', total: '₹850.50', items: 'Crispy Jackfruit Chips' },
-  { id: 'ORD003', date: 'Jan 10, 2024', status: 'Cancelled', total: '₹450.00', items: 'Homemade Mango Pickle' },
+    {
+      id: 'ORD001',
+      date: '18 Jul 2025, 03:48 PM',
+      status: 'Delivered',
+      total: '₹1250.00',
+      items: [
+        { quantity: 1, name: 'Authentic Ghee Roast Masala' },
+        { quantity: 1, name: 'Crispy Jackfruit Chips' },
+      ],
+      moreItems: 2,
+      isRated: false,
+    },
+    {
+      id: 'ORD002',
+      date: '05 Dec 2024, 10:30 AM',
+      status: 'Delivered',
+      total: '₹850.50',
+      items: [{ quantity: 1, name: 'Spicy Banana Chips' }],
+      moreItems: 0,
+      isRated: true,
+    },
+    {
+      id: 'ORD003',
+      date: '10 Jan 2024, 01:00 PM',
+      status: 'Cancelled',
+      total: '₹450.00',
+      items: [{ quantity: 1, name: 'Homemade Mango Pickle' }],
+      moreItems: 0,
+      isRated: false,
+    },
 ];
+
 
 const quickActions = [
     { icon: Package, label: 'My Orders', href: '#' },
@@ -126,26 +155,57 @@ export default function AccountPage() {
                 {mockOrders.map((order) => (
                     <Card key={order.id} className="overflow-hidden shadow-sm rounded-2xl">
                         <CardContent className="p-4">
-                            <div className="flex justify-between items-start">
+                            <div className="flex justify-between items-center">
                                 <div>
-                                    <p className="font-bold text-primary">{order.id}</p>
-                                    <p className="text-xs text-muted-foreground">{order.date}</p>
-                                    <p className="text-sm mt-2">{order.items}</p>
+                                    <p className="font-bold text-lg">{order.id}</p>
                                 </div>
-                                <div className="text-right flex flex-col items-end">
+                                {order.status === 'Delivered' ? (
+                                    <div className="flex items-center text-green-600 font-semibold">
+                                        <CheckCircle className="h-5 w-5 mr-1" />
+                                        <span>Delivered</span>
+                                    </div>
+                                ) : (
                                     <Badge
-                                        variant={
-                                            order.status === 'Delivered' ? 'default' : order.status === 'In Transit' ? 'secondary' : 'destructive'
-                                        }
+                                        variant={order.status === 'In Transit' ? 'secondary' : 'destructive'}
                                         className={
-                                            order.status === 'Delivered' ? 'bg-green-100 text-green-800' : 
                                             order.status === 'In Transit' ? 'bg-yellow-100 text-yellow-800' : ''
                                         }
                                     >
                                         {order.status}
                                     </Badge>
-                                    <p className="font-semibold mt-2">{order.total}</p>
+                                )}
+                            </div>
+
+                            <div className="border-b pt-3 pb-4 my-3">
+                                <div className="text-sm text-muted-foreground space-y-2">
+                                    {order.items.map((item, index) => (
+                                        <div key={index} className="flex items-center gap-3">
+                                            <span className="text-xs font-medium bg-muted px-2 py-1 rounded-md border">{item.quantity}x</span>
+                                            <span className="flex-1 truncate">{item.name}</span>
+                                        </div>
+                                    ))}
+                                    {order.moreItems > 0 && (
+                                        <Link href="#" className="text-primary text-sm font-medium hover:underline ml-12">& {order.moreItems} more</Link>
+                                    )}
                                 </div>
+                            </div>
+                            
+                            {order.status === 'Delivered' && (
+                                <div className="text-center mb-4">
+                                    {order.isRated ? (
+                                        <div>
+                                            <p className="text-xs text-muted-foreground mb-1.5">You've already rated this order</p>
+                                            <Button variant="outline" size="sm" className="font-semibold text-primary border-primary hover:bg-primary/10 hover:text-primary">Edit Rating</Button>
+                                        </div>
+                                    ) : (
+                                        <Button variant="secondary" className="w-full sm:w-auto font-semibold text-primary hover:bg-primary/10">Rate Order</Button>
+                                    )}
+                                </div>
+                            )}
+                            
+                            <div className="flex justify-between text-xs text-muted-foreground">
+                                <span>Ordered: {order.date}</span>
+                                <span className="font-semibold text-foreground">Bill Total: {order.total}</span>
                             </div>
                         </CardContent>
                     </Card>
