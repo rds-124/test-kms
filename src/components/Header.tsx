@@ -100,9 +100,9 @@ export default function Header() {
           
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center">
-              <div className="bg-primary-foreground text-primary rounded-full px-4 py-1 shadow-sm flex flex-col items-center">
-                  <span className="font-bold font-headline text-2xl leading-none">Karavali</span>
-                  <span className="font-medium text-[0.6rem] tracking-[0.2em] uppercase">
+              <div className="bg-primary-foreground rounded-full px-4 py-1 shadow-inner flex flex-col items-center">
+                  <span className="font-bold font-headline text-2xl leading-none bg-gradient-to-b from-primary via-primary to-foreground bg-clip-text text-transparent">Karavali</span>
+                  <span className="font-medium text-primary text-[0.6rem] tracking-[0.2em] uppercase">
                       Mangalore Store
                   </span>
               </div>
