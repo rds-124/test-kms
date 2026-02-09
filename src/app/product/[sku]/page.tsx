@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
-import { Star, Minus, Plus, ShieldCheck, Truck } from 'lucide-react';
+import { Star, Minus, Plus, ShieldCheck, Truck, Info } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import {
   Carousel,
@@ -23,6 +23,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useFirestoreCart } from '@/hooks/use-firestore-cart';
 import { useUser, useAuth } from '@/firebase';
 import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ProductPage() {
   const params = useParams();
@@ -59,9 +65,6 @@ export default function ProductPage() {
   const handleAddToCart = () => {
     if (!user && !isUserLoading) {
         initiateAnonymousSignIn(auth);
-        // We need to wait for the user to be signed in before adding to cart.
-        // A better way is to listen for auth state change, but for a quick fix,
-        // we can re-check after a short delay.
         setTimeout(() => {
             if (auth.currentUser) {
                 addToCart(product, 1);
@@ -70,7 +73,7 @@ export default function ProductPage() {
                   description: `1 x ${product.title} has been added.`,
                 });
             }
-        }, 1000); // Wait 1 second for anonymous sign-in
+        }, 1000); 
     } else if (user) {
         addToCart(product, 1);
         toast({
@@ -217,10 +220,20 @@ export default function ProductPage() {
                 <ShieldCheck className="h-5 w-5 text-accent" />
                 <span>Authentic products from Karavali</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Truck className="h-5 w-5 text-accent" />
-                <span>Free shipping on orders over ₹799</span>
-              </div>
+              <TooltipProvider>
+                <div className="flex items-center gap-2">
+                  <Truck className="h-5 w-5 text-accent" />
+                  <span>Free shipping within 5 km on orders over ₹799</span>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Delivery distance is calculated from our store location.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+              </TooltipProvider>
             </CardContent>
           </Card>
 
