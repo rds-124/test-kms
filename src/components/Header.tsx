@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, ShoppingCart, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +18,7 @@ import { initiateAnonymousSignIn } from "@/firebase/non-blocking-login";
 import { cn } from "@/lib/utils";
 import { MobileThemeToggle } from "./MobileThemeToggle";
 import { ThemeToggle } from "./ThemeToggle";
+import SearchSheet from "./SearchSheet";
 
 export default function Header() {
   const { cartCount } = useFirestoreCart();
@@ -28,6 +28,7 @@ export default function Header() {
   const [showNav, setShowNav] = useState(true);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,7 +101,7 @@ export default function Header() {
           
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center">
-              <div className="bg-primary-foreground rounded-full px-4 py-1 shadow-inner shadow-lg flex flex-col items-center border border-black">
+              <div className="bg-primary-foreground rounded-full px-4 py-1 shadow-inner shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.1)] flex flex-col items-center border border-black/50">
                   <span className="font-bold font-headline text-2xl leading-none bg-gradient-to-b from-primary via-primary to-black/70 bg-clip-text text-transparent">Karavali</span>
                   <span className="font-semibold text-primary text-[0.6rem] tracking-[0.2em] uppercase">
                       Mangalore Store
@@ -123,13 +124,13 @@ export default function Header() {
             </DropdownMenu>
           </div>
 
-          <div className="relative flex-grow max-w-lg">
-              <Input 
-                  type="search"
-                  placeholder="Search for Grocery, Stores, Vegetable or Meat"
-                  className="w-full rounded-full border-none bg-background text-foreground pl-4 pr-10 h-10 shadow-inner"
-              />
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <div className="relative flex-grow max-w-lg cursor-pointer" onClick={() => setIsSearchOpen(true)}>
+            <div 
+                className="w-full text-left rounded-full border-none bg-background text-muted-foreground pl-4 pr-10 h-10 shadow-inner flex items-center text-sm"
+            >
+              Search for Grocery, Stores, Vegetable or Meat
+            </div>
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
           </div>
 
           <div className="flex items-center gap-4">
@@ -161,6 +162,7 @@ export default function Header() {
           </div>
         </div>
       </header>
+      <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </>
   );
 }
