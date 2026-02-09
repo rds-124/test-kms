@@ -15,7 +15,6 @@ import { Search, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from './ui/button';
-import { ScrollArea } from './ui/scroll-area';
 import { Product } from '@/types';
 
 interface SearchSheetProps {
@@ -53,29 +52,63 @@ function SearchResultItem({ product, onLinkClick }: { product: Product, onLinkCl
 export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const sheetContentRef = useRef<HTMLDivElement>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  // Set dynamic viewport height to handle mobile keyboards correctly and delay focus
+  // Refs for gesture handling to prevent re-renders on touch move
+  const touchStartPos = useRef(0);
+  const isSwiping = useRef(false);
+  const SWIPE_THRESHOLD = 100; // Min pixels to swipe down to close
+
   useEffect(() => {
     if (!open) return;
 
+    // --- Dynamic Viewport Height ---
+    // This solves issues with 100vh on mobile browsers where the keyboard changes the viewport height.
     const setVh = () => {
-      // We are multiplying by 0.01 to get a value for 1vh
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
     };
-
     setVh();
     window.addEventListener('resize', setVh);
 
-    // Focus after a delay to allow the keyboard animation to complete
-    const timer = setTimeout(() => {
-      inputRef.current?.focus();
-    }, 300);
+    // --- Delayed Input Focus ---
+    // Prevents the keyboard from causing the layout to jump on initial render.
+    const focusTimer = setTimeout(() => inputRef.current?.focus(), 300);
 
-    return () => {
-      window.removeEventListener('resize', setVh);
-      clearTimeout(timer);
+    // --- Browser History Manipulation for Back Gesture ---
+    // This allows the user to close the sheet with the system back button/gesture.
+    window.history.pushState({ searchSheetOpen: true }, '');
+    const handlePopState = (e: PopStateEvent) => {
+      // If the history event is not our specific state, it means the user went back.
+      if (!e.state?.searchSheetOpen) {
+        onOpenChange(false);
+      }
     };
+    window.addEventListener('popstate', handlePopState);
+
+    // --- Cleanup function ---
+    return () => {
+      clearTimeout(focusTimer);
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('resize', setVh);
+      // Clean up our history state if the sheet is closed by other means (X button, swipe)
+      if (window.history.state?.searchSheetOpen) {
+        window.history.back();
+      }
+    };
+  }, [open, onOpenChange]);
+
+
+  const handleClose = () => {
+    onOpenChange(false);
+  };
+  
+  // When sheet is closed (via any method), clear the search query
+  useEffect(() => {
+    if (!open) {
+      const timer = setTimeout(() => setSearchQuery(''), 300);
+      return () => clearTimeout(timer);
+    }
   }, [open]);
 
   const filteredProducts = useMemo(() => {
@@ -90,28 +123,60 @@ export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
     );
   }, [searchQuery]);
 
-  const handleClose = () => {
-    onOpenChange(false);
-    setSearchQuery('');
-  }
-  
-  // When sheet is closed (via any method), clear the search query
-  useEffect(() => {
-    if (!open) {
-      // Add a small delay to not clear the query while the sheet is closing.
-      const timer = setTimeout(() => {
-        setSearchQuery('');
-      }, 300);
-      return () => clearTimeout(timer);
+  // --- Gesture Handling for Swipe-to-Close ---
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    // Only start tracking a swipe if the search results are not scrolled down.
+    if (scrollAreaRef.current && scrollAreaRef.current.scrollTop === 0) {
+      touchStartPos.current = e.touches[0].clientY;
+      isSwiping.current = true;
     }
-  }, [open]);
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isSwiping.current || !sheetContentRef.current) return;
+
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - touchStartPos.current;
+
+    // Only handle downward swipes.
+    if (deltaY > 0) {
+      e.preventDefault(); // Prevent page scroll while swiping the sheet.
+      // Apply visual feedback by moving the sheet down.
+      sheetContentRef.current.style.transform = `translateY(${deltaY}px)`;
+      sheetContentRef.current.style.transition = 'none'; // Ensure smooth dragging.
+    }
+  };
+
+  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isSwiping.current || !sheetContentRef.current) return;
+
+    const currentY = e.changedTouches[0].clientY;
+    const deltaY = currentY - touchStartPos.current;
+
+    if (deltaY > SWIPE_THRESHOLD) {
+      // If the user swiped far enough, close the sheet.
+      onOpenChange(false);
+    } else {
+      // Otherwise, animate the sheet back to its original position.
+      sheetContentRef.current.style.transition = 'transform 0.2s ease';
+      sheetContentRef.current.style.transform = 'translateY(0px)';
+    }
+
+    // Reset swipe tracking state.
+    isSwiping.current = false;
+    touchStartPos.current = 0;
+  };
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
+        ref={sheetContentRef}
         side="bottom"
         className="flex flex-col p-0 bg-background overflow-hidden"
         style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         <SheetHeader 
           className="p-4 border-b flex-shrink-0" 
@@ -138,7 +203,7 @@ export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                 </SheetClose>
             </div>
         </SheetHeader>
-        <ScrollArea className="flex-grow">
+        <div className="flex-grow overflow-y-auto" ref={scrollAreaRef}>
           <div className="p-4">
             {searchQuery && filteredProducts.length === 0 && (
                 <div className="text-center py-20">
@@ -161,7 +226,7 @@ export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                 </div>
             )}
           </div>
-        </ScrollArea>
+        </div>
       </SheetContent>
     </Sheet>
   );
