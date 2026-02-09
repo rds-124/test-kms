@@ -411,7 +411,7 @@ export default function CategoryPage() {
               })}
               </div>
             </section>
-            <div id="all-products" className="text-center mb-8 scroll-mt-24">
+            <div id="all-products" className="text-center mb-8 scroll-mt-16">
               <h1 className="text-4xl font-headline font-bold">{pageTitle}</h1>
             </div>
             <ProductFilterBar {...{ sortOption, setSortOption, inStockOnly, setInStockOnly, priceRange, setPriceRange, selectedCategories, toggleCategory, clearCategoryFilter, isAllCategoryPage, subCategoryQuery, currentCategorySlug: slug, subCategories }} />
@@ -482,7 +482,7 @@ export default function CategoryPage() {
             </section>
         )}
       
-        <div id={isAllCategoryPage ? "all-products" : undefined} className="text-center mb-8 scroll-mt-32">
+        <div id={isAllCategoryPage ? "all-products" : undefined} className="text-center mb-8 scroll-mt-24">
           <h1 className="text-4xl font-headline font-bold">{pageTitle}</h1>
         </div>
         
