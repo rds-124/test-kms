@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
-import { Star, Minus, Plus, ShieldCheck, Truck, Info } from 'lucide-react';
+import { Star, Minus, Plus, ShieldCheck, Home, Heart } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import {
   Carousel,
@@ -23,14 +23,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useFirestoreCart } from '@/hooks/use-firestore-cart';
 import { useUser, useAuth } from '@/firebase';
 import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { useIsMobile } from '@/hooks/use-mobile';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export default function ProductPage() {
   const params = useParams();
@@ -39,7 +31,6 @@ export default function ProductPage() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const { getCartItem, addToCart, updateCartItemQuantity, isLoading: isCartLoading } = useFirestoreCart();
-  const isMobile = useIsMobile();
 
   const product = allProducts.find((p) => p.sku === sku);
   const cartItem = product ? getCartItem(product.sku) : undefined;
@@ -220,33 +211,16 @@ export default function ProductPage() {
           <Card className="bg-secondary/50">
             <CardContent className="p-4 space-y-2 text-sm">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-accent" />
-                <span>Authentic products from Karavali</span>
+                <Home className="h-5 w-5 text-accent" />
+                <span>Family-run store since 2007</span>
               </div>
               <div className="flex items-center gap-2">
-                <Truck className="h-5 w-5 text-accent" />
-                <span>Free shipping within 5 km on orders over ₹799</span>
-                {isMobile ? (
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto max-w-[240px] p-2 text-sm">
-                      <p>Delivery distance is calculated from our store location.</p>
-                    </PopoverContent>
-                  </Popover>
-                ) : (
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Delivery distance is calculated from our store location.</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                )}
+                <Heart className="h-5 w-5 text-accent" />
+                <span>Trusted by families for years</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-5 w-5 text-accent" />
+                <span>Authentic products from Karavali</span>
               </div>
             </CardContent>
           </Card>
