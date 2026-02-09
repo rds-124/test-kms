@@ -28,9 +28,9 @@ export default function ProductPage() {
   const params = useParams();
   const { sku } = params;
   const { toast } = useToast();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const auth = useAuth();
-  const { getCartItem, addToCart, updateCartItemQuantity } = useFirestoreCart();
+  const { getCartItem, addToCart, updateCartItemQuantity, isLoading: isCartLoading } = useFirestoreCart();
 
   const product = allProducts.find((p) => p.sku === sku);
   const cartItem = product ? getCartItem(product.sku) : undefined;
@@ -57,14 +57,27 @@ export default function ProductPage() {
     : 0;
 
   const handleAddToCart = () => {
-    if (!user) {
+    if (!user && !isUserLoading) {
         initiateAnonymousSignIn(auth);
+        // We need to wait for the user to be signed in before adding to cart.
+        // A better way is to listen for auth state change, but for a quick fix,
+        // we can re-check after a short delay.
+        setTimeout(() => {
+            if (auth.currentUser) {
+                addToCart(product, 1);
+                toast({
+                  title: "Added to cart",
+                  description: `1 x ${product.title} has been added.`,
+                });
+            }
+        }, 1000); // Wait 1 second for anonymous sign-in
+    } else if (user) {
+        addToCart(product, 1);
+        toast({
+          title: "Added to cart",
+          description: `1 x ${product.title} has been added.`,
+        });
     }
-    addToCart(product, 1);
-    toast({
-      title: "Added to cart",
-      description: `1 x ${product.title} has been added.`,
-    });
   };
 
   const handleQuantityUpdate = (newQuantity: number) => {
@@ -121,8 +134,11 @@ export default function ProductPage() {
         <div className="space-y-6">
           <div>
             <h1 className="text-3xl lg:text-4xl font-headline font-bold">{product.title}</h1>
+            {product.kannada_title && (
+              <p className="text-xl text-muted-foreground mt-1">{product.kannada_title}</p>
+            )}
             {product.weight && (
-              <p className="text-muted-foreground text-lg">{product.weight}</p>
+              <p className="text-muted-foreground text-lg mt-1">{product.weight}</p>
             )}
           </div>
           
@@ -154,6 +170,8 @@ export default function ProductPage() {
           <div className="space-y-4">
             {isOutOfStock ? (
               <Button size="lg" className="w-full rounded-full" disabled>Out of Stock</Button>
+            ) : isCartLoading ? (
+                <Button size="lg" className="w-full rounded-full" disabled>Loading...</Button>
             ) : cartItem ? (
                 <div className="flex w-full justify-center">
                     <div className="flex items-center h-12 rounded-full bg-primary/10 dark:bg-primary/20 p-2 gap-2 border border-primary w-48">
@@ -182,7 +200,7 @@ export default function ProductPage() {
                     </div>
                 </div>
             ) : (
-                <Button size="lg" className="w-full rounded-full" onClick={handleAddToCart}>
+                <Button size="lg" className="w-full rounded-full" onClick={handleAddToCart} disabled={isUserLoading}>
                   Add to Cart
                 </Button>
             )}

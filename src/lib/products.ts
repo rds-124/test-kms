@@ -4,6 +4,7 @@ export const products: Product[] = [
   {
     sku: 'TDS-GRM-200',
     title: 'Authentic Ghee Roast Masala',
+    kannada_title: 'ಅಪ್ಪಟ ತುಪ್ಪ ಹುರಿದ ಮಸಾಲಾ',
     category: 'grocery',
     sub_category: 'spices-masalas',
     price: 150,
@@ -22,6 +23,7 @@ export const products: Product[] = [
   {
     sku: 'TDS-KMP-250',
     title: 'Kundapur Masala Powder',
+    kannada_title: 'ಕುಂದಾಪುರ ಮಸಾಲಾ ಪುಡಿ',
     category: 'grocery',
     sub_category: 'spices-masalas',
     price: 130,
@@ -39,6 +41,7 @@ export const products: Product[] = [
   {
     sku: 'TDP-MP-500',
     title: 'Homemade Mango Pickle',
+    kannada_title: 'ಮನೆಯಲ್ಲಿ ಮಾಡಿದ ಮಾವಿನ ಉಪ್ಪಿನಕಾಯಿ',
     category: 'grocery',
     sub_category: 'pickles-condiments',
     price: 250,
@@ -57,6 +60,7 @@ export const products: Product[] = [
   {
     sku: 'TDSN-JC-150',
     title: 'Crispy Jackfruit Chips',
+    kannada_title: 'ಕುರುಕುಲು ಹಲಸಿನ ಹಣ್ಣಿನ ಚಿಪ್ಸ್',
     category: 'snacks',
     price: 180,
     currency: 'INR',
@@ -73,6 +77,7 @@ export const products: Product[] = [
   {
     sku: 'TDG-RR-1000',
     title: 'Boiled Red Rice (Kaje Akki)',
+    kannada_title: 'ಕುಚಲಕ್ಕಿ (ಕಜೆ ಅಕ್ಕಿ)',
     category: 'grocery',
     sub_category: 'rice',
     price: 90,
@@ -90,6 +95,7 @@ export const products: Product[] = [
   {
     sku: 'TDSN-BC-200',
     title: 'Spicy Banana Chips',
+    kannada_title: 'ಖಾರದ ಬಾಳೆಹಣ್ಣಿನ ಚಿಪ್ಸ್',
     category: 'snacks',
     price: 120,
     sale_price: 99,
@@ -107,6 +113,7 @@ export const products: Product[] = [
   {
     sku: 'TDN-CN-250',
     title: 'Premium Cashew Nuts',
+    kannada_title: 'ಪ್ರೀಮಿಯಂ ಗೋಡಂಬಿ',
     category: 'snacks',
     price: 350,
     currency: 'INR',
@@ -123,6 +130,7 @@ export const products: Product[] = [
   {
     sku: 'TDG-JG-500',
     title: 'Organic Palm Jaggery',
+    kannada_title: 'ಸಾವಯವ ತಾಳೆ ಬೆಲ್ಲ',
     category: 'grocery',
     sub_category: 'sweeteners',
     price: 180,
@@ -140,6 +148,7 @@ export const products: Product[] = [
   {
     sku: 'TDO-CO-500',
     title: 'Cold-Pressed Coconut Oil',
+    kannada_title: 'ಶೀತ ಒತ್ತಿದ ತೆಂಗಿನ ಎಣ್ಣೆ',
     category: 'grocery',
     sub_category: 'oils',
     price: 280,
@@ -158,6 +167,7 @@ export const products: Product[] = [
   {
     sku: 'TDP-AMP-300',
     title: 'Tender Mango Pickle (Appe Midi)',
+    kannada_title: 'ಅಪ್ಪೆ ಮಿಡಿ ಉಪ್ಪಿನಕಾಯಿ',
     category: 'grocery',
     sub_category: 'pickles-condiments',
     price: 320,
@@ -175,6 +185,7 @@ export const products: Product[] = [
   {
     sku: 'TDH-SI-01',
     title: 'Sandalwood Ganesha Idol',
+    kannada_title: 'ಶ್ರೀಗಂಧದ ಗಣೇಶ ವಿಗ್ರಹ',
     category: 'household',
     sub_category: 'pooja-items',
     price: 1200,
@@ -191,6 +202,7 @@ export const products: Product[] = [
   {
     sku: 'TDH-TP-01',
     title: 'Handmade Terracotta Pot',
+    kannada_title: 'ಕೈಯಿಂದ ಮಾಡಿದ ಮಣ್ಣಿನ ಮಡಕೆ',
     category: 'household',
     sub_category: 'kitchenware',
     price: 450,
@@ -208,6 +220,7 @@ export const products: Product[] = [
   {
     sku: 'TDA-TC-100',
     title: 'Triphala Churna',
+    kannada_title: 'ತ್ರಿಫಲ ಚೂರ್ಣ',
     category: 'ayurvedic',
     price: 180,
     currency: 'INR',
@@ -224,6 +237,7 @@ export const products: Product[] = [
   {
     sku: 'TDA-AC-100',
     title: 'Ashwagandha Capsules',
+    kannada_title: 'ಅಶ್ವಗಂಧ ಮಾತ್ರೆಗಳು',
     category: 'ayurvedic',
     price: 250,
     currency: 'INR',
@@ -239,6 +253,7 @@ export const products: Product[] = [
   {
     sku: 'TDR-SHV-200',
     title: 'Ready to Eat Rice Shavige',
+    kannada_title: 'ಸಿದ್ಧ ಅಕ್ಕಿ ಶಾವಿಗೆ',
     category: 'ready-to-eat',
     sub_category: 'shavige',
     price: 120,
@@ -256,6 +271,7 @@ export const products: Product[] = [
   {
     sku: 'TDR-PTR-004',
     title: 'Ready to Steam Patrode',
+    kannada_title: 'ಸಿದ್ಧ ಪತ್ರೊಡೆ',
     category: 'ready-to-eat',
     sub_category: 'patrode',
     price: 150,
@@ -272,6 +288,7 @@ export const products: Product[] = [
   {
     sku: 'TDR-KTE-006',
     title: 'Kotte Idli Batter',
+    kannada_title: 'ಕೊಟ್ಟೆ ಇಡ್ಲಿ ಹಿಟ್ಟು',
     category: 'ready-to-eat',
     sub_category: 'kotte',
     price: 90,
@@ -288,6 +305,7 @@ export const products: Product[] = [
    {
     sku: 'TDR-NDM-500',
     title: 'Neer Dose Batter',
+    kannada_title: 'ನೀರ್ ದೋಸೆ ಹಿಟ್ಟು',
     category: 'ready-to-eat',
     sub_category: 'neer-dose',
     price: 70,

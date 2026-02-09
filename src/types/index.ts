@@ -1,6 +1,7 @@
 export type Product = {
   sku: string;
   title: string;
+  kannada_title?: string;
   category: string;
   sub_category?: string;
   price: number;
