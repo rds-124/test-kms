@@ -100,7 +100,7 @@ export default function Header() {
           
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center">
-              <div className="bg-primary-foreground rounded-full px-4 py-1 shadow-inner flex flex-col items-center border border-black">
+              <div className="bg-primary-foreground rounded-full px-4 py-1 shadow-inner shadow-lg flex flex-col items-center border border-black">
                   <span className="font-bold font-headline text-2xl leading-none bg-gradient-to-b from-primary via-primary to-black/70 bg-clip-text text-transparent">Karavali</span>
                   <span className="font-semibold text-primary text-[0.6rem] tracking-[0.2em] uppercase">
                       Mangalore Store
