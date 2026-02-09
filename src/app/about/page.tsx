@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-headline font-bold">About Karavali Store</h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Your authentic gateway to the rich heritage and flavors of the Tulu region.
+            Your authentic gateway to the rich heritage and flavors of the Karavali region.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-headline font-bold mb-4">Our Story</h2>
             <p className="mb-4 text-muted-foreground">
-              Karavali Store was born from a passion for preserving and sharing the unique cultural tapestry of the coastal Karnataka region, known as Tulunadu. We are a small team dedicated to sourcing the most authentic products, from fragrant spices that define our cuisine to handcrafted goods that tell a story.
+              Karavali Store was born from a passion for preserving and sharing the unique cultural tapestry of the coastal Karnataka region, known as Karavali. We are a small team dedicated to sourcing the most authentic products, from fragrant spices that define our cuisine to handcrafted goods that tell a story.
             </p>
             <p className="text-muted-foreground">
               We work directly with local farmers, artisans, and small businesses to ensure that every product we offer is of the highest quality and carries the true essence of its origin. By choosing Karavali Store, you are not just buying a product; you are supporting local communities and helping to keep ancient traditions alive.
@@ -55,7 +55,7 @@ export default function AboutPage() {
                   <Heart className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold">Community Support</h3>
-                    <p className="text-sm text-muted-foreground">Your purchase empowers local artisans and farmers, fostering sustainable livelihoods within the Tulunadu region.</p>
+                    <p className="text-sm text-muted-foreground">Your purchase empowers local artisans and farmers, fostering sustainable livelihoods within the Karavali region.</p>
                   </div>
                 </CardContent>
               </Card>

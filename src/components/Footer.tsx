@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-2">
             <h3 className="font-headline text-2xl font-bold">Karavali Store</h3>
             <p className="mt-2 text-sm max-w-sm">
-              Bringing the authentic taste and culture of Tulunadu right to your doorstep.
+              Bringing the authentic taste and culture of Karavali right to your doorstep.
             </p>
             <div className="mt-4 flex space-x-4">
               <Link href="#" aria-label="Facebook"><Facebook className="h-6 w-6 hover:text-primary transition-colors" /></Link>

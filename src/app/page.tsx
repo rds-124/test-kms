@@ -64,7 +64,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 max-w-4xl p-8">
           <h1 className="text-4xl md:text-6xl font-headline font-bold text-shadow-lg">
-            Experience the Essence of Tulunadu
+            Experience the Essence of Karavali
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
             Discover authentic spices, traditional crafts, and unique delicacies from the coastal heart of Karnataka.
@@ -132,7 +132,7 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
             <Link href="/category/all#all-products">View All Products</Link>
           </Button>
         </div>

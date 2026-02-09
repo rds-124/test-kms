@@ -10,7 +10,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Karavali Store",
-  description: "Authentic products from the heart of Tulunadu.",
+  description: "Authentic products from the heart of Karavali.",
 };
 
 export default function RootLayout({

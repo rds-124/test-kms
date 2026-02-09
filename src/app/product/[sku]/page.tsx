@@ -199,7 +199,7 @@ export default function ProductPage() {
             <CardContent className="p-4 space-y-2 text-sm">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-accent" />
-                <span>Authentic products from Tulunadu</span>
+                <span>Authentic products from Karavali</span>
               </div>
               <div className="flex items-center gap-2">
                 <Truck className="h-5 w-5 text-accent" />
