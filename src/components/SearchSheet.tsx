@@ -6,6 +6,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetClose,
 } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 import { products as allProducts } from '@/lib/products';
@@ -93,6 +94,17 @@ export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
     onOpenChange(false);
     setSearchQuery('');
   }
+  
+  // When sheet is closed (via any method), clear the search query
+  useEffect(() => {
+    if (!open) {
+      // Add a small delay to not clear the query while the sheet is closing.
+      const timer = setTimeout(() => {
+        setSearchQuery('');
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [open]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -118,10 +130,12 @@ export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
-                <Button variant="ghost" size="icon" className="rounded-full h-11 w-11" onClick={handleClose}>
-                    <X className="h-5 w-5"/>
-                    <span className="sr-only">Close</span>
-                </Button>
+                <SheetClose asChild>
+                    <Button variant="ghost" size="icon" className="rounded-full h-11 w-11">
+                        <X className="h-5 w-5"/>
+                        <span className="sr-only">Close</span>
+                    </Button>
+                </SheetClose>
             </div>
         </SheetHeader>
         <ScrollArea className="flex-grow">
