@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   Sheet,
   SheetContent,
@@ -51,6 +51,31 @@ function SearchResultItem({ product, onLinkClick }: { product: Product, onLinkCl
 
 export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
   const [searchQuery, setSearchQuery] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Set dynamic viewport height to handle mobile keyboards correctly and delay focus
+  useEffect(() => {
+    if (!open) return;
+
+    const setVh = () => {
+      // We are multiplying by 0.01 to get a value for 1vh
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    setVh();
+    window.addEventListener('resize', setVh);
+
+    // Focus after a delay to allow the keyboard animation to complete
+    const timer = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 300);
+
+    return () => {
+      window.removeEventListener('resize', setVh);
+      clearTimeout(timer);
+    };
+  }, [open]);
 
   const filteredProducts = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -71,19 +96,26 @@ export default function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="bottom" className="h-[100dvh] flex flex-col p-0 bg-background overflow-hidden">
-        <SheetHeader className="p-4 border-b flex-shrink-0">
+      <SheetContent
+        side="bottom"
+        className="flex flex-col p-0 bg-background overflow-hidden"
+        style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+      >
+        <SheetHeader 
+          className="p-4 border-b flex-shrink-0" 
+          style={{ paddingTop: 'calc(env(safe-area-inset-top) + 1rem)' }}
+        >
             <SheetTitle className="sr-only">Search Products</SheetTitle>
             <div className="flex items-center gap-2">
                 <div className="relative flex-grow">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
+                        ref={inputRef}
                         type="search"
                         placeholder="Search for products..."
                         className="w-full rounded-full bg-muted pl-10 pr-4 h-11 text-base"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        autoFocus
                     />
                 </div>
                 <Button variant="ghost" size="icon" className="rounded-full h-11 w-11" onClick={handleClose}>
