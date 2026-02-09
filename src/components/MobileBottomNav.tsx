@@ -32,6 +32,32 @@ export default function MobileBottomNav() {
     }
   };
 
+  const createRipple = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const link = event.currentTarget;
+    const rect = link.getBoundingClientRect();
+
+    const circle = document.createElement("span");
+    const diameter = Math.max(link.clientWidth, link.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - rect.left - radius}px`;
+    circle.style.top = `${event.clientY - rect.top - radius}px`;
+    circle.classList.add("ripple");
+
+    const existingRipple = link.querySelector(".ripple");
+    if (existingRipple) {
+      existingRipple.remove();
+    }
+
+    link.appendChild(circle);
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0]) => {
+    createRipple(e);
+    handleSearchClick(e, item);
+  };
+
   return (
     /**
      * A container fixed to the bottom of the screen on mobile devices.
@@ -54,15 +80,15 @@ export default function MobileBottomNav() {
               <Link
                 href={item.href}
                 key={item.label}
-                onClick={(e) => handleSearchClick(e, item)}
+                onClick={(e) => handleNavClick(e, item)}
                 className={cn(
-                  'flex h-full w-full flex-col items-center justify-center gap-1 rounded-full text-xs transition-colors',
+                  'relative overflow-hidden flex h-full w-full flex-col items-center justify-center gap-1 rounded-full text-xs transition-colors',
                   isActive
                     ? 'text-primary font-bold'
                     : 'text-muted-foreground hover:text-primary'
                 )}
               >
-                <div className="relative">
+                <div className="relative z-10">
                   {/* The icon's fill changes on active state, mimicking the reference image. */}
                   <item.icon
                     className={cn('h-6 w-6', isActive && 'fill-current')}
@@ -74,7 +100,7 @@ export default function MobileBottomNav() {
                     </span>
                   )}
                 </div>
-                <span className="text-[10px]">{item.label}</span>
+                <span className="text-[10px] z-10">{item.label}</span>
               </Link>
             );
           })}

@@ -84,4 +84,18 @@
     opacity: 0.6;
     margin-left: 6px;
   }
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 600ms linear;
+    background-color: hsla(var(--primary) / 0.3);
+  }
+
+  @keyframes ripple-effect {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
 }
