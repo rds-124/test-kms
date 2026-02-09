@@ -29,6 +29,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export default function ProductPage() {
   const params = useParams();
@@ -37,6 +39,7 @@ export default function ProductPage() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const { getCartItem, addToCart, updateCartItemQuantity, isLoading: isCartLoading } = useFirestoreCart();
+  const isMobile = useIsMobile();
 
   const product = allProducts.find((p) => p.sku === sku);
   const cartItem = product ? getCartItem(product.sku) : undefined;
@@ -220,20 +223,31 @@ export default function ProductPage() {
                 <ShieldCheck className="h-5 w-5 text-accent" />
                 <span>Authentic products from Karavali</span>
               </div>
-              <TooltipProvider>
-                <div className="flex items-center gap-2">
-                  <Truck className="h-5 w-5 text-accent" />
-                  <span>Free shipping within 5 km on orders over ₹799</span>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
+              <div className="flex items-center gap-2">
+                <Truck className="h-5 w-5 text-accent" />
+                <span>Free shipping within 5 km on orders over ₹799</span>
+                {isMobile ? (
+                  <Popover>
+                    <PopoverTrigger asChild>
                       <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
-                    </TooltipTrigger>
-                    <TooltipContent>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto max-w-[240px] p-2 text-sm">
                       <p>Delivery distance is calculated from our store location.</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-              </TooltipProvider>
+                    </PopoverContent>
+                  </Popover>
+                ) : (
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Delivery distance is calculated from our store location.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                )}
+              </div>
             </CardContent>
           </Card>
 
