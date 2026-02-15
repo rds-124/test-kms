@@ -68,7 +68,7 @@ export default function Home() {
             Bringing the True Taste of Coastal Karnataka to Your Home
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-            Authentic Karavali & Malnad heritage foods delivered across Bengaluru and India.
+            Authentic Karavali & Malnad heritage foods rooted in tradition and crafted with care.
           </p>
           <Button asChild size="lg" className="mt-8">
             <Link href="/category/all">Shop Now</Link>
