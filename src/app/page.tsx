@@ -68,7 +68,7 @@ export default function Home() {
             Bringing the True Taste of Coastal Karnataka to Your Home
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-            Shop authentic Karavali & Mangalore snacks, spices, oils, pickles and Malnad specialties online with doorstep delivery in Bengaluru and across India.
+            Authentic Karavali & Malnad specialties delivered across Bengaluru and India.
           </p>
           <Button asChild size="lg" className="mt-8">
             <Link href="/category/all">Shop Now</Link>
