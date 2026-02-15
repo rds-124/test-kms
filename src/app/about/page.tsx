@@ -84,6 +84,9 @@ export default function AboutPage() {
               <p className="mt-4 text-xl md:text-2xl font-semibold text-foreground">
                 From our family to yours, we bring the true taste of Coastal Karnataka.
               </p>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Thank you for being a part of our journey. We are grateful to serve you.
+              </p>
             </div>
           </div>
         </div>
