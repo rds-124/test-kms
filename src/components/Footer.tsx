@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <h3 className="font-headline text-2xl font-bold">Karavali Mangalore Store</h3>
@@ -61,7 +61,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
+        <div className="mt-8 border-t pt-6 text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Karavali Mangalore Store. All rights reserved.</p>
         </div>
       </div>
