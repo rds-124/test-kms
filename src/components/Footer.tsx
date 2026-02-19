@@ -4,17 +4,6 @@ import { Facebook, Instagram, Twitter } from 'lucide-react';
 export default function Footer() {
   const linkSections = [
     {
-      title: 'Shop',
-      links: [
-        { name: 'Instant', href: '/category/instant' },
-        { name: 'Snacks', href: '/category/snacks' },
-        { name: 'Sweets', href: '/category/sweets' },
-        { name: 'Grocery', href: '/category/grocery' },
-        { name: 'Ayurvedic', href: '/category/ayurvedic' },
-        { name: 'Ready to Eat', href: '/category/ready-to-eat' },
-      ],
-    },
-    {
       title: 'Support',
       links: [
         { name: 'Contact Us', href: '/contact' },
