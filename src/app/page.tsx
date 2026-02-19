@@ -139,7 +139,7 @@ export default function Home() {
       {/* Featured Products */}
       <section className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
-            <h2 className="text-3xl font-headline font-bold text-center md:text-left">Fresh Picks for You</h2>
+            <h2 className="text-3xl font-headline font-bold text-center md:text-left">🛍 To Your Home</h2>
             <div className="flex flex-nowrap items-center justify-start gap-2 overflow-x-auto pb-2 md:flex-wrap md:justify-end md:overflow-x-visible md:pb-0">
                 {filters.map((filter) => (
                 <Button
