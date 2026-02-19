@@ -1,4 +1,6 @@
+'use client';
 
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -13,7 +15,16 @@ import ReviewCarousel from "@/components/ReviewCarousel";
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
 
 export default function Home() {
-  const featuredProducts = products.slice(0, 8);
+  const [activeFilter, setActiveFilter] = useState('All');
+  const filters = ['All', 'Snacks', 'Sweets', 'Grocery', 'Instant'];
+
+  const featuredProducts = useMemo(() => {
+    if (activeFilter === 'All') {
+        return products.slice(0, 8);
+    }
+    const categorySlug = activeFilter.toLowerCase();
+    return products.filter(p => p.category === categorySlug).slice(0, 8);
+  }, [activeFilter]);
 
   const trustBadges = [
     { icon: ShieldCheck, text: "Authentic Products", description: "Sourced directly from local artisans" },
@@ -126,7 +137,22 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="container mx-auto px-4">
-        <h2 className="text-3xl font-headline font-bold text-center mb-8">Featured Products</h2>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+            <h2 className="text-3xl font-headline font-bold text-center md:text-left">Featured Products</h2>
+            <div className="flex items-center justify-center md:justify-end gap-2 flex-wrap">
+                {filters.map((filter) => (
+                <Button
+                    key={filter}
+                    variant={activeFilter === filter ? 'default' : 'outline'}
+                    size="sm"
+                    className="rounded-full px-4"
+                    onClick={() => setActiveFilter(filter)}
+                >
+                    {filter}
+                </Button>
+                ))}
+            </div>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {featuredProducts.map((product) => (
             <ProductCard key={product.sku} product={product} />
