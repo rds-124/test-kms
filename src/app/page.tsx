@@ -276,19 +276,19 @@ export default function Home() {
               <div className="relative z-10">
                 <div className="p-8 md:p-10">
                     <div className="flex justify-center items-center gap-4 mb-8">
-                        <h2 className="text-3xl font-headline font-bold text-foreground">Fast &amp; Reliable Delivery</h2>
+                        <h2 className="text-3xl font-headline font-bold text-foreground text-center">Fast &amp; Reliable Delivery</h2>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-muted-foreground">
                         <div className="flex flex-col items-center gap-2">
-                            <MapPin className="w-8 h-8 text-accent" />
+                            <MapPin className="w-6 h-6 text-accent" />
                             <p className="font-semibold">Delivering in Bengaluru<br />&amp; Across India</p>
                         </div>
                         <div className="flex flex-col items-center gap-2 sm:border-x sm:border-dashed sm:border-accent/50 px-4">
-                            <Clock className="w-8 h-8 text-accent" />
+                            <Clock className="w-6 h-6 text-accent" />
                             <p className="font-semibold">Orders Dispatched<br />in 24 Hours</p>
                         </div>
                         <div className="flex flex-col items-center gap-2">
-                            <PhoneCall className="w-8 h-8 text-accent" />
+                            <PhoneCall className="w-6 h-6 text-accent" />
                             <p className="font-semibold">24/7 Customer Support</p>
                         </div>
                     </div>
@@ -303,8 +303,8 @@ export default function Home() {
                         )}
                     </div>
                     <div className="p-8 text-center space-y-5">
-                        <h3 className="font-headline text-4xl text-primary">Taste Authentic Karavali at Home</h3>
-                        <p className="text-xl font-semibold">Fresh. Authentic. Delivered.</p>
+                        <h3 className="font-headline text-4xl text-foreground">Taste Authentic Karavali at Home</h3>
+                        <p className="text-xl font-semibold text-[#3A3A3A] dark:text-muted-foreground">Fresh. Authentic. Delivered.</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button asChild size="lg" className="rounded-lg text-lg px-8 py-6">
                                 <Link href="/category/all">Shop Now</Link>
@@ -315,7 +315,7 @@ export default function Home() {
                                 </Link>
                             </Button>
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-muted-foreground font-bold">
                             ⭐ Trusted by 500+ families since 2007
                         </div>
                         <div className="flex items-center justify-center gap-2 text-accent font-bold pt-4">
