@@ -1,6 +1,6 @@
 "use client";
 
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const reviews = [
@@ -39,17 +39,14 @@ export default function ReviewCarousel() {
       <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 animate-scroll group-hover:[animation-play-state:paused]">
         {[...reviews, ...reviews].map((review, index) => {
            return (
-            <li key={index} className="flex-shrink-0">
-                <div className="w-80 h-52 p-6 flex flex-col relative">
-                    <Quote className="absolute top-4 left-4 h-10 w-10 text-primary/10" fill="currentColor"/>
-                    <p className="text-sm text-muted-foreground flex-grow z-10 pt-4">"{review.review}"</p>
-                    <div className="mt-auto pt-4 text-left z-10">
-                        <p className="font-bold">{review.name}</p>
-                        <div className="flex items-center gap-0.5">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className={cn("h-4 w-4", i < review.rating ? "text-primary fill-primary" : "text-muted-foreground/50")} />
-                            ))}
-                        </div>
+            <li key={index} className="flex-shrink-0 w-80 p-6">
+                <p className="text-sm text-muted-foreground mb-4">"{review.review}"</p>
+                <div className="text-left">
+                    <p className="font-bold">{review.name}</p>
+                    <div className="flex items-center gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={cn("h-4 w-4", i < review.rating ? "text-primary fill-primary" : "text-muted-foreground/50")} />
+                        ))}
                     </div>
                 </div>
             </li>

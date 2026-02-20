@@ -246,20 +246,9 @@ export default function Home() {
           </div>
 
           {/* Customer Reviews Section */}
-          <div className="bg-background rounded-3xl p-8 md:p-12 shadow-lg overflow-hidden relative">
-             {aboutUsFarmBgImage && (
-                <Image
-                    src={aboutUsFarmBgImage.imageUrl}
-                    alt={aboutUsFarmBgImage.description}
-                    fill
-                    className="object-cover opacity-10 dark:opacity-20"
-                    data-ai-hint={aboutUsFarmBgImage.imageHint}
-                />
-            )}
-            <div className="relative z-10">
-                <h2 className="text-3xl font-headline font-bold text-center md:text-left mb-10">What Our<br className="md:hidden" /> Customers Say</h2>
-                <ReviewCarousel />
-            </div>
+          <div>
+            <h2 className="text-3xl font-headline font-bold text-center md:text-left mb-10">What Our<br className="md:hidden" /> Customers Say</h2>
+            <ReviewCarousel />
           </div>
 
           {/* Final CTA Section */}
