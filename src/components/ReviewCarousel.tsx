@@ -40,7 +40,7 @@ export default function ReviewCarousel() {
         {[...reviews, ...reviews].map((review, index) => {
            return (
             <li key={index} className="flex-shrink-0">
-                <div className="w-80 h-52 bg-card rounded-2xl shadow-lg p-6 flex flex-col relative">
+                <div className="w-80 h-52 p-6 flex flex-col relative">
                     <Quote className="absolute top-4 left-4 h-10 w-10 text-primary/10" fill="currentColor"/>
                     <p className="text-sm text-muted-foreground flex-grow z-10 pt-4">"{review.review}"</p>
                     <div className="mt-auto pt-4 text-left z-10">
