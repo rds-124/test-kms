@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'Roboto', 'Noto Sans', 'Segoe UI', 'system-ui', 'Arial', 'sans-serif'],
-        headline: ['Playfair Display', 'serif'],
+        body: ['var(--font-inter)', 'var(--font-roboto)', 'var(--font-noto-sans)', 'system-ui', 'sans-serif'],
+        headline: ['var(--font-playfair-display)', 'serif'],
         code: ['monospace'],
       },
       colors: {
