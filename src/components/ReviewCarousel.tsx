@@ -2,7 +2,7 @@
 
 import { Star, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const reviews = [
@@ -36,12 +36,38 @@ const reviews = [
 export default function ReviewCarousel() {
   const [isPaused, setIsPaused] = useState(false);
   const isMobile = useIsMobile();
+  const pauseTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleInteraction = () => {
     if (isMobile) {
+      // Toggle the pause state on tap
       setIsPaused((prev) => !prev);
     }
   };
+
+  // This effect manages the auto-resume functionality on mobile
+  useEffect(() => {
+    // Always clear any existing timeout when the pause state changes or on unmount
+    if (pauseTimeout.current) {
+      clearTimeout(pauseTimeout.current);
+      pauseTimeout.current = null;
+    }
+
+    // If the carousel is paused on mobile, set a timeout to resume it automatically
+    if (isMobile && isPaused) {
+      pauseTimeout.current = setTimeout(() => {
+        setIsPaused(false);
+      }, 7000); // 7 seconds
+    }
+
+    // Cleanup function to clear timeout if the component unmounts
+    return () => {
+      if (pauseTimeout.current) {
+        clearTimeout(pauseTimeout.current);
+      }
+    };
+  }, [isMobile, isPaused]); // Rerun effect when mobile status or pause state changes
+
 
   return (
     <div
@@ -50,8 +76,11 @@ export default function ReviewCarousel() {
     >
       <ul
         className={cn(
-          "flex items-center justify-center md:justify-start [&_li]:mx-4 animate-scroll group-hover:[animation-play-state:paused]",
-          isMobile && isPaused && "[animation-play-state:paused]"
+          "flex items-center justify-center md:justify-start [&_li]:mx-4 animate-scroll",
+          // On desktop, pause on hover. On mobile, control pause via state.
+          isMobile
+            ? isPaused ? "[animation-play-state:paused]" : "[animation-play-state:running]"
+            : "group-hover:[animation-play-state:paused]"
         )}
       >
         {[...reviews, ...reviews].map((review, index) => {
