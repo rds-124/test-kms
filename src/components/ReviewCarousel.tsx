@@ -2,6 +2,8 @@
 
 import { Star, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const reviews = [
   {
@@ -32,11 +34,26 @@ const reviews = [
 ];
 
 export default function ReviewCarousel() {
+  const [isPaused, setIsPaused] = useState(false);
+  const isMobile = useIsMobile();
+
+  const handleInteraction = () => {
+    if (isMobile) {
+      setIsPaused((prev) => !prev);
+    }
+  };
+
   return (
     <div
       className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear_gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] group"
+      onClick={handleInteraction}
     >
-      <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 animate-scroll group-hover:[animation-play-state:paused]">
+      <ul
+        className={cn(
+          "flex items-center justify-center md:justify-start [&_li]:mx-4 animate-scroll group-hover:[animation-play-state:paused]",
+          isMobile && isPaused && "[animation-play-state:paused]"
+        )}
+      >
         {[...reviews, ...reviews].map((review, index) => {
            return (
             <li key={index} className="flex-shrink-0 w-80 p-6 text-center">
