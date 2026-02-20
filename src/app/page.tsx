@@ -2,12 +2,12 @@
 
 'use client';
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Smile, Leaf, Users, ShieldCheck, Truck, Package, CreditCard, MapPin, Clock, PhoneCall, CheckCircle, ArrowRight } from "lucide-react";
+import { Smile, Leaf, Users, ShieldCheck, Truck, Package, CreditCard, MapPin, Clock, PhoneCall, CheckCircle, ArrowRight, Quote } from "lucide-react";
 import { products } from "@/lib/products";
 import { categories } from "@/lib/categories";
 import ProductCard from "@/components/ProductCard";
@@ -197,7 +197,7 @@ export default function Home() {
                     Karavali Mangalore Store carries forward this legacy — blending tradition with modern convenience to serve customers across Bengaluru and India.
                   </p>
                 </div>
-                <Button asChild size="lg" className="mt-8">
+                <Button asChild size="lg" className="mt-8 rounded-lg shadow-md hover:shadow-lg transition-transform duration-200 hover:scale-[1.02]">
                   <Link href="/about">Read Our Story</Link>
                 </Button>
               </div>
@@ -265,7 +265,7 @@ export default function Home() {
               <div className="relative z-10">
                 <div className="p-8 md:p-10">
                     <div className="flex justify-center items-center gap-4 mb-8">
-                        <h2 className="text-3xl font-headline font-bold text-foreground text-center">Fast &amp; Reliable Delivery</h2>
+                        <h2 className="text-3xl font-headline font-bold text-foreground text-center md:text-left">Fast & Reliable Delivery</h2>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-muted-foreground">
                         <div className="flex flex-col items-center gap-2">
