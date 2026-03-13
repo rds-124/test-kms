@@ -39,8 +39,8 @@ export default function Home() {
 
   const whyChooseUsBadges = [
     { icon: Smile, title: "Authentic Coastal Flavors", description: "Crafted from traditional recipes to deliver the original, beloved taste of home." },
-    { icon: Leaf, title: "Fresh & High Quality", description: "We handpick the finest ingredients to ensure every product meets our high standards of freshness." },
-    { icon: Users, title: "Loved by Locals", description: "For over a decade, we've been the trusted choice for our community's daily needs." },
+    { icon: Leaf, title: "Fresh & High Quality", description: "Every product is carefully selected to meet our standards of quality and freshness." },
+    { icon: Users, title: "Trusted Since 2007", description: "For nearly two decades, we've been the trusted choice for our community's daily needs." },
     { icon: ShieldCheck, title: "Satisfaction Guaranteed", description: "We stand by our quality. If you're not happy, we'll make it right." },
   ];
 
@@ -66,7 +66,7 @@ export default function Home() {
   return (
     <div className="space-y-12 md:space-y-20">
       {/* Hero Section */}
-      <section className="relative h-[100dvh] w-full flex items-center justify-center text-center text-white overflow-hidden md:h-auto md:block bg-black">
+      <section className="relative w-full text-center text-white overflow-hidden md:block bg-black">
         {/* Desktop Rendering (Artwork Full-Width Banner) */}
         <div className="hidden md:block relative w-full h-auto">
           {heroImage && (
@@ -101,46 +101,53 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Rendering (Preserved Cover) */}
-        <div className="md:hidden absolute inset-0">
-          {heroMobileImage && (
-            <Image
-              src={heroMobileImage.imageUrl}
-              alt={heroMobileImage.description}
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              data-ai-hint={heroMobileImage.imageHint}
-              priority
-            />
-          )}
-        </div>
-        {/* Cinematic Overlay: Restored vibrancy for both mobile & desktop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/35 md:from-black/10 md:via-transparent md:to-black/20 pointer-events-none" />
+        {/* Mobile Image — renders at natural aspect ratio, never cropped */}
+        {heroMobileImage && (
+          <img
+            src={heroMobileImage.imageUrl}
+            alt={heroMobileImage.description}
+            className="md:hidden w-full h-auto block mt-10"
+            data-ai-hint={heroMobileImage.imageHint}
+          />
+        )}
 
-        {/* Mobile-Only Hero Content (Stacked but proportional) */}
-        <div className="md:hidden relative z-10 w-full h-full flex flex-col items-center justify-between px-6 py-[12vh]">
-          {/* Upper Middle Heading Area */}
-          <div className="w-full max-w-5xl relative -top-16">
-            <h1 className="text-[clamp(1.9rem,9vw,2.3rem)] leading-[1.1] font-headline font-bold tracking-tight text-shadow-xl animate-in fade-in slide-in-from-top-4 duration-1000">
-              Bringing the True Taste of Coastal Karnataka to Your Home
-            </h1>
-          </div>
+        {/* Mobile gradient overlay */}
+        <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/35 pointer-events-none" />
 
-          <div className="mt-[12vh] w-full max-w-3xl px-6 flex flex-col items-center gap-10 animate-in fade-in zoom-in-95 duration-1000 delay-500 relative -top-4">
+        {/* Desktop gradient overlay */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 pointer-events-none" />
+
+        {/* Mobile text overlay — percentage-positioned relative to image height */}
+        <div
+          className="md:hidden absolute inset-0 flex flex-col items-center px-6"
+          style={{ paddingTop: '5%', paddingBottom: '34%' }}
+        >
+          {/* Headline — sits in upper dark zone */}
+          <h1
+            className="mt-0 font-headline font-bold tracking-tight text-shadow-xl leading-[1.25] animate-in fade-in slide-in-from-top-4 duration-1000"
+            style={{ fontSize: 'clamp(1.9rem, 9vw, 2.3rem)', wordSpacing: '0.05em' }}
+          >
+            Bringing the True<br />Taste of Coastal<br />Karnataka to <br />Your Home
+          </h1>
+
+          {/* Flex spacer — pushes CTA group to ~68% of image height */}
+          <div className="flex-1" />
+
+          {/* Subtext + CTA group */}
+          <div className="w-full max-w-xs flex flex-col items-center gap-5 animate-in fade-in zoom-in-95 duration-1000 delay-500">
             <div className="relative group">
               <div className="absolute inset-0 bg-black/20 blur-2xl rounded-full scale-150 transform -z-10" />
-              <p className="text-[clamp(1rem,4.5vw,1.125rem)] font-light tracking-wide text-white text-shadow-md leading-relaxed max-w-2xl px-4 py-2 text-center">
-                Authentic Karavali & Malnad heritage foods rooted in tradition and crafted with care.
+              <p
+                className="font-light tracking-wide text-white text-shadow-md leading-relaxed px-4 py-2 text-center"
+                style={{ fontSize: 'clamp(1rem, 4.5vw, 1.125rem)' }}
+              >
+                Authentic Karavali &amp; Malnad heritage foods rooted in tradition and crafted with care.
               </p>
             </div>
-            <Button asChild size="lg" className="h-14 px-12 text-xl font-semibold rounded-2xl bg-[#008744] hover:bg-[#007038] text-white border-none shadow-[0_20px_50px_rgba(0,135,68,0.4)] transition-all duration-500 hover:scale-110 active:scale-95 relative -top-[5vh]">
+            <Button asChild size="lg" className="transform -translate-y-4 h-12 px-8 text-lg font-semibold rounded-2xl bg-[#008744] hover:bg-[#007038] text-white border-none shadow-[0_20px_50px_rgba(0,135,68,0.4)] transition-all duration-500 hover:scale-110 active:scale-95">
               <Link href="/category/all">Shop Now</Link>
             </Button>
           </div>
-
-          {/* Spacer to preserve bottom Kambala scene */}
-          <div className="h-[10vh]" />
         </div>
 
       </section>
@@ -149,7 +156,7 @@ export default function Home() {
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {trustBadges.map((badge, index) => (
-            <div key={index} className="group rounded-3xl bg-card p-4 text-center shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl md:p-6">
+            <div key={index} className="group rounded-3xl p-4 text-center shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl md:p-6" style={{ backgroundColor: '#FFFFFF' }}>
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 shadow-lg transition-transform group-hover:scale-105 sm:h-20 sm:w-20">
                 <badge.icon className="h-6 w-6 text-accent sm:h-10 sm:w-10" />
               </div>
@@ -244,7 +251,7 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-headline font-bold">
                   From Our Family to Your Home
                 </h2>
-                <div className="mt-4 text-muted-foreground max-w-xl mx-auto md:mx-0 space-y-4">
+                <div className="mt-4 max-w-xl mx-auto md:mx-0 space-y-4" style={{ color: '#57534E' }}>
                   <p>
                     Established in 2007, Mangalore Store has been a trusted family-run shop in Bengaluru, founded and managed by our father and mother. Built on values of quality, authenticity, and customer trust, the store has grown into a reliable destination for genuine Karavali and Malnad products.
                   </p>
@@ -272,31 +279,18 @@ export default function Home() {
           </div>
 
           {/* Why Choose Us Section */}
-          <div className="bg-background rounded-3xl p-8 md:p-12 shadow-lg overflow-hidden relative">
-            {aboutUsFarmBgImage && (
-              <Image
-                src={aboutUsFarmBgImage.imageUrl}
-                alt={aboutUsFarmBgImage.description}
-                fill
-                className="object-cover opacity-10 dark:opacity-20"
-                data-ai-hint={aboutUsFarmBgImage.imageHint}
-              />
-            )}
-            <div className="relative z-10">
-              <h2 className="text-3xl font-headline font-bold text-center md:text-left mb-10">Why Choose Karavali Mangalore Store?</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                {whyChooseUsBadges.map((badge, index) => (
-                  <Card key={index} className="bg-card text-center p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
-                    <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
-                      <div className="bg-primary/10 p-3 rounded-full">
-                        <badge.icon className="w-8 h-8 text-primary" />
-                      </div>
-                      <h3 className="font-bold text-lg">{badge.title}</h3>
-                      <p className="text-sm text-muted-foreground">{badge.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+          <div>
+            <h2 className="text-3xl font-headline font-bold text-center md:text-left mb-10">Why Choose Karavali Mangalore Store?</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+              {whyChooseUsBadges.map((badge, index) => (
+                <div key={index} className="group text-center p-4 md:p-6 rounded-3xl shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl" style={{ backgroundColor: '#FFFFFF' }}>
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 shadow-lg transition-transform group-hover:scale-105 sm:h-20 sm:w-20">
+                    <badge.icon className="h-6 w-6 text-primary sm:h-10 sm:w-10" />
+                  </div>
+                  <h3 className="font-bold text-sm sm:text-lg md:text-xl text-foreground">{badge.title}</h3>
+                  <p className="mt-2 text-xs text-muted-foreground sm:text-sm">{badge.description}</p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -318,22 +312,22 @@ export default function Home() {
               />
             )}
             <div className="relative z-10">
-              <div className="p-8 md:p-10">
+              <div className="px-3 pt-8 pb-5 sm:p-8 md:p-10">
                 <div className="flex justify-center items-center gap-4 mb-8">
-                  <h2 className="text-3xl font-headline font-bold text-foreground text-center md:text-left">Fast & Reliable Delivery</h2>
+                  <h2 className="text-3xl font-headline font-bold text-foreground text-center md:text-left">Fast &amp; Reliable<br className="sm:hidden" />{' '}Delivery</h2>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-muted-foreground">
+                <div className="grid grid-cols-3 gap-2 sm:gap-6 text-center my-5" style={{ color: '#57534E' }}>
                   <div className="flex flex-col items-center gap-2">
                     <MapPin className="w-6 h-6 text-accent" />
-                    <p className="font-semibold">Delivering in Bengaluru<br />&amp; Across India</p>
+                    <p className="font-semibold text-xs sm:text-base">Delivering in Bengaluru<br />&amp; Across India</p>
                   </div>
                   <div className="flex flex-col items-center gap-2 sm:border-x sm:border-dashed sm:border-accent/50 px-4">
                     <Clock className="w-6 h-6 text-accent" />
-                    <p className="font-semibold">Orders Dispatched<br />in 24 Hours</p>
+                    <p className="font-semibold text-xs sm:text-base">Orders Dispatched<br />in 24 Hours</p>
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <PhoneCall className="w-6 h-6 text-accent" />
-                    <p className="font-semibold">24/7 Customer Support</p>
+                    <p className="font-semibold text-xs sm:text-base">Dedicated Customer Support</p>
                   </div>
                 </div>
               </div>
@@ -347,7 +341,7 @@ export default function Home() {
                   )}
                 </div>
                 <div className="p-8 text-center space-y-5">
-                  <h3 className="font-headline text-4xl text-foreground">Taste Authentic Karavali at Home</h3>
+                  <h3 className="font-headline text-4xl text-foreground font-bold">Taste Authentic Karavali at Home</h3>
                   <p className="text-xl font-semibold text-[#3A3A3A] dark:text-muted-foreground">Fresh. Authentic. Delivered.</p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button asChild size="lg" className="rounded-lg text-lg px-8 py-6">
@@ -355,16 +349,18 @@ export default function Home() {
                     </Button>
                     <Button asChild variant="outline" size="lg" className="rounded-lg text-lg px-8 py-6 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white">
                       <Link href={whatsappUrl} target="_blank">
-                        <WhatsAppIcon /> Order on WhatsApp
+                        <WhatsAppIcon /> Chat on WhatsApp
                       </Link>
                     </Button>
                   </div>
-                  <div className="text-sm text-muted-foreground font-bold">
-                    ⭐ Trusted by 500+ families since 2007
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-accent font-bold pt-4">
-                    <CheckCircle className="w-5 h-5" />
-                    <span>100% Satisfaction Guaranteed!</span>
+                  <div className="space-y-2">
+                    <div className="font-bold" style={{ color: '#57534E' }}>
+                      ⭐ Trusted by 1000+ families since 2007
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-accent font-bold">
+                      <CheckCircle className="w-5 h-5" />
+                      <span>100% Satisfaction Guaranteed!</span>
+                    </div>
                   </div>
                 </div>
               </div>

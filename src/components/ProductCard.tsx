@@ -27,7 +27,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const auth = useAuth();
   const { user } = useUser();
   const { getCartItem, addToCart, updateCartItemQuantity } = useFirestoreCart();
-  
+
   const cartItem = getCartItem(product.sku);
 
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -47,11 +47,11 @@ export default function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
-        initiateAnonymousSignIn(auth);
+      initiateAnonymousSignIn(auth);
     }
     addToCart(product);
   };
-  
+
   /**
    * Increases the quantity of an item already in the cart.
    * @param e - The mouse event, to prevent navigation.
@@ -60,14 +60,14 @@ export default function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
     if (cartItem) {
-        const newQuantity = cartItem.quantity + 1;
-        // Respect the stock quantity limit.
-        if (newQuantity <= product.stock_qty) {
-            updateCartItemQuantity(cartItem.id, newQuantity);
-        }
+      const newQuantity = cartItem.quantity + 1;
+      // Respect the stock quantity limit.
+      if (newQuantity <= product.stock_qty) {
+        updateCartItemQuantity(cartItem.id, newQuantity);
+      }
     }
   };
-  
+
   /**
    * Decreases the quantity of an item in the cart.
    * If the quantity becomes 0, the item is removed.
@@ -77,8 +77,8 @@ export default function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
     if (cartItem) {
-        const newQuantity = cartItem.quantity - 1;
-        updateCartItemQuantity(cartItem.id, newQuantity);
+      const newQuantity = cartItem.quantity - 1;
+      updateCartItemQuantity(cartItem.id, newQuantity);
     }
   };
 
@@ -118,12 +118,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             onClick={toggleWishlist}
           >
             <Heart className={cn(
-                "h-5 w-5 text-red-500 transition-all",
-                isWishlisted ? "fill-red-500" : "fill-transparent"
+              "h-5 w-5 text-red-500 transition-all",
+              isWishlisted ? "fill-red-500" : "fill-transparent"
             )} />
             <span className="sr-only">Add to wishlist</span>
           </Button>
-          
+
           {discount > 0 && !isOutOfStock && (
             <Badge variant="destructive" className="absolute top-2 left-2 z-10">{discount}% OFF</Badge>
           )}
@@ -131,70 +131,70 @@ export default function ProductCard({ product }: ProductCardProps) {
             <Badge variant="secondary" className="absolute top-2 left-2 z-10 text-xs">Out of Stock</Badge>
           )}
         </div>
-        
+
         {/* Product Details Section */}
         <div className="p-3 flex-grow flex flex-col">
-            <h3 className="font-semibold text-xs md:text-sm line-clamp-2 text-left flex-grow">{product.title}</h3>
+          <h3 className="font-semibold text-xs md:text-sm line-clamp-2 text-left flex-grow">{product.title}</h3>
         </div>
       </Link>
-      
+
       {/* Bottom Action Area: Sits at the bottom. Contains price and button. */}
       <div className="p-3 pt-0 mt-auto flex justify-between items-center gap-1">
-          {/* Price */}
-          <div className="flex flex-col items-start">
-              <p className={cn("font-bold price text-foreground", "text-sm md:text-base")}>
-                  ₹{product.sale_price ?? product.price}
-              </p>
-              {product.sale_price && (
-                  <p className="text-xs text-muted-foreground mrp">
-                      ₹{product.price}
-                  </p>
-              )}
-          </div>
+        {/* Price */}
+        <div className="flex flex-row items-baseline gap-0.5">
+          <p className={cn("font-bold price text-foreground", "text-sm md:text-base")}>
+            ₹{product.sale_price ?? product.price}
+          </p>
+          {product.sale_price && (
+            <p className="text-xs text-muted-foreground mrp">
+              ₹{product.price}
+            </p>
+          )}
+        </div>
 
-          {/* Action Button/Quantity Selector */}
-          <div className="flex items-center">
-            {isOutOfStock ? (
-                <div className="text-xs font-bold text-destructive px-2">
-                    Out of Stock
-                </div>
-            ) : cartItem && cartItem.quantity > 0 ? (
-                <div className="flex items-center h-9 rounded-full bg-primary/10 dark:bg-primary/20 p-1 gap-1">
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="w-6 h-6 rounded-full border border-primary text-primary hover:bg-primary/20"
-                        onClick={decrementQuantity}
-                        aria-label="Decrease quantity"
-                    >
-                        <Minus className="h-4 w-4" />
-                    </Button>
-                    <span className="text-center text-primary font-bold text-sm tabular-nums px-1 min-w-[1rem]">
-                        {cartItem.quantity}
-                    </span>
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="w-6 h-6 rounded-full border border-primary text-primary hover:bg-primary/20"
-                        onClick={incrementQuantity}
-                        aria-label="Increase quantity"
-                        disabled={cartItem.quantity >= product.stock_qty}
-                    >
-                        <Plus className="h-4 w-4" />
-                    </Button>
-                </div>
-            ) : (
-                <Button 
-                    variant="outline"
-                    size="sm"
-                    className="h-9 px-4 rounded-full border-primary text-primary bg-primary/10 hover:bg-primary/20 hover:text-primary font-bold"
-                    onClick={handleInitialAdd}
-                    aria-label="Add to cart"
-                >
-                    ADD
-                </Button>
-            )}
-          </div>
+        {/* Action Button/Quantity Selector */}
+        <div className="flex items-center">
+          {isOutOfStock ? (
+            <div className="text-xs font-bold text-destructive px-2">
+              Out of Stock
+            </div>
+          ) : cartItem && cartItem.quantity > 0 ? (
+            <div className="flex items-center h-9 rounded-full bg-primary/10 dark:bg-primary/20 p-1 gap-1">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-6 h-6 rounded-full border border-primary text-primary hover:bg-primary/20"
+                onClick={decrementQuantity}
+                aria-label="Decrease quantity"
+              >
+                <Minus className="h-4 w-4" />
+              </Button>
+              <span className="text-center text-primary font-bold text-sm tabular-nums px-1 min-w-[1rem]">
+                {cartItem.quantity}
+              </span>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-6 h-6 rounded-full border border-primary text-primary hover:bg-primary/20"
+                onClick={incrementQuantity}
+                aria-label="Increase quantity"
+                disabled={cartItem.quantity >= product.stock_qty}
+              >
+                <Plus className="h-4 w-4" />
+              </Button>
+            </div>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9 px-4 rounded-full border-primary text-primary bg-primary/10 hover:bg-primary/20 hover:text-primary font-bold"
+              onClick={handleInitialAdd}
+              aria-label="Add to cart"
+            >
+              ADD
+            </Button>
+          )}
+        </div>
       </div>
     </Card>
   );
