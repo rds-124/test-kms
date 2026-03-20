@@ -20,6 +20,7 @@ export default function Footer() {
         { name: 'FAQs', href: '/faqs' },
       ],
     },
+
   ];
 
   return (
@@ -74,75 +75,102 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right group — Company, Support, Location — pushed to far right */}
-          <div className="grid grid-cols-3 gap-4 sm:ml-auto sm:flex sm:flex-wrap sm:gap-10">
-            {/* Link Sections */}
-            {linkSections.map((section) => (
-              <div key={section.title}>
-                <h4 className="font-bold tracking-widest uppercase text-xs opacity-60 mb-4">
-                  {section.title}
-                </h4>
-                <ul className="space-y-2">
-                  {section.links.map((link) => (
-                    <li key={link.name}>
-                      <Link
-                        href={link.href}
-                        className="text-sm opacity-85 hover:opacity-100 hover:underline underline-offset-2 transition-all"
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* The Karavali Journal — desktop centre gap (hidden on mobile, shown inside right group) */}
+          <div className="hidden sm:flex flex-1 self-stretch items-center justify-center">
+            <Link
+              href="/blog"
+              className="font-headline italic text-xl text-primary-foreground opacity-90 hover:opacity-100 hover:underline hover:decoration-white underline-offset-4 transition-all duration-200"
+            >
+              The Karavali Journal
+            </Link>
+          </div>
 
-            {/* Location & Socials */}
-            <div>
-              <h4 className="font-bold tracking-widest uppercase text-xs opacity-60 mb-4">
-                Location
-              </h4>
-              <div className="flex items-start gap-2 text-sm mb-4">
-                <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 opacity-80" />
-                <a
-                  href="https://maps.app.goo.gl/agTFVts4baEWtys57"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs opacity-90 hover:opacity-100 hover:underline underline-offset-2 transition-opacity"
-                >
-                  94/1, Opp. 108B bus stop,<br />
-                  Ganganagar, Bengaluru
-                </a>
+          {/* Right group — Company/Support/Location */}
+          <div className="flex flex-col items-center gap-6 sm:flex sm:flex-row sm:flex-wrap sm:items-start sm:gap-10">
+
+            {/* The Karavali Journal — pill button, centered on mobile, inline on desktop */}
+            <div className="w-full flex justify-center mb-2 sm:hidden">
+              <Link
+                href="/blog"
+                className="font-headline italic text-base sm:text-xl text-primary-foreground opacity-90 hover:opacity-100 hover:underline hover:decoration-[#D47C0F] underline-offset-4 transition-all duration-200"
+              >
+                The Karavali Journal
+              </Link>
+            </div>
+
+            {/* Company, Support, Location — 3-col grid on mobile;
+                sm:contents makes them flow as direct flex children on desktop */}
+            <div className="grid grid-cols-3 gap-x-6 gap-y-8 w-full sm:contents">
+
+              {/* Link Sections (Company, Support) */}
+              {linkSections.map((section) => (
+                <div key={section.title}>
+                  <h4 className="font-bold tracking-widest uppercase text-xs opacity-60 mb-4">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-2">
+                    {section.links.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-sm opacity-85 hover:opacity-100 hover:underline underline-offset-2 transition-all"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              {/* Location & Socials */}
+              <div>
+                <h4 className="font-bold tracking-widest uppercase text-xs opacity-60 mb-4">
+                  Location
+                </h4>
+                <div className="flex items-start gap-2 text-sm mb-4">
+                  <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 opacity-80" />
+                  <a
+                    href="https://maps.app.goo.gl/agTFVts4baEWtys57"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs opacity-90 hover:opacity-100 hover:underline underline-offset-2 transition-opacity"
+                  >
+                    94/1, Opp. 108B bus stop,<br />
+                    Ganganagar, Bengaluru
+                  </a>
+                </div>
+                <div className="flex items-center gap-4">
+                  <a
+                    href="https://www.facebook.com/people/Karavali-Mangalore-Store/61588141570257/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="opacity-75 hover:opacity-100 transition-opacity"
+                  >
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/karavalimangalorestore/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="opacity-75 hover:opacity-100 transition-opacity"
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://wa.me/919611573008"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="opacity-75 hover:opacity-100 transition-opacity"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://www.facebook.com/people/Karavali-Mangalore-Store/61588141570257/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="opacity-75 hover:opacity-100 transition-opacity"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://www.instagram.com/karavalimangalorestore/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="opacity-75 hover:opacity-100 transition-opacity"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://wa.me/919611573008"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                  className="opacity-75 hover:opacity-100 transition-opacity"
-                >
-                  <MessageCircle className="h-5 w-5" />
-                </a>
-              </div>
+
             </div>
           </div>
         </div>
