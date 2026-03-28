@@ -59,9 +59,7 @@ export default function Home() {
     </svg>
   );
 
-  const phoneNumber = '+911234567890';
-  const message = "Hello! I want to place an order from Karavali Store.";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = "https://wa.me/919611573008";
 
   return (
     <div className="space-y-12 md:space-y-20">

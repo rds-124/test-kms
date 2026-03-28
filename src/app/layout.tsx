@@ -3,7 +3,6 @@ import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { FirebaseClientProvider } from "@/firebase/client-provider";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -53,8 +52,7 @@ export default function RootLayout({
               <main className="flex-grow">{children}</main>
               <Footer />
             </div>
-            <WhatsAppButton />
-            <MobileBottomNav />
+<MobileBottomNav />
             <Toaster />
           </FirebaseClientProvider>
         </ThemeProvider>
