@@ -48,8 +48,10 @@ const ui = {
     borderRadius: 18,
     boxShadow:    "0 2px 16px rgba(46,138,87,0.08), 0 1px 3px rgba(0,0,0,0.05)",
     borderTop:    "3px solid #2E8A57",
-    padding:      "24px 24px 22px",
+    padding:      "24px 20px 22px",
     marginBottom: 16,
+    width:        "100%",
+    boxSizing:    "border-box",
   } as React.CSSProperties,
 };
 
@@ -139,7 +141,7 @@ export default function CheckoutPage() {
 
   // Address
   const [form, setForm] = useState({
-    name: "", addr1: "", addr2: "", pincode: "", city: "", state: "",
+    name: "", addr1: "", addr2: "", email: "", pincode: "", city: "", state: "",
   });
   const [saveAddr, setSaveAddr] = useState(false);
   const [errors, setErrors]     = useState<Record<string, string>>({});
@@ -211,7 +213,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FAF7F2", paddingBottom: 48 }}>
+    <div style={{ minHeight: "100vh", background: "#FAF7F2", paddingBottom: 48, boxSizing: "border-box" }}>
 
       {/* Page header */}
       <div style={{ background: "#ffffff", borderBottom: "1px solid #EDE8E0", padding: "18px 0", marginBottom: 28 }}>
@@ -223,8 +225,8 @@ export default function CheckoutPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 16px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 20 }} className="checkout-grid">
+      <div style={{ maxWidth: 1200, margin: "0 auto", paddingLeft: "max(16px, env(safe-area-inset-left))", paddingRight: "max(16px, env(safe-area-inset-right))", boxSizing: "border-box" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 20, width: "100%", boxSizing: "border-box" }} className="checkout-grid">
 
           {/* ── LEFT COLUMN ─────────────────────────────────────── */}
           <div>
@@ -234,7 +236,7 @@ export default function CheckoutPage() {
               <SectionTitle>Contact</SectionTitle>
               {/* Read-only phone */}
               <div style={{
-                display: "flex", alignItems: "center", gap: 10,
+                display: "flex", alignItems: "center", gap: 6,
                 background: "#F4F9F6", border: `1.5px solid ${ui.border}`,
                 borderRadius: 10, padding: "11px 14px",
               }}>
@@ -242,8 +244,8 @@ export default function CheckoutPage() {
                 <span style={{ fontFamily: ui.fontBody, fontSize: "0.9rem", color: ui.dark, flex: 1 }}>
                   +91 98765 43210
                 </span>
-                <span style={{ fontFamily: ui.fontBody, fontSize: "0.7rem", fontWeight: 600, color: ui.green,
-                  background: "rgba(46,138,87,0.1)", padding: "2px 8px", borderRadius: 20 }}>
+                <span style={{ fontFamily: ui.fontBody, fontSize: "0.65rem", fontWeight: 600, color: ui.green,
+                  background: "rgba(46,138,87,0.1)", padding: "2px 6px", borderRadius: 20 }}>
                   Verified
                 </span>
               </div>
@@ -287,6 +289,14 @@ export default function CheckoutPage() {
                 </Field>
                 <Field label="Address Line 2" optional>
                   <StyledInput placeholder="Area, Locality, Landmark" value={form.addr2} onChange={set("addr2")} />
+                </Field>
+                <Field label="Email Address" optional>
+                  <StyledInput
+                    type="email" inputMode="email"
+                    placeholder="For order updates"
+                    value={form.email}
+                    onChange={set("email")}
+                  />
                 </Field>
 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }} className="addr-grid">

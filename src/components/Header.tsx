@@ -385,7 +385,7 @@ export default function Header() {
                 {cartCount > 0 && (
                   <span
                     className="absolute -top-[7px] -right-[3px] text-[15px] font-extrabold leading-none"
-                    style={{ color: 'hsl(var(--accent))' }}
+                    style={{ color: '#ffffff', fontFamily: 'var(--font-fraunces)' }}
                   >
                     {cartCount}
                   </span>

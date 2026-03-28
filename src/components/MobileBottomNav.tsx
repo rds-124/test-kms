@@ -64,8 +64,8 @@ export default function MobileBottomNav() {
     <>
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[94%] max-w-md z-50 md:hidden">
         <div
-          className="relative h-[52px] bg-background rounded-full border-[2px] border-primary flex items-center justify-between px-2"
-          style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.06), 0 8px 28px rgba(0,0,0,0.10), 0 24px 56px rgba(0,0,0,0.07)' }}
+          className="relative h-[52px] rounded-full border-[2px] border-primary flex items-center justify-between px-2"
+          style={{ background: '#FEFEFE', boxShadow: '0 2px 8px rgba(0,0,0,0.06), 0 8px 28px rgba(0,0,0,0.10), 0 24px 56px rgba(0,0,0,0.07)' }}
         >
 
           {/* Navigation Items Area */}
@@ -96,7 +96,7 @@ export default function MobileBottomNav() {
                       className={cn('h-6 w-6', isActive && 'fill-current')}
                     />
                     {item.label === 'Cart' && cartCount > 0 && (
-                      <span className="absolute -top-0.5 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-[9px] font-bold">
+                      <span className="absolute -top-0.5 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-[9px] font-bold ring-1 ring-black/20">
                         {cartCount}
                       </span>
                     )}
