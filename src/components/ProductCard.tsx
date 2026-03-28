@@ -95,7 +95,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     // Using a more standard card layout. `rounded-xl` for a softer modern look.
-    <Card className="group w-full h-full bg-card rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col">
+    <Card className="group w-full h-full rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col" style={{ backgroundColor: '#ffffff' }}>
       <Link href={`/product/${product.sku}`} className="flex-grow flex flex-col">
         {/* Product Image Section */}
         <div className="relative w-full overflow-hidden">
@@ -133,27 +133,33 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Product Details Section */}
-        <div className="p-3 flex-grow flex flex-col">
-          <h3 className="font-semibold text-xs md:text-sm line-clamp-2 text-left flex-grow">{product.title}</h3>
+        <div className="p-3 flex-grow flex flex-col gap-0.5">
+          <h3 className="font-bold text-base md:text-sm leading-snug">{product.title}</h3>
+          {product.kannada_title && (
+            <p className="text-xs text-muted-foreground leading-snug truncate">{product.kannada_title}</p>
+          )}
+          {product.short_description && (
+            <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{product.short_description}</p>
+          )}
         </div>
       </Link>
 
       {/* Bottom Action Area: Sits at the bottom. Contains price and button. */}
       <div className="p-3 pt-0 mt-auto flex justify-between items-center gap-1">
         {/* Price */}
-        <div className="flex flex-row items-baseline gap-0.5">
-          <p className={cn("font-bold price text-foreground", "text-sm md:text-base")}>
+        <div className="flex flex-col md:flex-row md:items-baseline md:gap-0.5 min-w-0 shrink">
+          <p className={cn("font-bold price text-foreground leading-tight", "text-lg md:text-base")}>
             ₹{product.sale_price ?? product.price}
           </p>
           {product.sale_price && (
-            <p className="text-xs text-muted-foreground mrp">
+            <p className="text-xs text-muted-foreground mrp leading-tight pl-2 md:pl-0">
               ₹{product.price}
             </p>
           )}
         </div>
 
         {/* Action Button/Quantity Selector */}
-        <div className="flex items-center">
+        <div className="flex items-center shrink-0">
           {isOutOfStock ? (
             <div className="text-xs font-bold text-destructive px-2">
               Out of Stock

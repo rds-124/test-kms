@@ -92,7 +92,7 @@ export default function Home() {
                 </p>
 
                 <div className="pt-4">
-                  <Button asChild size="lg" className="h-16 px-12 text-xl font-bold rounded-xl bg-[#008744] hover:bg-[#007038] text-white border-none shadow-lg transition-all duration-500 hover:scale-110 active:scale-95">
+                  <Button asChild size="lg" className="h-16 px-12 text-xl font-bold rounded-xl bg-primary hover:bg-primary/85 text-primary-foreground border-none shadow-lg transition-all duration-500 hover:scale-110 active:scale-95 font-ui tracking-widest uppercase">
                     <Link href="/category/all">Shop Now</Link>
                   </Button>
                 </div>
@@ -144,7 +144,7 @@ export default function Home() {
                 Authentic Karavali &amp; Malnad heritage foods rooted in tradition and crafted with care.
               </p>
             </div>
-            <Button asChild size="lg" className="transform -translate-y-4 h-12 px-8 text-lg font-semibold rounded-2xl bg-[#008744] hover:bg-[#007038] text-white border-none shadow-[0_20px_50px_rgba(0,135,68,0.4)] transition-all duration-500 hover:scale-110 active:scale-95">
+            <Button asChild size="lg" className="transform -translate-y-4 h-12 px-8 text-lg font-semibold rounded-2xl bg-primary hover:bg-primary/85 text-primary-foreground border-none shadow-lg transition-all duration-500 hover:scale-110 active:scale-95 font-ui tracking-widest uppercase">
               <Link href="/category/all">Shop Now</Link>
             </Button>
           </div>
@@ -160,7 +160,7 @@ export default function Home() {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 shadow-lg transition-transform group-hover:scale-105 sm:h-20 sm:w-20">
                 <badge.icon className="h-6 w-6 text-accent sm:h-10 sm:w-10" />
               </div>
-              <h3 className="text-sm font-bold text-foreground sm:text-lg md:text-xl">{badge.text}</h3>
+              <h3 className="text-xs font-bold text-foreground sm:text-lg md:text-xl whitespace-nowrap">{badge.text}</h3>
               <p className="mt-2 text-xs text-muted-foreground sm:text-sm">{badge.description}</p>
             </div>
           ))}
@@ -186,7 +186,7 @@ export default function Home() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
                 <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
-                  <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{category.name}</h3>
+                  <h3 className="font-bold text-xl md:text-2xl text-white drop-shadow-md">{category.name}</h3>
                 </div>
               </Link>
             )
@@ -195,7 +195,7 @@ export default function Home() {
             <div className="flex items-center justify-center h-10 w-10 md:h-12 md:w-12 bg-white dark:bg-slate-800 rounded-full mb-2 shadow-md transition-transform duration-300 group-hover:scale-110">
               <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-accent" />
             </div>
-            <span className="font-bold text-sm md:text-base text-accent">See all</span>
+            <span className="font-headline font-bold text-xl md:text-2xl text-accent">See all</span>
           </Link>
         </div>
       </section>
@@ -341,25 +341,25 @@ export default function Home() {
                   )}
                 </div>
                 <div className="p-8 text-center space-y-5">
-                  <h3 className="font-headline text-4xl text-foreground font-bold">Taste Authentic Karavali at Home</h3>
-                  <p className="text-xl font-semibold text-[#3A3A3A] dark:text-muted-foreground">Fresh. Authentic. Delivered.</p>
+                  <h3 className="font-headline text-4xl text-foreground font-bold">Taste<br className="md:hidden" /> Authentic<br className="md:hidden" /> Karavali at<br className="md:hidden" /> Home</h3>
+                  <p className="text-xl font-semibold text-[#3A3A3A] dark:text-muted-foreground whitespace-nowrap">Fresh. Authentic. Delivered.</p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button asChild size="lg" className="rounded-lg text-lg px-8 py-6">
                       <Link href="/category/all">Shop Now</Link>
                     </Button>
-                    <Button asChild variant="outline" size="lg" className="rounded-lg text-lg px-8 py-6 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white">
+                    <Button asChild variant="outline" size="lg" className="rounded-lg text-lg px-8 py-6 border-2 border-[#25D366] bg-white text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors duration-200">
                       <Link href={whatsappUrl} target="_blank">
                         <WhatsAppIcon /> Chat on WhatsApp
                       </Link>
                     </Button>
                   </div>
                   <div className="space-y-2">
-                    <div className="font-bold" style={{ color: '#57534E' }}>
-                      ⭐ Trusted by 1000+ families since 2007
+                    <div className="font-bold whitespace-nowrap" style={{ color: '#57534E' }}>
+                      ⭐ Trusted by 1000+ families
                     </div>
                     <div className="flex items-center justify-center gap-2 text-accent font-bold">
                       <CheckCircle className="w-5 h-5" />
-                      <span>100% Satisfaction Guaranteed!</span>
+                      <span className="whitespace-nowrap">100% Satisfaction Guaranteed!</span>
                     </div>
                   </div>
                 </div>

@@ -2,72 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
 @layer base {
   :root {
-    --background: 36 50% 97%;
-    /* Warm Off-white */
-    --foreground: 20 14.3% 4.1%;
-    --card: 36 50% 97%;
-    --card-foreground: 20 14.3% 4.1%;
-    --popover: 36 50% 97%;
-    --popover-foreground: 20 14.3% 4.1%;
+    /* ── Karavali Design System v2 ── */
+    /* Warm parchment — richer than before */
+    --background: 38 55% 96%;
+    /* Deep forest-tinted text */
+    --foreground: 150 18% 10%;
+    --card: 38 55% 96%;
+    --card-foreground: 150 18% 10%;
+    --popover: 38 52% 98%;
+    --popover-foreground: 150 18% 10%;
+    /* Brand green #2E8A57 */
     --primary: 147 50% 36%;
-    /* Forest Green */
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 18 56% 53%;
-    /* Terracotta */
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 147 50% 36%;
-    --radius: 0.8rem;
-    --sidebar-background: 36 50% 97%;
-    --sidebar-foreground: 20 14.3% 4.1%;
-    --sidebar-primary: 147 50% 36%;
-    --sidebar-primary-foreground: 60 9.1% 97.8%;
-    --sidebar-accent: 18 56% 53%;
-    --sidebar-accent-foreground: 60 9.1% 97.8%;
-    --sidebar-border: 20 5.9% 90%;
-    --sidebar-ring: 147 50% 36%;
+    --primary-foreground: 38 55% 96%;
+    /* Warm cream secondary */
+    --secondary: 38 30% 91%;
+    --secondary-foreground: 150 18% 15%;
+    --muted: 38 25% 92%;
+    /* Warm brown-gray muted text */
+    --muted-foreground: 28 12% 45%;
+    /* Copper-red accent — replaces muddy terracotta (#B8501A) */
+    --accent: 20 73% 42%;
+    --accent-foreground: 38 55% 96%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 38 55% 96%;
+    /* Warm parchment border */
+    --border: 35 20% 85%;
+    --input: 35 20% 88%;
+    --ring: 145 55% 28%;
+    --radius: 0.75rem;
+    --sidebar-background: 38 55% 96%;
+    --sidebar-foreground: 150 18% 10%;
+    --sidebar-primary: 145 55% 28%;
+    --sidebar-primary-foreground: 38 55% 96%;
+    --sidebar-accent: 20 73% 42%;
+    --sidebar-accent-foreground: 38 55% 96%;
+    --sidebar-border: 35 20% 85%;
+    --sidebar-ring: 145 55% 28%;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 147 50% 36%;
-    /* Forest Green */
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 18 56% 63%;
-    /* Lighter terracotta for dark mode */
-    --accent-foreground: 20 14.3% 4.1%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 147 50% 36%;
-    --radius: 0.8rem;
-    --sidebar-background: 20 14.3% 4.1%;
-    --sidebar-foreground: 60 9.1% 97.8%;
-    --sidebar-primary: 147 50% 36%;
-    --sidebar-primary-foreground: 60 9.1% 97.8%;
-    --sidebar-accent: 18 56% 63%;
-    --sidebar-accent-foreground: 20 14.3% 4.1%;
-    --sidebar-border: 12 6.5% 15.1%;
-    --sidebar-ring: 147 50% 36%;
+    /* Rich dark — warm charcoal, not cold black */
+    --background: 150 14% 7%;
+    --foreground: 38 40% 92%;
+    --card: 150 12% 10%;
+    --card-foreground: 38 40% 92%;
+    --popover: 150 12% 10%;
+    --popover-foreground: 38 40% 92%;
+    /* Slightly lighter #2E8A57 for dark mode contrast */
+    --primary: 147 50% 42%;
+    --primary-foreground: 38 40% 96%;
+    --secondary: 150 10% 16%;
+    --secondary-foreground: 38 40% 92%;
+    --muted: 150 10% 16%;
+    --muted-foreground: 35 10% 60%;
+    /* Brighter copper accent in dark mode */
+    --accent: 20 70% 55%;
+    --accent-foreground: 150 14% 7%;
+    --destructive: 0 55% 42%;
+    --destructive-foreground: 38 40% 92%;
+    --border: 150 10% 18%;
+    --input: 150 10% 18%;
+    --ring: 145 48% 38%;
+    --radius: 0.75rem;
+    --sidebar-background: 150 14% 7%;
+    --sidebar-foreground: 38 40% 92%;
+    --sidebar-primary: 145 48% 38%;
+    --sidebar-primary-foreground: 38 40% 96%;
+    --sidebar-accent: 20 70% 55%;
+    --sidebar-accent-foreground: 150 14% 7%;
+    --sidebar-border: 150 10% 18%;
+    --sidebar-ring: 145 48% 38%;
   }
 }
 
@@ -78,18 +89,25 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image: url("data:image/svg+xml,%3csvg%3e%3cfilter id='f'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='1' stitchTiles='stitch'/%3e%3cfeColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0.05 0'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23f)'/%3e%3c/svg%3e");
+    /* Warm-toned grain — subtle parchment texture */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='grain'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3e%3cfeColorMatrix values='0 0 0 0 0.78 0 0 0 0 0.65 0 0 0 0 0.48 0 0 0 0.045 0'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23grain)'/%3e%3c/svg%3e");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
 }
 
 @layer utilities {
   .price {
     font-variant-numeric: tabular-nums;
+    font-family: var(--font-barlow), system-ui, sans-serif;
   }
 
   .mrp {
     text-decoration: line-through;
-    opacity: 0.6;
+    opacity: 0.55;
     margin-left: 6px;
   }
 
@@ -98,7 +116,7 @@
     border-radius: 50%;
     transform: scale(0);
     animation: ripple-effect 600ms linear;
-    background-color: hsla(var(--primary) / 0.3);
+    background-color: hsla(var(--primary) / 0.25);
   }
 
   @keyframes ripple-effect {
@@ -109,18 +127,67 @@
   }
 
   .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
   }
 
   .text-shadow-md {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
   }
 
   .text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.55);
   }
 
   .text-shadow-xl {
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Josefin Sans for nav, labels, buttons — tracked uppercase */
+  .font-ui {
+    font-family: var(--font-barlow), system-ui, sans-serif;
+    letter-spacing: 0.06em;
+  }
+
+  /* Cormorant italic for pull-quotes and subheadings */
+  .font-display-italic {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* Warm card shadow — replaces flat shadow-md */
+  .shadow-warm {
+    box-shadow:
+      0 1px 2px rgba(80, 50, 20, 0.06),
+      0 4px 12px rgba(80, 50, 20, 0.08),
+      0 12px 28px rgba(80, 50, 20, 0.06);
+  }
+
+  .shadow-warm-lg {
+    box-shadow:
+      0 2px 4px rgba(80, 50, 20, 0.07),
+      0 8px 24px rgba(80, 50, 20, 0.10),
+      0 24px 48px rgba(80, 50, 20, 0.08);
+  }
+
+  /* Organic wave section divider — use as bg-[url(...)] or ::after */
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      hsl(var(--border)) 20%,
+      hsl(var(--accent) / 0.3) 50%,
+      hsl(var(--border)) 80%,
+      transparent 100%
+    );
+    margin: 0 auto;
+    max-width: 80%;
   }
 }

@@ -404,7 +404,7 @@ export default function CategoryPage() {
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
                           <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
-                              <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{category.name}</h3>
+                              <h3 className="font-bold text-xl md:text-2xl text-white drop-shadow-md">{category.name}</h3>
                           </div>
                       </Link>
                   )
@@ -473,7 +473,7 @@ export default function CategoryPage() {
                             )}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
                             <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
-                                <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{category.name}</h3>
+                                <h3 className="font-bold text-xl md:text-2xl text-white drop-shadow-md">{category.name}</h3>
                             </div>
                         </Link>
                     )
@@ -509,7 +509,7 @@ export default function CategoryPage() {
                                 )}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
                                 <div className="absolute bottom-0 left-0 w-full p-3 md:p-4">
-                                    <h3 className="font-bold text-sm md:text-base text-white shadow-sm">{formatSlug(subCategorySlug)}</h3>
+                                    <h3 className="font-bold text-xl md:text-2xl text-white drop-shadow-md">{formatSlug(subCategorySlug)}</h3>
                                 </div>
                             </Link>
                         );

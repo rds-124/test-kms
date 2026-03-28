@@ -25,7 +25,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full box-border px-4 py-8">
         {/* Two-column layout: Brand left | Sections right */}
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           {/* Brand Section */}
@@ -53,7 +53,7 @@ export default function Footer() {
                     Karavali
                   </span>
                   <span
-                    className="font-body font-medium tracking-wide opacity-90"
+                    className="font-ui font-medium tracking-wide opacity-90"
                     style={{ fontSize: '0.95rem', letterSpacing: '0.06em' }}
                   >
                     Mangalore Store

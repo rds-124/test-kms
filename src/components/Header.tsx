@@ -19,6 +19,7 @@ import { initiateAnonymousSignIn } from "@/firebase/non-blocking-login";
 import { cn } from "@/lib/utils";
 
 import SearchSheet from "./SearchSheet";
+import CartDrawer from "./CartDrawer";
 import { Input } from "./ui/input";
 import { products as allProducts } from '@/lib/products';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -62,6 +63,7 @@ export default function Header() {
   const cartCountRef = useRef(cartCount); // mirrors cartCount without affecting scroll listener deps
   const pathname = usePathname();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Categories hover-open state
   const [isCatOpen, setIsCatOpen] = useState(false);
@@ -183,7 +185,7 @@ export default function Header() {
           "sticky top-0 z-40 hidden w-full md:block transition-transform duration-300 shadow-md",
           showNav ? "translate-y-0" : "-translate-y-full"
         )}
-        style={{ backgroundColor: '#2E8A57' }}
+        style={{ backgroundColor: 'hsl(var(--primary))' }}
       >
         <div className="flex h-16 items-center justify-between gap-4 px-8 text-primary-foreground">
 
@@ -209,7 +211,7 @@ export default function Header() {
                   Karavali
                 </span>
                 <span
-                  className="font-body font-medium tracking-wide text-primary-foreground/85"
+                  className="font-ui font-medium tracking-wide text-primary-foreground/85"
                   style={{ fontSize: '0.75rem', letterSpacing: '0.08em' }}
                 >
                   Mangalore Store
@@ -238,7 +240,7 @@ export default function Header() {
               <DropdownMenu open={isCatOpen} onOpenChange={setIsCatOpen}>
                 <DropdownMenuTrigger asChild>
                   <button
-                    className="flex items-center gap-1.5 h-full pl-3 pr-3 bg-[#2E8A57] text-white text-sm font-medium whitespace-nowrap hover:brightness-90 transition-all flex-shrink-0 focus:outline-none"
+                    className="flex items-center gap-1.5 h-full pl-3 pr-3 bg-primary/80 text-primary-foreground text-sm font-medium whitespace-nowrap hover:bg-primary/70 transition-all flex-shrink-0 focus:outline-none font-ui tracking-wide"
                     onMouseEnter={openCat}
                     onMouseLeave={scheduleCatClose}
                   >
@@ -297,7 +299,7 @@ export default function Header() {
               {/* ── Search button (right) ── */}
               <button
                 aria-label="Search"
-                className="flex items-center justify-center h-8 w-8 mr-1 rounded-full bg-[#2E8A57] text-white hover:brightness-90 transition-all flex-shrink-0 focus:outline-none"
+                className="flex items-center justify-center h-8 w-8 mr-1 rounded-full bg-primary text-primary-foreground hover:bg-primary/85 transition-all flex-shrink-0 focus:outline-none"
               >
                 <Search className="h-4 w-4" />
               </button>
@@ -362,41 +364,40 @@ export default function Header() {
                 )}
               </Link>
             ) : (
-              <button
-                className="flex items-center justify-center text-white cursor-pointer transition-all duration-150 hover:scale-105 focus-visible:outline-none bg-transparent border-none p-0"
-                onClick={handleAuthClick}
-                aria-label="Account"
+              <Link
+                href="/login"
+                className="flex items-center justify-center text-white cursor-pointer transition-all duration-150 hover:scale-105 focus-visible:outline-none"
+                aria-label="Login"
               >
                 <span className="flex items-center justify-center h-7 w-7 rounded-full border-2 border-white">
                   <User className="h-4 w-4" />
                 </span>
-              </button>
+              </Link>
             )}
 
-            <Link
-              href="/cart"
-              className="flex items-center gap-1.5 text-white cursor-pointer transition-all duration-150 hover:scale-105 focus-visible:outline-none select-none"
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="flex items-center gap-1.5 text-white cursor-pointer transition-all duration-150 hover:scale-105 focus-visible:outline-none select-none bg-transparent border-none p-0"
               aria-label={`Cart, ${cartCount} items`}
             >
-              {/* Icon + raw count number — no bubble */}
               <span className="relative">
                 <ShoppingCart className="h-[28px] w-[28px]" strokeWidth={1.6} />
                 {cartCount > 0 && (
                   <span
                     className="absolute -top-[7px] -right-[3px] text-[15px] font-extrabold leading-none"
-                    style={{ color: '#FFC107' }}
+                    style={{ color: 'hsl(var(--accent))' }}
                   >
                     {cartCount}
                   </span>
                 )}
               </span>
-              {/* Cart label */}
               <span className="text-[13px] font-semibold leading-none translate-y-[1px]">Cart</span>
-            </Link>
+            </button>
           </div>
         </div>
       </header>
       <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
+      <CartDrawer open={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 }

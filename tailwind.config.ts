@@ -10,8 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-inter)', 'var(--font-roboto)', 'var(--font-noto-sans)', 'system-ui', 'sans-serif'],
-        headline: ['var(--font-playfair-display)', 'serif'],
+        body: ['var(--font-barlow)', 'system-ui', 'sans-serif'],
+        headline: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        ui: ['var(--font-barlow)', 'system-ui', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
