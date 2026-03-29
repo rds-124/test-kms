@@ -16,13 +16,15 @@ import { cn } from "@/lib/utils";
 
 type ProductCardProps = {
   product: Product;
+  priority?: boolean;
+  compact?: boolean;
 };
 
 /**
  * ProductCard component displays a single product with an interactive add-to-cart functionality.
  * This version is designed to be more compact, especially for mobile grids.
  */
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, priority = false, compact = false }: ProductCardProps) {
   // Firebase and cart hooks to manage state and actions.
   const auth = useAuth();
   const { user } = useUser();
@@ -105,8 +107,10 @@ export default function ProductCard({ product }: ProductCardProps) {
               alt={product.title}
               width={400}
               height={400}
-              className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="w-full object-cover transition-transform duration-300 group-hover:scale-105 aspect-[9/10] md:aspect-square"
               data-ai-hint={productImage.imageHint}
+              priority={priority}
+              loading={priority ? undefined : "lazy"}
             />
           )}
 
@@ -128,43 +132,55 @@ export default function ProductCard({ product }: ProductCardProps) {
             <Badge variant="destructive" className="absolute top-2 left-2 z-10">{discount}% OFF</Badge>
           )}
           {isOutOfStock && (
-            <Badge variant="secondary" className="absolute top-2 left-2 z-10 text-xs">Out of Stock</Badge>
+            <Badge variant="secondary" className="absolute top-2 left-2 z-10 text-[0.65rem] px-2 py-0.5 md:text-xs md:px-2.5 md:py-1">Out of Stock</Badge>
           )}
         </div>
 
         {/* Product Details Section */}
-        <div className="p-3 flex-grow flex flex-col gap-0.5">
-          <h3 className="font-bold text-base md:text-sm leading-snug">{product.title}</h3>
+        <div className="p-2 md:p-3 flex-grow flex flex-col gap-0.5">
+          <h3
+            className={cn(
+              "font-bold text-[0.78rem] leading-[1.3] md:text-sm md:leading-snug",
+              compact && "line-clamp-2"
+            )}
+          >{product.title}</h3>
           {product.kannada_title && (
-            <p className="text-xs text-muted-foreground leading-snug truncate">{product.kannada_title}</p>
+            <p className="text-[0.68rem] leading-[1.3] md:text-xs md:leading-snug text-muted-foreground truncate">{product.kannada_title}</p>
           )}
           {product.short_description && (
-            <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{product.short_description}</p>
+            <p className="text-[0.68rem] leading-[1.3] md:text-xs md:leading-snug text-muted-foreground line-clamp-1">{product.short_description}</p>
           )}
         </div>
       </Link>
 
       {/* Bottom Action Area: Sits at the bottom. Contains price and button. */}
-      <div className="p-3 pt-0 mt-auto flex justify-between items-center gap-1">
-        {/* Price */}
+      <div className="p-2 pt-0 md:p-3 md:pt-0 mt-auto flex justify-between items-center gap-1">
+        {/* Price + Out of Stock stacked */}
         <div className="flex flex-col md:flex-row md:items-baseline md:gap-0.5 min-w-0 shrink">
-          <p className={cn("font-bold price text-foreground leading-tight", "text-lg md:text-base")}>
+          <p className={cn("font-bold price text-foreground leading-[1.3]", "text-[0.92rem] md:text-base")}>
             ₹{product.sale_price ?? product.price}
           </p>
           {product.sale_price && (
-            <p className="text-xs text-muted-foreground mrp leading-tight pl-2 md:pl-0">
-              ₹{product.price}
-            </p>
+            <>
+              {/* Mobile: below price, slightly indented */}
+              <p className="md:hidden" style={{ fontSize: '0.72rem', color: '#9CA3AF', textDecoration: 'line-through', marginLeft: 4, lineHeight: 1.2 }}>
+                ₹{product.price}
+              </p>
+              {/* Desktop: original side-by-side */}
+              <p className="hidden md:block text-xs text-muted-foreground mrp leading-tight pl-2">
+                ₹{product.price}
+              </p>
+            </>
+          )}
+          {isOutOfStock && (
+            <p className="text-xs font-bold text-destructive leading-tight mt-0.5">Out of Stock</p>
           )}
         </div>
 
         {/* Action Button/Quantity Selector */}
         <div className="flex items-center shrink-0">
-          {isOutOfStock ? (
-            <div className="text-xs font-bold text-destructive px-2">
-              Out of Stock
-            </div>
-          ) : cartItem && cartItem.quantity > 0 ? (
+          {isOutOfStock ? null
+          : cartItem && cartItem.quantity > 0 ? (
             <div className="flex items-center h-9 rounded-full bg-primary/10 dark:bg-primary/20 p-1 gap-1">
               <Button
                 variant="ghost"

@@ -80,9 +80,9 @@ export default function Home() {
           {/* Desktop Overlay Content - Centered on the image space */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl px-12 text-center animate-in fade-in zoom-in-95 duration-1000">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-headline font-bold leading-[1.2] tracking-tight text-shadow-xl mb-8">
+              <p className="text-4xl lg:text-5xl xl:text-6xl font-headline font-bold leading-[1.2] tracking-tight text-shadow-xl mb-8">
                 Bringing the True Taste of <br className="hidden lg:block" /> Coastal Karnataka to Your Home
-              </h1>
+              </p>
 
               <div className="space-y-10">
                 <p className="text-xl lg:text-2xl font-light tracking-wide text-white/90 text-shadow-md max-w-2xl mx-auto leading-relaxed">
